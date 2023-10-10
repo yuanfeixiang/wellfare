@@ -8,6 +8,8 @@ import Header from "./components/base/header";
 // main service
 import Home from "./components/home/home";
 import Service from "./components/service/service";
+import Map from "./components/service/map";
+import Favorite from "./components/service/favorite";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/service" element={<Service />}></Route>
+        <Route path="/map" element={<Map />}></Route>
+        <Route path="/favorite" element={<Favorite />}></Route>
       </Routes>
     </BrowserRouter>
   );
