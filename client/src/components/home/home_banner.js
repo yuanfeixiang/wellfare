@@ -16,8 +16,12 @@ function Home_banner() {
           <button
             className="homeBannerBtnBox"
             onClick={() => {
+              let clientHeight =
+                window.scrollY > 100
+                  ? document.querySelector(".change_header").clientHeight
+                  : document.querySelector(".original_header").clientHeight;
               window.scrollTo({
-                top: window.innerHeight - 110,
+                top: window.innerHeight - clientHeight,
                 behavior: "smooth",
               });
             }}

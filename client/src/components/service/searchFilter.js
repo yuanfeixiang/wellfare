@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import classnames from "classnames";
 import useInput from "../../hooks/useInput";
+import styled from "styled-components";
 
 // image
 import findImage from "../../../src/image/util/find_gray.png";
@@ -21,8 +22,16 @@ import sidoArrayList from "../../data/sidoArray";
 function SearchFilter() {
   const dispatch = useDispatch();
 
-  const { page, sunder, searchWord, lifeArray, gaguArray, intrsArray } =
-    useSelector((state) => state.service);
+  const {
+    page,
+    sunder,
+    searchWord,
+    lifeArray,
+    gaguArray,
+    intrsArray,
+    sidoArray,
+    gunguArray,
+  } = useSelector((state) => state.service);
 
   useEffect(() => {
     getServiceListFirst();
@@ -34,7 +43,13 @@ function SearchFilter() {
   const [_filterLifeArray, setFilterLifeArray] = useState(lifeArray);
   const [_filterGaguArray, setFilterGaguArray] = useState(gaguArray);
   const [_filterIntrsArray, setFilterIntrsArray] = useState(intrsArray);
-  const [_filterSido, onChangeFilterSido] = useInput(sido);
+
+  const [currentValue, setCurrentValue] = useState("전체");
+  const [showOptions, setShowOptions] = useState(false);
+
+  const handleOnChangeSelectValue = (e) => {
+    setCurrentValue(e.target.getAttribute("value"));
+  };
 
   async function getServiceList() {
     dispatch(
@@ -61,48 +76,6 @@ function SearchFilter() {
       })
     );
   }
-
-  const selectBoxElements = document.querySelectorAll(".select");
-
-  function toggleSelectBox(selectBox) {
-    selectBox.classList.toggle("active");
-  }
-
-  function selectOption(optionElement) {
-    const selectBox = optionElement.closest(".select");
-    const selectedElement = selectBox.querySelector(".selected-value");
-    selectedElement.textContent = optionElement.textContent;
-  }
-
-  selectBoxElements.forEach((selectBoxElement) => {
-    selectBoxElement.addEventListener("click", function (e) {
-      const targetElement = e.target;
-      const isOptionElement = targetElement.classList.contains("option");
-
-      if (isOptionElement) {
-        selectOption(targetElement);
-      }
-
-      toggleSelectBox(selectBoxElement);
-    });
-  });
-
-  document.addEventListener("click", function (e) {
-    const targetElement = e.target;
-    const isSelect =
-      targetElement.classList.contains("select") ||
-      targetElement.closest(".select");
-
-    if (isSelect) {
-      return;
-    }
-
-    const allSelectBoxElements = document.querySelectorAll(".select");
-
-    allSelectBoxElements.forEach((boxElement) => {
-      boxElement.classList.remove("active");
-    });
-  });
 
   return (
     <div className="searchFilterBoxContainer">
@@ -250,51 +223,66 @@ function SearchFilter() {
               <div className="subFilterAreaContainer">
                 <div className="subFilterAreaBox">
                   <span className="subFilterAreaTitle">지역</span>
-                  <div class="select">
-                    <div class="selected">
-                      <div class="selected-value">{sido}</div>
-                      <div class="arrow"></div>
-                    </div>
-                    <ul>
-                      {sidoArrayList.map((a, index) => (
-                        <li className="option" key={index}>
-                          {a}
+                  <div
+                    className="sidoSelectBox"
+                    onClick={() => setShowOptions((prev) => !prev)}
+                  >
+                    <label className="sidoSelectLabel">{currentValue}</label>
+                    <ul
+                      className={
+                        showOptions ? "sidoSelectUlActive" : "sidoSelectUl"
+                      }
+                      show={showOptions}
+                    >
+                      {sidoArrayList.map((data, index) => (
+                        <li
+                          className={
+                            currentValue === data
+                              ? "sidoSelectLiSelected"
+                              : "sidoSelectLi"
+                          }
+                          key={index}
+                          value={data}
+                          onClick={handleOnChangeSelectValue}
+                        >
+                          {data}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  {/* <select
-                    className="subFilterAreaSelect"
-                    onChange={(e) => setSido(e.target.value)}
-                    value={sido}
+                  <div
+                    className="sidoSelectBox"
+                    onClick={() => setShowOptions((prev) => !prev)}
                   >
-                    {sidoArrayList.map((a, index) => (
-                      <option
-                        className="subFilterAreaOption"
-                        value={a}
-                        key={index}
-                      >
-                        {a}
-                      </option>
-                    ))}
-                  </select>
-                  <select
-                    className="subFilterAreaSelect"
-                    onChange={(e) => setSido(e.target.value)}
-                    value={sido}
-                  >
-                    {sidoArrayList.map((a, index) => (
-                      <option value={a} key={index}>
-                        {a}
-                      </option>
-                    ))}
-                  </select> */}
+                    <label className="sidoSelectLabel">{currentValue}</label>
+                    <ul
+                      className={
+                        showOptions ? "sidoSelectUlActive" : "sidoSelectUl"
+                      }
+                      show={showOptions}
+                    >
+                      {sidoArrayList.map((data, index) => (
+                        <li
+                          className={
+                            currentValue === data
+                              ? "sidoSelectLiSelected"
+                              : "sidoSelectLi"
+                          }
+                          key={index}
+                          value={data}
+                          onClick={handleOnChangeSelectValue}
+                        >
+                          {data}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="subFilterBtnContainter">
-              <button>초기화</button>
-              <button>검색</button>
+            <div className="subFilterBtnContainer">
+              <button className="subFilterResetBtn">초기화</button>
+              <button className="subFilterSearchBtn">검색</button>
             </div>
           </div>
         </div>
