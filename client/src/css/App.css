@@ -452,9 +452,9 @@ nav ul li {
   display: flex;
   flex-direction: column;
   height: 1150px;
-  justify-content: space-around;
+  justify-content: space-between;
   padding-bottom: 100px;
-  padding-top: 150px;
+  padding-top: 200px;
   width: 100%;
 }
 
