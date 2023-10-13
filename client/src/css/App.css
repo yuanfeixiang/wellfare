@@ -190,14 +190,13 @@ nav {
 
 .logoBox {
   display: flex;
-  margin: auto 0px auto 12px;
+  margin: auto 0px;
   cursor: pointer;
 }
 
 .logo {
-  height: 70px;
-  margin: 0 12px 0 0;
-  width: 200px;
+  height: 80px;
+  width: 240px;
 }
 
 .logo a {
@@ -492,11 +491,11 @@ nav ul li {
   background-color: white;
 }
 
-.arrayFilterTitleIconBox {
+/* .arrayFilterTitleIconBox {
   width: calc(var(--medium-padding) * 1.8);
   height: calc(var(--medium-padding) * 1.8);
   margin-left: 10px;
-}
+} */
 
 /* filter */
 .filterBoxContainer {

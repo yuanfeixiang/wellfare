@@ -103,10 +103,7 @@ function SearchFilter() {
         <div className="filterBox">
           <div className="arrayFilterBox">
             <div className="arrayFilterTitleBox">
-              <span className="arrayFilterTitle">나이대</span>
-              <div className="arrayFilterTitleIconBox">
-                <img className="image100" src={ageImage} alt="" />
-              </div>
+              <span className="arrayFilterTitle">생애주기</span>
             </div>
             <div className="arrayFilterElementBox">
               {lifeArrayList.map((a, index) => {
@@ -138,9 +135,6 @@ function SearchFilter() {
           <div className="arrayFilterBox">
             <div className="arrayFilterTitleBox">
               <span className="arrayFilterTitle">가구상황</span>
-              <div className="arrayFilterTitleIconBox">
-                <img className="image100" src={familyImage} alt="" />
-              </div>
             </div>
             <div className="arrayFilterElementBox">
               {gaguArrayList.map((a, index) => {
@@ -149,7 +143,7 @@ function SearchFilter() {
                     <input
                       type="checkbox"
                       name={"gaguArray_" + a}
-                      cchecked={_filterGaguArray.includes(a)}
+                      checked={_filterGaguArray.includes(a)}
                       className="filterCheckBox"
                       onChange={(e) =>
                         _filterGaguArray.includes(a)
@@ -170,9 +164,6 @@ function SearchFilter() {
           <div className="arrayFilterBox">
             <div className="arrayFilterTitleBox">
               <span className="arrayFilterTitle">관심주제</span>
-              <div className="arrayFilterTitleIconBox">
-                <img className="image100" src={instImage} alt="" />
-              </div>
             </div>
             <div className="intrsArrayFilterElementBox">
               {intrsArrayList.map((a, index) => {

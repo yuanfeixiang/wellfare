@@ -1,12 +1,24 @@
-import React from "react";
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
 
-import serviceReducer from "./modules/service";
-import etcReducer from "./modules/etc";
+import serviceSlice from "./modules/service";
+import etcSlice from "./modules/etc";
+
+const reducers = combineReducers({
+  service: serviceSlice,
+  etc: etcSlice,
+});
+
+// config 작성
+const persistConfig = {
+  key: "root",
+  storage, // 로컬 스토리지에 저장
+  whitelist: ["service"],
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 export default configureStore({
-  reducer: {
-    service: serviceReducer,
-    etc: etcReducer,
-  },
+  reducer: persistedReducer,
 });
