@@ -21,8 +21,13 @@ function Service() {
     lifeArray,
     gaguArray,
     intrsArray,
-    endNum,
+    centralEndNum,
+    localEndNum,
+    totalEndNum,
     serviceArray,
+    age,
+    sido,
+    gungu,
   } = useSelector((state) => state.service);
 
   const handlePageChange = (newPage) => {
@@ -39,6 +44,9 @@ function Service() {
         lifeArray: lifeArray,
         gaguArray: gaguArray,
         intrsArray: intrsArray,
+        age: age,
+        sido: sido,
+        gungu: gungu,
       })
     );
   }
@@ -106,7 +114,7 @@ function Service() {
         <Pagination
           activePage={page}
           itemsCountPerPage={9}
-          totalItemsCount={endNum}
+          totalItemsCount={sido === "전체" ? centralEndNum : localEndNum}
           pageRangeDisplayed={5}
           firstPageText={"<<"}
           lastPageText={">>"}

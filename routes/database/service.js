@@ -6,6 +6,8 @@ const connection = require("./dbSetup.js");
 router.post("/getService", async (req, res) => {
   try {
     if (req.body.searchWord === "") req.body.searchWord = "%%";
+    if (req.body.sido === "전체") req.body.sido = "%%";
+    if (req.body.gungu === "전체") req.body.gungu = "%%";
 
     const [lifeArrayList, gaguArrayList, intrsArrayList, sidoArrayList] =
       await Promise.all([
@@ -24,7 +26,25 @@ router.post("/getService", async (req, res) => {
                         OR gungu LIKE ? OR servDgst LIKE ? OR aplPrd LIKE ? 
                         OR proTyp LIKE ? OR aplWayNm LIKE ? OR aplWayContent LIKE ?)`;
 
-    let query1 = `SELECT *
+    let query1 = `SELECT COUNT(id) AS cnt
+                    FROM services
+                    WHERE
+                        (servNm LIKE ? OR deptNm LIKE ? OR lifeArray LIKE ? 
+                        OR gaguArray LIKE ? OR intrsArray LIKE ? OR trgContent LIKE ? 
+                        OR selContent LIKE ? OR salContent LIKE ? OR sido LIKE ? 
+                        OR gungu LIKE ? OR servDgst LIKE ? OR aplPrd LIKE ? 
+                        OR proTyp LIKE ? OR aplWayNm LIKE ? OR aplWayContent LIKE ?) AND sunder=0`;
+
+    let query2 = `SELECT COUNT(id) AS cnt
+                    FROM services
+                    WHERE
+                        (servNm LIKE ? OR deptNm LIKE ? OR lifeArray LIKE ? 
+                        OR gaguArray LIKE ? OR intrsArray LIKE ? OR trgContent LIKE ? 
+                        OR selContent LIKE ? OR salContent LIKE ? OR sido LIKE ? 
+                        OR gungu LIKE ? OR servDgst LIKE ? OR aplPrd LIKE ? 
+                        OR proTyp LIKE ? OR aplWayNm LIKE ? OR aplWayContent LIKE ?) AND sunder=1`;
+
+    let query3 = `SELECT *
                     FROM services
                     WHERE
                         (servNm LIKE ? OR deptNm LIKE ? OR lifeArray LIKE ? 
@@ -36,6 +56,8 @@ router.post("/getService", async (req, res) => {
     let query1_1 = "";
     let query1_2 = "";
     let query1_3 = "";
+    let query1_4 = "";
+    let query1_5 = " AND sido LIKE ? AND gungu LIKE ?";
 
     req.body.lifeArray.forEach((element) => {
       query1_1 = query1_1 + "lifeArray LIKE " + '"%' + element + '%"' + " OR ";
@@ -58,7 +80,7 @@ router.post("/getService", async (req, res) => {
       ? (query1_3 = " AND (" + query1_3 + ")")
       : "";
 
-    let query2 = " ORDER BY id DESC LIMIT ?, 9";
+    let query4 = " ORDER BY id DESC LIMIT ?, 9";
 
     const [row0, fields0] = await connection.query(
       query0 + query1_1 + query1_2 + query1_3,
@@ -82,7 +104,7 @@ router.post("/getService", async (req, res) => {
     );
 
     const [row1, fields1] = await connection.query(
-      query1 + query1_1 + query1_2 + query1_3 + query2,
+      query1 + query1_1 + query1_2 + query1_3,
       [
         req.body.searchWord,
         req.body.searchWord,
@@ -99,17 +121,91 @@ router.post("/getService", async (req, res) => {
         req.body.searchWord,
         req.body.searchWord,
         req.body.searchWord,
-        req.body.start,
       ]
     );
 
+    const [row2, fields2] = await connection.query(
+      query2 + query1_1 + query1_2 + query1_3 + query1_5,
+      [
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.searchWord,
+        req.body.sido,
+        req.body.gungu,
+      ]
+    );
+
+    let [row4, fields4] = [];
+
+    if (req.body.sido === "%%") {
+      [row4, fields4] = await connection.query(
+        query3 + query1_1 + query1_2 + query1_3 + query4,
+        [
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.start,
+        ]
+      );
+    } else {
+      [row4, fields4] = await connection.query(
+        query3 + query1_1 + query1_2 + query1_3 + query1_5 + query4,
+        [
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.sido,
+          req.body.gungu,
+          req.body.start,
+        ]
+      );
+    }
+
     res.send({
       total: row0[0].cnt,
+      centralTotal: row1[0].cnt,
+      localTotal: row2[0].cnt,
       lifeArrayList: lifeArrayList,
       gaguArrayList: gaguArrayList,
       intrsArrayList: intrsArrayList,
       sidoArrayList: sidoArrayList,
-      serviceArray: row1,
+      serviceArray: row4,
     });
   } catch (err) {
     console.error(err);
@@ -123,7 +219,7 @@ router.post("/getGunguArrayList", async (req, res) => {
           FROM services 
           where sido = ? AND gungu IS NOT null AND (gungu LIKE "%시" OR gungu LIKE "%군" OR gungu LIKE "%구") 
           ORDER BY gungu ASC`,
-      [req.body.sidoValue]
+      [req.body.sido]
     );
 
     let gunguArrayList = ["전체"];

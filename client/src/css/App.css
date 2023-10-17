@@ -684,7 +684,7 @@ nav ul li {
 }
 
 /* custom_selectBox */
-.sidoSelectBox {
+.customSelectBox {
   position: relative;
   width: 40%;
   padding: 8px;
@@ -700,7 +700,7 @@ nav ul li {
   margin-left: 30px;
 }
 
-.sidoSelectBox::before {
+.customSelectBox::before {
   content: "⌵";
   position: absolute;
   top: 8px;
@@ -709,14 +709,14 @@ nav ul li {
   font-size: 30px;
 }
 
-.sidoSelectLabel {
+.customSelectLabel {
   font-size: var(--font-smaller);
   text-align: center;
   cursor: pointer;
 }
 
-.sidoSelectUl,
-.sidoSelectUlActive {
+.customSelectUl,
+.customSelectUlActive {
   position: absolute;
   list-style: none;
   left: 0;
@@ -732,20 +732,20 @@ nav ul li {
   max-height: 400px;
 }
 
-.sidoSelectUl {
+.customSelectUl {
   display: none;
 }
 
-.sidoSelectUlActive {
+.customSelectUlActive {
   display: block;
 }
 
-.sidoSelectLiSelected {
+.customSelectLiSelected {
   background-color: rgba(59, 201, 120, 0.8);
 }
 
-.sidoSelectLi,
-.sidoSelectLiSelected {
+.customSelectLi,
+.customSelectLiSelected {
   font-size: var(--font-smaller);
   padding: 6px 8px;
   transition: background-color 0.2s ease-in;
@@ -754,28 +754,28 @@ nav ul li {
   align-items: center;
 }
 
-.sidoSelectLi:hover {
+.customSelectLi:hover {
   background-color: rgba(59, 201, 120, 0.8);
 }
 
-.sidoSelectUl::-webkit-scrollbar,
-.sidoSelectUlActive::-webkit-scrollbar {
+.customSelectUl::-webkit-scrollbar,
+.customSelectUlActive::-webkit-scrollbar {
   width: 6px;
 }
 
-.sidoSelectUl::-webkit-scrollbar-track,
-.sidoSelectUlActive::-webkit-scrollbar-track {
+.customSelectUl::-webkit-scrollbar-track,
+.customSelectUlActive::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.sidoSelectUl::-webkit-scrollbar-thumb,
-.sidoSelectUlActive::-webkit-scrollbar-thumb {
+.customSelectUl::-webkit-scrollbar-thumb,
+.customSelectUlActive::-webkit-scrollbar-thumb {
   background: #303030;
   border-radius: 45px;
 }
 
-.sidoSelectUl::-webkit-scrollbar-thumb:hover,
-.sidoSelectUlActive::-webkit-scrollbar-thumb:hover {
+.customSelectUl::-webkit-scrollbar-thumb:hover,
+.customSelectUlActive::-webkit-scrollbar-thumb:hover {
   background: #303030;
 }
 

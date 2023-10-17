@@ -27,33 +27,25 @@ function SearchFilter() {
     lifeArray,
     gaguArray,
     intrsArray,
-    sidoArray,
-    gunguArray,
+    age,
+    sido,
+    gungu,
   } = useSelector((state) => state.service);
 
   useEffect(() => {
     getServiceListFirst();
   }, []);
 
-  const [age, setAge] = useState(0);
   const [_filterSearchWord, onChangeFilterSearchWord] = useInput(searchWord);
   const [_filterLifeArray, setFilterLifeArray] = useState(lifeArray);
   const [_filterGaguArray, setFilterGaguArray] = useState(gaguArray);
   const [_filterIntrsArray, setFilterIntrsArray] = useState(intrsArray);
+  const [_filterAge, onChangeFilterAge] = useInput(age);
 
-  const [sidoValue, setSidoValue] = useState("전체");
-  const [gunguValue, setGunguValue] = useState("전체");
+  const [_filterSido, setFilterSido] = useState(sido);
+  const [_filterGungu, setFilterGungu] = useState(gungu);
   const [sidoShowOptions, setSidoShowOptions] = useState(false);
   const [gunguShowOptions, setGunguShowOptions] = useState(false);
-
-  useEffect(() => {
-    if (sidoValue === "전체") return;
-    dispatch(
-      getGunguArrayList({
-        sidoValue: sidoValue,
-      })
-    );
-  }, [sidoValue]);
 
   async function getServiceList() {
     dispatch(
@@ -64,6 +56,9 @@ function SearchFilter() {
         lifeArray: _filterLifeArray,
         gaguArray: _filterGaguArray,
         intrsArray: _filterIntrsArray,
+        age: _filterAge,
+        sido: _filterSido,
+        gungu: _filterGungu,
       })
     );
   }
@@ -77,6 +72,9 @@ function SearchFilter() {
         lifeArray: _filterLifeArray,
         gaguArray: _filterGaguArray,
         intrsArray: _filterIntrsArray,
+        age: _filterAge,
+        sido: _filterSido,
+        gungu: _filterGungu,
       })
     );
   }
@@ -207,10 +205,8 @@ function SearchFilter() {
                     autocomplete="off"
                     name="subFilterAgeInput"
                     placeholder="0"
-                    value={age}
-                    onChange={(e) => {
-                      setAge(e.target.value);
-                    }}
+                    value={_filterAge}
+                    onChange={onChangeFilterAge}
                   ></input>
                   <span className="subFilterAgeInputText">세</span>
                 </div>
@@ -219,28 +215,38 @@ function SearchFilter() {
                 <div className="subFilterAreaBox">
                   <span className="subFilterAreaTitle">지역</span>
                   <div
-                    className="sidoSelectBox"
-                    onClick={() => setSidoShowOptions((prev) => !prev)}
+                    className="customSelectBox"
+                    onClick={() => {
+                      setSidoShowOptions((prev) => !prev);
+                      setGunguShowOptions(false);
+                    }}
                   >
-                    <label className="sidoSelectLabel">{sidoValue}</label>
+                    <label className="customSelectLabel">{_filterSido}</label>
                     <ul
                       className={
-                        sidoShowOptions ? "sidoSelectUlActive" : "sidoSelectUl"
+                        sidoShowOptions
+                          ? "customSelectUlActive"
+                          : "customSelectUl"
                       }
                       show={sidoShowOptions}
                     >
                       {sidoArrayList.map((data, index) => (
                         <li
                           className={
-                            sidoValue === data
-                              ? "sidoSelectLiSelected"
-                              : "sidoSelectLi"
+                            _filterSido === data
+                              ? "customSelectLiSelected"
+                              : "customSelectLi"
                           }
                           key={index}
                           value={data}
                           onClick={() => {
-                            setSidoValue(data);
-                            setGunguValue("전체");
+                            setFilterSido(data);
+                            dispatch(
+                              getGunguArrayList({
+                                sido: data,
+                              })
+                            );
+                            setFilterGungu("전체");
                           }}
                         >
                           {data}
@@ -249,31 +255,36 @@ function SearchFilter() {
                     </ul>
                   </div>
                   <div
-                    className="sidoSelectBox"
-                    onClick={() =>
-                      gunguArrayList.length > 0
-                        ? setGunguShowOptions((prev) => !prev)
-                        : null
-                    }
+                    className="customSelectBox"
+                    onClick={() => {
+                      if (gunguArrayList.length > 1) {
+                        setGunguShowOptions((prev) => !prev);
+                        setSidoShowOptions(false);
+                      } else {
+                        return;
+                      }
+                    }}
                   >
-                    <label className="sidoSelectLabel">{gunguValue}</label>
+                    <label className="customSelectLabel">{_filterGungu}</label>
                     <ul
                       className={
-                        gunguShowOptions ? "sidoSelectUlActive" : "sidoSelectUl"
+                        gunguShowOptions
+                          ? "customSelectUlActive"
+                          : "customSelectUl"
                       }
                       show={gunguShowOptions}
                     >
                       {gunguArrayList.map((data, index) => (
                         <li
                           className={
-                            gunguValue === data
-                              ? "sidoSelectLiSelected"
-                              : "sidoSelectLi"
+                            _filterGungu === data
+                              ? "customSelectLiSelected"
+                              : "customSelectLi"
                           }
                           key={index}
                           value={data}
                           onClick={() => {
-                            setGunguValue(data);
+                            setFilterGungu(data);
                           }}
                         >
                           {data}
@@ -291,9 +302,8 @@ function SearchFilter() {
                   setFilterLifeArray([]);
                   setFilterGaguArray([]);
                   setFilterIntrsArray([]);
-                  setAge(0);
-                  setSidoValue("전체");
-                  setGunguValue("전체");
+                  setFilterSido("전체");
+                  setFilterGungu("전체");
                 }}
               >
                 초기화

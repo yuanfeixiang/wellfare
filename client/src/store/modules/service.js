@@ -14,23 +14,40 @@ const initialState = {
   lifeArray: [],
   gaguArray: [],
   intrsArray: [],
-  endNum: 0,
+  age: 0,
+  sido: "전체",
+  gungu: "전체",
+  centralEndNum: 0,
+  localEndNum: 0,
+  totalEndNum: 0,
 };
 
 export const getService = createAsyncThunk(
   "service/getService",
   async (data) => {
-    console.log(data);
-    const { page, sunder, searchWord, lifeArray, gaguArray, intrsArray } = data;
+    const {
+      page,
+      sunder,
+      searchWord,
+      lifeArray,
+      gaguArray,
+      intrsArray,
+      age,
+      sido,
+      gungu,
+    } = data;
 
     try {
       const res = await getServiceListFromServer(
-        (page - 1) * 8,
+        (page - 1) * 9,
         sunder,
         searchWord,
         lifeArray,
         gaguArray,
-        intrsArray
+        intrsArray,
+        age,
+        sido,
+        gungu
       );
 
       return {
@@ -45,6 +62,11 @@ export const getService = createAsyncThunk(
         lifeArray: lifeArray,
         gaguArray: gaguArray,
         intrsArray: intrsArray,
+        age: age,
+        sido: sido,
+        gungu: gungu,
+        centralTotal: res.centralTotal,
+        localTotal: res.localTotal,
         total: res.total,
       };
     } catch (err) {
@@ -56,10 +78,10 @@ export const getService = createAsyncThunk(
 export const getGunguArrayList = createAsyncThunk(
   "service/getGunguArrayList",
   async (data) => {
-    const { sidoValue } = data;
+    const { sido } = data;
     try {
       const res = await axios.post("/api/db/service/getGunguArrayList", {
-        sidoValue: sidoValue,
+        sido: sido,
       });
 
       return {
@@ -77,7 +99,10 @@ async function getServiceListFromServer(
   searchWord,
   lifeArray,
   gaguArray,
-  intrsArray
+  intrsArray,
+  age,
+  sido,
+  gungu
 ) {
   const res = await axios.post("/api/db/service/getService", {
     start: startNum,
@@ -86,6 +111,9 @@ async function getServiceListFromServer(
     lifeArray: lifeArray,
     gaguArray: gaguArray,
     intrsArray: intrsArray,
+    age: age,
+    sido: sido,
+    gungu: gungu,
   });
   return res.data;
 }
@@ -107,7 +135,12 @@ const serviceSlice = createSlice({
       state.lifeArray = action.payload.lifeArray;
       state.gaguArray = action.payload.gaguArray;
       state.intrsArray = action.payload.intrsArray;
-      state.endNum = action.payload.total;
+      state.age = action.payload.age;
+      state.sido = action.payload.sido;
+      state.gungu = action.payload.gungu;
+      state.centralEndNum = action.payload.centralTotal;
+      state.localEndNum = action.payload.localTotal;
+      state.totalEndNum = action.payload.total;
     });
     builder.addCase(getGunguArrayList.fulfilled, (state, action) => {
       state.gunguArrayList = action.payload._gunguArrayList;
