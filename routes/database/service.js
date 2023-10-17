@@ -7,6 +7,14 @@ router.post("/getService", async (req, res) => {
   try {
     if (req.body.searchWord === "") req.body.searchWord = "%%";
 
+    const [lifeArrayList, gaguArrayList, intrsArrayList, sidoArrayList] =
+      await Promise.all([
+        getLifeArrayList(),
+        getGaguArrayList(),
+        getIntrsArrayList(),
+        getSidoArrayList(),
+      ]);
+
     let query0 = `SELECT COUNT(id) AS cnt
                     FROM services
                     WHERE
@@ -52,7 +60,7 @@ router.post("/getService", async (req, res) => {
 
     let query2 = " ORDER BY id DESC LIMIT ?, 9";
 
-    const [row1, fields1] = await connection.query(
+    const [row0, fields0] = await connection.query(
       query0 + query1_1 + query1_2 + query1_3,
       [
         req.body.searchWord,
@@ -73,7 +81,7 @@ router.post("/getService", async (req, res) => {
       ]
     );
 
-    const [row2, fields2] = await connection.query(
+    const [row1, fields1] = await connection.query(
       query1 + query1_1 + query1_2 + query1_3 + query2,
       [
         req.body.searchWord,
@@ -95,10 +103,140 @@ router.post("/getService", async (req, res) => {
       ]
     );
 
-    res.send({ total: row1[0].cnt, serviceArray: row2 });
+    res.send({
+      total: row0[0].cnt,
+      lifeArrayList: lifeArrayList,
+      gaguArrayList: gaguArrayList,
+      intrsArrayList: intrsArrayList,
+      sidoArrayList: sidoArrayList,
+      serviceArray: row1,
+    });
   } catch (err) {
     console.error(err);
   }
 });
+
+router.post("/getGunguArrayList", async (req, res) => {
+  try {
+    const [row, fields] = await connection.query(
+      `SELECT distinct sido, gungu 
+          FROM services 
+          where sido = ? AND gungu IS NOT null AND (gungu LIKE "%시" OR gungu LIKE "%군" OR gungu LIKE "%구") 
+          ORDER BY gungu ASC`,
+      [req.body.sidoValue]
+    );
+
+    let gunguArrayList = ["전체"];
+    row.map((data) => {
+      gunguArrayList.push(data.gungu);
+    });
+
+    res.send({ gunguArrayList: gunguArrayList });
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+async function getLifeArrayList() {
+  try {
+    const [row, field] = await connection.query(
+      `SELECT DISTINCT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(lifeArray, ",", numbers.n), "," , -1)) AS lifeArray
+      FROM (
+        SELECT 1 AS n UNION ALL 
+        SELECT 2 UNION ALL
+        SELECT 3 UNION ALL 
+        SELECT 4 UNION ALL
+        SELECT 5) AS numbers
+          INNER JOIN services
+          ON CHAR_LENGTH(lifeArray) - CHAR_LENGTH(REPLACE(lifeArray, ",", "")) >= numbers.n - 1
+      ORDER BY lifeArray ASC`
+    );
+
+    let lifeArrayList = [];
+    row.map((data) => {
+      lifeArrayList.push(data.lifeArray);
+    });
+
+    return lifeArrayList;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function getGaguArrayList() {
+  try {
+    const [row, field] = await connection.query(
+      `SELECT DISTINCT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(gaguArray, ",", numbers.n), "," , -1)) AS gaguArray
+      FROM (
+        SELECT 1 AS n UNION ALL 
+        SELECT 2 UNION ALL
+        SELECT 3 UNION ALL 
+        SELECT 4 UNION ALL
+        SELECT 5) AS numbers
+          INNER JOIN services
+          ON CHAR_LENGTH(gaguArray) - CHAR_LENGTH(REPLACE(gaguArray, ",", "")) >= numbers.n - 1
+      ORDER BY gaguArray ASC`
+    );
+
+    let gaguArrayList = [];
+    row.map((data) => {
+      gaguArrayList.push(data.gaguArray);
+    });
+
+    return gaguArrayList;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function getIntrsArrayList() {
+  try {
+    const [row, field] = await connection.query(
+      `SELECT DISTINCT TRIM(SUBSTRING_INDEX(SUBSTRING_INDEX(intrsArray, ",", numbers.n), "," , -1)) AS intrsArray
+      FROM (
+        SELECT 1 AS n UNION ALL 
+        SELECT 2 UNION ALL
+        SELECT 3 UNION ALL 
+        SELECT 4 UNION ALL
+        SELECT 5 UNION ALL
+        SELECT 6 UNION ALL
+        SELECT 7 UNION ALL
+        SELECT 8 UNION ALL
+        SELECT 9) AS numbers
+          INNER JOIN services
+          ON CHAR_LENGTH(intrsArray) - CHAR_LENGTH(REPLACE(intrsArray, ",", "")) >= numbers.n - 1
+      ORDER BY intrsArray ASC`
+    );
+
+    let intrsArrayList = [];
+    row.map((data) => {
+      intrsArrayList.push(data.intrsArray);
+    });
+
+    return intrsArrayList;
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function getSidoArrayList() {
+  try {
+    const [row, field] = await connection.query(
+      `SELECT DISTINCT sido 
+      FROM services 
+      WHERE sido IS NOT NULL 
+      ORDER BY sido ASC`
+    );
+
+    let sidoArrayList = ["전체"];
+    row.map((data) => {
+      sidoArrayList.push(data.sido);
+    });
+
+    return sidoArrayList;
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 module.exports = router;

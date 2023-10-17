@@ -6,6 +6,11 @@ const initialState = {
   sunder: 0,
   searchWord: "",
   serviceArray: [],
+  lifeArrayList: [],
+  gaguArrayList: [],
+  intrsArrayList: [],
+  sidoArrayList: [],
+  gunguArrayList: [],
   lifeArray: [],
   gaguArray: [],
   intrsArray: [],
@@ -15,6 +20,7 @@ const initialState = {
 export const getService = createAsyncThunk(
   "service/getService",
   async (data) => {
+    console.log(data);
     const { page, sunder, searchWord, lifeArray, gaguArray, intrsArray } = data;
 
     try {
@@ -32,10 +38,32 @@ export const getService = createAsyncThunk(
         sunder: sunder,
         searchWord: searchWord,
         serviceArray: res.serviceArray,
+        lifeArrayList: res.lifeArrayList,
+        gaguArrayList: res.gaguArrayList,
+        intrsArrayList: res.intrsArrayList,
+        sidoArrayList: res.sidoArrayList,
         lifeArray: lifeArray,
         gaguArray: gaguArray,
         intrsArray: intrsArray,
         total: res.total,
+      };
+    } catch (err) {
+      console.error(err);
+    }
+  }
+);
+
+export const getGunguArrayList = createAsyncThunk(
+  "service/getGunguArrayList",
+  async (data) => {
+    const { sidoValue } = data;
+    try {
+      const res = await axios.post("/api/db/service/getGunguArrayList", {
+        sidoValue: sidoValue,
+      });
+
+      return {
+        _gunguArrayList: res.data.gunguArrayList,
       };
     } catch (err) {
       console.error(err);
@@ -72,10 +100,17 @@ const serviceSlice = createSlice({
       state.sunder = action.payload.sunder;
       state.searchWord = action.payload.searchWord;
       state.serviceArray = action.payload.serviceArray;
+      state.lifeArrayList = action.payload.lifeArrayList;
+      state.gaguArrayList = action.payload.gaguArrayList;
+      state.intrsArrayList = action.payload.intrsArrayList;
+      state.sidoArrayList = action.payload.sidoArrayList;
       state.lifeArray = action.payload.lifeArray;
       state.gaguArray = action.payload.gaguArray;
       state.intrsArray = action.payload.intrsArray;
       state.endNum = action.payload.total;
+    });
+    builder.addCase(getGunguArrayList.fulfilled, (state, action) => {
+      state.gunguArrayList = action.payload._gunguArrayList;
     });
   },
 });

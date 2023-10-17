@@ -712,6 +712,7 @@ nav ul li {
 .sidoSelectLabel {
   font-size: var(--font-smaller);
   text-align: center;
+  cursor: pointer;
 }
 
 .sidoSelectUl,

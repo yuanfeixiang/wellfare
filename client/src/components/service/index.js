@@ -9,7 +9,7 @@ import classnames from "classnames";
 import { getService } from "../../store/modules/service";
 
 // splited page
-import SearchFilter from "../service/searchFilter";
+import SearchFilter from "./searchFilter";
 
 function Service() {
   const dispatch = useDispatch();

@@ -6,18 +6,11 @@ import styled from "styled-components";
 
 // image
 import findImage from "../../../src/image/util/find_gray.png";
-import ageImage from "../../../src/image/util/age.png";
-import familyImage from "../../../src/image/util/family.png";
-import instImage from "../../../src/image/util/inst.png";
 
 // store
-import { getService } from "../../store/modules/service";
+import { getService, getGunguArrayList } from "../../store/modules/service";
 
 // splited data
-import lifeArrayList from "../../data/lifeArray";
-import intrsArrayList from "../../data/intrsArray";
-import gaguArrayList from "../../data/gaguArray";
-import sidoArrayList from "../../data/sidoArray";
 
 function SearchFilter() {
   const dispatch = useDispatch();
@@ -26,6 +19,11 @@ function SearchFilter() {
     page,
     sunder,
     searchWord,
+    lifeArrayList,
+    gaguArrayList,
+    intrsArrayList,
+    sidoArrayList,
+    gunguArrayList,
     lifeArray,
     gaguArray,
     intrsArray,
@@ -37,19 +35,25 @@ function SearchFilter() {
     getServiceListFirst();
   }, []);
 
-  let [age, setAge] = useState(0);
-  let [sido, setSido] = useState("전체");
+  const [age, setAge] = useState(0);
   const [_filterSearchWord, onChangeFilterSearchWord] = useInput(searchWord);
   const [_filterLifeArray, setFilterLifeArray] = useState(lifeArray);
   const [_filterGaguArray, setFilterGaguArray] = useState(gaguArray);
   const [_filterIntrsArray, setFilterIntrsArray] = useState(intrsArray);
 
-  const [currentValue, setCurrentValue] = useState("전체");
-  const [showOptions, setShowOptions] = useState(false);
+  const [sidoValue, setSidoValue] = useState("전체");
+  const [gunguValue, setGunguValue] = useState("전체");
+  const [sidoShowOptions, setSidoShowOptions] = useState(false);
+  const [gunguShowOptions, setGunguShowOptions] = useState(false);
 
-  const handleOnChangeSelectValue = (e) => {
-    setCurrentValue(e.target.getAttribute("value"));
-  };
+  useEffect(() => {
+    if (sidoValue === "전체") return;
+    dispatch(
+      getGunguArrayList({
+        sidoValue: sidoValue,
+      })
+    );
+  }, [sidoValue]);
 
   async function getServiceList() {
     dispatch(
@@ -106,26 +110,26 @@ function SearchFilter() {
               <span className="arrayFilterTitle">생애주기</span>
             </div>
             <div className="arrayFilterElementBox">
-              {lifeArrayList.map((a, index) => {
+              {lifeArrayList.map((data, index) => {
                 return (
                   <div className="arrayFilterElement" key={index}>
                     <input
                       type="checkbox"
-                      name={"lifeArray_" + a.replace(/(\s*)/g, "")}
-                      checked={_filterLifeArray.includes(a)}
+                      name={"lifeArray_" + data.replace(/(\s*)/g, "")}
+                      checked={_filterLifeArray.includes(data)}
                       className="filterCheckBox"
                       onChange={(e) =>
-                        _filterLifeArray.includes(a)
+                        _filterLifeArray.includes(data)
                           ? setFilterLifeArray(
                               _filterLifeArray.filter(
-                                (element) => element !== a
+                                (element) => element !== data
                               )
                             )
-                          : setFilterLifeArray([..._filterLifeArray, a])
+                          : setFilterLifeArray([..._filterLifeArray, data])
                       }
                     />
                     <span className="filterElement">
-                      {a.replace(/(\s*)/g, "")}
+                      {data.replace(/(\s*)/g, "")}
                     </span>
                   </div>
                 );
@@ -137,25 +141,25 @@ function SearchFilter() {
               <span className="arrayFilterTitle">가구상황</span>
             </div>
             <div className="arrayFilterElementBox">
-              {gaguArrayList.map((a, index) => {
+              {gaguArrayList.map((data, index) => {
                 return (
                   <div className="arrayFilterElement" key={index}>
                     <input
                       type="checkbox"
-                      name={"gaguArray_" + a}
-                      checked={_filterGaguArray.includes(a)}
+                      name={"gaguArray_" + data}
+                      checked={_filterGaguArray.includes(data)}
                       className="filterCheckBox"
                       onChange={(e) =>
-                        _filterGaguArray.includes(a)
+                        _filterGaguArray.includes(data)
                           ? setFilterGaguArray(
                               _filterGaguArray.filter(
-                                (element) => element !== a
+                                (element) => element !== data
                               )
                             )
-                          : setFilterGaguArray([..._filterGaguArray, a])
+                          : setFilterGaguArray([..._filterGaguArray, data])
                       }
                     />
-                    <span className="filterElement">{a}</span>
+                    <span className="filterElement">{data}</span>
                   </div>
                 );
               })}
@@ -166,25 +170,25 @@ function SearchFilter() {
               <span className="arrayFilterTitle">관심주제</span>
             </div>
             <div className="intrsArrayFilterElementBox">
-              {intrsArrayList.map((a, index) => {
+              {intrsArrayList.map((data, index) => {
                 return (
                   <div className="arrayFilterElement" key={index}>
                     <input
                       type="checkbox"
-                      name={"intrsArray_" + a}
-                      checked={_filterIntrsArray.includes(a)}
+                      name={"intrsArray_" + data}
+                      checked={_filterIntrsArray.includes(data)}
                       className="filterCheckBox"
                       onChange={(e) =>
-                        _filterIntrsArray.includes(a)
+                        _filterIntrsArray.includes(data)
                           ? setFilterIntrsArray(
                               _filterIntrsArray.filter(
-                                (element) => element !== a
+                                (element) => element !== data
                               )
                             )
-                          : setFilterIntrsArray([..._filterIntrsArray, a])
+                          : setFilterIntrsArray([..._filterIntrsArray, data])
                       }
                     />
-                    <span className="filterElement">{a}</span>
+                    <span className="filterElement">{data}</span>
                   </div>
                 );
               })}
@@ -216,25 +220,28 @@ function SearchFilter() {
                   <span className="subFilterAreaTitle">지역</span>
                   <div
                     className="sidoSelectBox"
-                    onClick={() => setShowOptions((prev) => !prev)}
+                    onClick={() => setSidoShowOptions((prev) => !prev)}
                   >
-                    <label className="sidoSelectLabel">{currentValue}</label>
+                    <label className="sidoSelectLabel">{sidoValue}</label>
                     <ul
                       className={
-                        showOptions ? "sidoSelectUlActive" : "sidoSelectUl"
+                        sidoShowOptions ? "sidoSelectUlActive" : "sidoSelectUl"
                       }
-                      show={showOptions}
+                      show={sidoShowOptions}
                     >
                       {sidoArrayList.map((data, index) => (
                         <li
                           className={
-                            currentValue === data
+                            sidoValue === data
                               ? "sidoSelectLiSelected"
                               : "sidoSelectLi"
                           }
                           key={index}
                           value={data}
-                          onClick={handleOnChangeSelectValue}
+                          onClick={() => {
+                            setSidoValue(data);
+                            setGunguValue("전체");
+                          }}
                         >
                           {data}
                         </li>
@@ -243,25 +250,31 @@ function SearchFilter() {
                   </div>
                   <div
                     className="sidoSelectBox"
-                    onClick={() => setShowOptions((prev) => !prev)}
+                    onClick={() =>
+                      gunguArrayList.length > 0
+                        ? setGunguShowOptions((prev) => !prev)
+                        : null
+                    }
                   >
-                    <label className="sidoSelectLabel">{currentValue}</label>
+                    <label className="sidoSelectLabel">{gunguValue}</label>
                     <ul
                       className={
-                        showOptions ? "sidoSelectUlActive" : "sidoSelectUl"
+                        gunguShowOptions ? "sidoSelectUlActive" : "sidoSelectUl"
                       }
-                      show={showOptions}
+                      show={gunguShowOptions}
                     >
-                      {sidoArrayList.map((data, index) => (
+                      {gunguArrayList.map((data, index) => (
                         <li
                           className={
-                            currentValue === data
+                            gunguValue === data
                               ? "sidoSelectLiSelected"
                               : "sidoSelectLi"
                           }
                           key={index}
                           value={data}
-                          onClick={handleOnChangeSelectValue}
+                          onClick={() => {
+                            setGunguValue(data);
+                          }}
                         >
                           {data}
                         </li>
@@ -272,7 +285,19 @@ function SearchFilter() {
               </div>
             </div>
             <div className="subFilterBtnContainer">
-              <button className="subFilterResetBtn">초기화</button>
+              <button
+                className="subFilterResetBtn"
+                onClick={() => {
+                  setFilterLifeArray([]);
+                  setFilterGaguArray([]);
+                  setFilterIntrsArray([]);
+                  setAge(0);
+                  setSidoValue("전체");
+                  setGunguValue("전체");
+                }}
+              >
+                초기화
+              </button>
               <button className="subFilterSearchBtn">검색</button>
             </div>
           </div>

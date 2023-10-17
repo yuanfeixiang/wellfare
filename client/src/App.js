@@ -6,10 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/base/header";
 
 // main service
-import Home from "./components/home/home";
-import Service from "./components/service/service";
-import Map from "./components/service/map";
-import Favorite from "./components/service/favorite";
+import Home from "./components/home/index";
+import Service from "./components/service/index";
+import Map from "./components/map/index";
+import Favorite from "./components/favorite/index";
 
 function App() {
   return (

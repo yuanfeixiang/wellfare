@@ -9,7 +9,7 @@ import classnames from "classnames";
 
 // splited page
 import Home_banner from "./home_banner";
-import Service from "../service/service";
+import Service from "../service";
 
 function Home() {
   return (
