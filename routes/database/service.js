@@ -61,10 +61,14 @@ router.post("/getService", async (req, res) => {
     let query1_5 = " AND sido LIKE ? AND gungu LIKE ?";
 
     req.body.lifeArray.length > 0
-      ? (query1_4_1 = " OR ")
-      : (query1_4_1 = " AND (");
+      ? req.body.age > 0
+        ? (query1_4_1 = " OR ")
+        : ""
+      : req.body.age > 0
+      ? (query1_4_1 = " AND (")
+      : "";
 
-    if (req.body.age >= 0 && req.body.age <= 5) {
+    if (req.body.age >= 1 && req.body.age <= 5) {
       query1_4 = query1_4_1 + `lifeArray LIKE "%영유아%"`;
     } else if (req.body.age >= 6 && req.body.age <= 12) {
       query1_4 = query1_4_1 + `lifeArray LIKE "%아동%"`;
@@ -77,6 +81,14 @@ router.post("/getService", async (req, res) => {
     } else if (req.body.age >= 65) {
       query1_4 = query1_4_1 + `lifeArray LIKE "%노년%"`;
     }
+
+    req.body.lifeArray.length > 0
+      ? req.body.age > 0
+        ? ""
+        : ""
+      : req.body.age > 0
+      ? (query1_4 = query1_4 + ")")
+      : "";
 
     req.body.lifeArray.forEach((element) => {
       query1_1 = query1_1 + "lifeArray LIKE " + '"%' + element + '%"' + " OR ";
@@ -95,7 +107,7 @@ router.post("/getService", async (req, res) => {
 
     req.body.lifeArray.length > 0
       ? (query1_1 = " AND (" + query1_1 + query1_4 + ")")
-      : (query1_1 = query1_4 + ")");
+      : (query1_1 = query1_4);
     req.body.gaguArray.length > 0 ? (query1_2 = " AND (" + query1_2 + ")") : "";
     req.body.intrsArray.length > 0
       ? (query1_3 = " AND (" + query1_3 + ")")
