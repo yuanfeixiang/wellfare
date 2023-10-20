@@ -30,6 +30,8 @@ function Service() {
     gungu,
   } = useSelector((state) => state.service);
 
+  const [_filterSunder, setFilterSunder] = useState(sunder);
+
   const handlePageChange = (newPage) => {
     if (page === newPage) return;
     changePage(newPage);
@@ -51,9 +53,58 @@ function Service() {
     );
   }
 
+  useEffect(() => {
+    dispatch(
+      getService({
+        page: 1,
+        sunder: _filterSunder,
+        searchWord: searchWord,
+        lifeArray: lifeArray,
+        gaguArray: gaguArray,
+        intrsArray: intrsArray,
+        age: age,
+        sido: sido,
+        gungu: gungu,
+      })
+    );
+  }, [_filterSunder]);
+
   return (
     <>
       <SearchFilter />
+      <div className="serviceTabContainer">
+        <div className="serviceTabTitleBox">
+          <span className="serviceTabTitle">
+            총 <b id="greenM">{totalEndNum}</b> 건의 서비스가 있습니다.{" "}
+          </span>
+        </div>
+        <div className="serviceTabTextBoxContainer">
+          <div
+            className={
+              _filterSunder === 0
+                ? "selectedServiceTabTextBox"
+                : "serviceTabTextBox"
+            }
+            onClick={() => setFilterSunder(0)}
+          >
+            <span className="serviceTabText">
+              중앙부처 <b id="greenM2">{centralEndNum}</b>
+            </span>
+          </div>
+          <div
+            className={
+              _filterSunder === 1
+                ? "selectedServiceTabTextBox"
+                : "serviceTabTextBox"
+            }
+            onClick={() => setFilterSunder(1)}
+          >
+            <span className="serviceTabText">
+              지자체 <b id="greenM2">{localEndNum}</b>
+            </span>
+          </div>
+        </div>
+      </div>
       <div className="servicePreviewContainer">
         <div className="servicePreviewBox">
           {serviceArray.map(function (a, index) {
@@ -114,7 +165,7 @@ function Service() {
         <Pagination
           activePage={page}
           itemsCountPerPage={9}
-          totalItemsCount={sido === "전체" ? centralEndNum : localEndNum}
+          totalItemsCount={_filterSunder === 0 ? centralEndNum : localEndNum}
           pageRangeDisplayed={5}
           firstPageText={"<<"}
           lastPageText={">>"}

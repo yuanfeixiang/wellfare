@@ -51,22 +51,31 @@ router.post("/getService", async (req, res) => {
                         OR gaguArray LIKE ? OR intrsArray LIKE ? OR trgContent LIKE ? 
                         OR selContent LIKE ? OR salContent LIKE ? OR sido LIKE ? 
                         OR gungu LIKE ? OR servDgst LIKE ? OR aplPrd LIKE ? 
-                        OR proTyp LIKE ? OR aplWayNm LIKE ? OR aplWayContent LIKE ?)`;
+                        OR proTyp LIKE ? OR aplWayNm LIKE ? OR aplWayContent LIKE ?) AND sunder=?`;
 
     let query1_1 = "";
     let query1_2 = "";
     let query1_3 = "";
     let query1_4 = "";
     let query1_4_1 = "";
-    let query1_5 = " AND sido LIKE ? AND gungu LIKE ?";
+    let query1_5 = "";
 
-    req.body.lifeArray.length > 0
-      ? req.body.age > 0
-        ? (query1_4_1 = " OR ")
-        : ""
-      : req.body.age > 0
-      ? (query1_4_1 = " AND (")
-      : "";
+    if (req.body.sido === "%%") {
+      query1_5 = "";
+    } else if (req.body.sido != "%%" && req.body.gungu === "%%") {
+      query1_5 = " AND (sido LIKE ?)";
+    } else {
+      query1_5 = " AND (sido LIKE ? AND gungu LIKE ?)";
+    }
+
+    if (req.body)
+      req.body.lifeArray.length > 0
+        ? req.body.age > 0
+          ? (query1_4_1 = " OR ")
+          : ""
+        : req.body.age > 0
+        ? (query1_4_1 = " AND (")
+        : "";
 
     if (req.body.age >= 1 && req.body.age <= 5) {
       query1_4 = query1_4_1 + `lifeArray LIKE "%영유아%"`;
@@ -182,7 +191,7 @@ router.post("/getService", async (req, res) => {
 
     let [row4, fields4] = [];
 
-    if (req.body.sido === "%%") {
+    if (req.body.sido === "%%" || req.body.sunder === 0) {
       [row4, fields4] = await connection.query(
         query3 + query1_1 + query1_2 + query1_3 + query4,
         [
@@ -201,6 +210,31 @@ router.post("/getService", async (req, res) => {
           req.body.searchWord,
           req.body.searchWord,
           req.body.searchWord,
+          req.body.sunder,
+          req.body.start,
+        ]
+      );
+    } else if (req.body.sido != "%%" && req.body.gungu === "%%") {
+      [row4, fields4] = await connection.query(
+        query3 + query1_1 + query1_2 + query1_3 + query1_5 + query4,
+        [
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.searchWord,
+          req.body.sunder,
+          req.body.sido,
           req.body.start,
         ]
       );
@@ -223,6 +257,7 @@ router.post("/getService", async (req, res) => {
           req.body.searchWord,
           req.body.searchWord,
           req.body.searchWord,
+          req.body.sunder,
           req.body.sido,
           req.body.gungu,
           req.body.start,

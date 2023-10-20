@@ -32,10 +32,6 @@ function SearchFilter() {
     gungu,
   } = useSelector((state) => state.service);
 
-  useEffect(() => {
-    getServiceListFirst();
-  }, []);
-
   const [_filterSearchWord, onChangeFilterSearchWord] = useInput(searchWord);
   const [_filterLifeArray, setFilterLifeArray] = useState(lifeArray);
   const [_filterGaguArray, setFilterGaguArray] = useState(gaguArray);
@@ -78,6 +74,18 @@ function SearchFilter() {
       })
     );
   }
+
+  useEffect(() => {
+    getServiceListFirst();
+  }, []);
+
+  useEffect(() => {
+    dispatch(
+      getGunguArrayList({
+        sido: _filterSido,
+      })
+    );
+  }, [_filterSido]);
 
   return (
     <div className="searchFilterBoxContainer">
@@ -241,11 +249,6 @@ function SearchFilter() {
                           value={data}
                           onClick={() => {
                             setFilterSido(data);
-                            dispatch(
-                              getGunguArrayList({
-                                sido: data,
-                              })
-                            );
                             setFilterGungu("전체");
                           }}
                         >
