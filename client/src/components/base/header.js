@@ -49,13 +49,43 @@ function Header() {
             <nav>
               <ul className="navi_ul">
                 <li className="navi_li">
-                  <Link to="/service">복지 서비스</Link>
+                  <Link
+                    to="/service"
+                    onClick={() => {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                    }}
+                  >
+                    복지 서비스
+                  </Link>
                 </li>
                 <li className="navi_li">
-                  <Link to="/map">복지 지도</Link>
+                  <Link
+                    to="/map"
+                    onClick={() => {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                    }}
+                  >
+                    복지 지도
+                  </Link>
                 </li>
                 <li className="navi_li">
-                  <Link to="/favorite">즐겨찾기</Link>
+                  <Link
+                    to="/favorite"
+                    onClick={() => {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                    }}
+                  >
+                    즐겨찾기
+                  </Link>
                 </li>
               </ul>
             </nav>

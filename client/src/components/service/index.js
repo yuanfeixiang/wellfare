@@ -4,6 +4,7 @@ import Pagination from "react-js-pagination";
 import classnames from "classnames";
 
 // image
+import star_white from "../../image/util/star_white.png";
 
 // store
 import { getService } from "../../store/modules/service";
@@ -30,8 +31,6 @@ function Service() {
     gungu,
   } = useSelector((state) => state.service);
 
-  const [_filterSunder, setFilterSunder] = useState(sunder);
-
   const handlePageChange = (newPage) => {
     if (page === newPage) return;
     changePage(newPage);
@@ -53,11 +52,11 @@ function Service() {
     );
   }
 
-  useEffect(() => {
+  async function changeServiceArrayWithSunder(data) {
     dispatch(
       getService({
         page: 1,
-        sunder: _filterSunder,
+        sunder: data,
         searchWord: searchWord,
         lifeArray: lifeArray,
         gaguArray: gaguArray,
@@ -67,7 +66,7 @@ function Service() {
         gungu: gungu,
       })
     );
-  }, [_filterSunder]);
+  }
 
   return (
     <>
@@ -75,17 +74,16 @@ function Service() {
       <div className="serviceTabContainer">
         <div className="serviceTabTitleBox">
           <span className="serviceTabTitle">
-            총 <b id="greenM">{totalEndNum}</b> 건의 서비스가 있습니다.{" "}
+            총 &nbsp; <b id="greenM">{totalEndNum}</b> &nbsp; 건의 서비스가
+            있습니다.{" "}
           </span>
         </div>
         <div className="serviceTabTextBoxContainer">
           <div
             className={
-              _filterSunder === 0
-                ? "selectedServiceTabTextBox"
-                : "serviceTabTextBox"
+              sunder === 0 ? "selectedServiceTabTextBox" : "serviceTabTextBox"
             }
-            onClick={() => setFilterSunder(0)}
+            onClick={() => changeServiceArrayWithSunder(0)}
           >
             <span className="serviceTabText">
               중앙부처 <b id="greenM2">{centralEndNum}</b>
@@ -93,11 +91,9 @@ function Service() {
           </div>
           <div
             className={
-              _filterSunder === 1
-                ? "selectedServiceTabTextBox"
-                : "serviceTabTextBox"
+              sunder === 1 ? "selectedServiceTabTextBox" : "serviceTabTextBox"
             }
-            onClick={() => setFilterSunder(1)}
+            onClick={() => changeServiceArrayWithSunder(1)}
           >
             <span className="serviceTabText">
               지자체 <b id="greenM2">{localEndNum}</b>
@@ -109,54 +105,71 @@ function Service() {
         <div className="servicePreviewBox">
           {serviceArray.map(function (a, index) {
             return (
-              <div className="servicePreview">
-                <div
-                  className={classnames(
-                    `servicePreviewContent`,
-                    `servicePreviewServNm`
-                  )}
-                >
-                  이름 : {a.servNm}
+              <div className="servicePreviewContentContainer">
+                <div className="servicePreviewContentBox">
+                  <div className="servicePreviewStatusContainter">
+                    <div className="servicePreviewStatusBox">
+                      {a.lifeArray != null
+                        ? a.lifeArray
+                            .split(",")
+                            .map((data, index) => (
+                              <div className="servicePreviewStatus">{data}</div>
+                            ))
+                        : ""}
+                      {a.gaguArray
+                        ? a.gaguArray
+                            .split(",")
+                            .map((data, index) => (
+                              <div className="servicePreviewStatus">{data}</div>
+                            ))
+                        : ""}
+                      {a.intrsArray
+                        ? a.intrsArray
+                            .split(",")
+                            .map((data, index) => (
+                              <div className="servicePreviewStatus">{data}</div>
+                            ))
+                        : ""}
+                    </div>
+                    <div className="servicePreviewFavoriteBox">
+                      <div className="servicePreviewFacvoriteBtnBox">
+                        <img
+                          src={star_white}
+                          className="image100"
+                          alt="즐겨찾기 버튼"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={classnames(
+                      `servicePreviewContent`,
+                      `servicePreviewServNm`
+                    )}
+                  >
+                    {a.servNm}
+                  </div>
+                  <div
+                    className={classnames(
+                      `servicePreviewContent`,
+                      `servicePreviewTrgContent`
+                    )}
+                  >
+                    {a.trgContent}
+                  </div>
+                  <div
+                    className={classnames(
+                      `servicePreviewContent`,
+                      `servicePreviewDeptNm`
+                    )}
+                  >
+                    · 담당부서 : {a.deptNm}
+                  </div>
                 </div>
-                <div
-                  className={classnames(
-                    `servicePreviewContent`,
-                    `servicePreviewTrgContent`
-                  )}
-                >
-                  지원 대상 내용 : {a.trgContent}
-                </div>
-                <div
-                  className={classnames(
-                    `servicePreviewContent`,
-                    `servicePreviewDeptNm`
-                  )}
-                >
-                  담당부서 : {a.deptNm}
-                </div>
-                <div
-                  className={classnames(
-                    `servicePreviewContent`,
-                    `servicePreviewLifeArray`
-                  )}
-                >
-                  생애주기 : {a.lifeArray}
-                </div>
-                <div
-                  className={classnames(
-                    `servicePreviewContent`,
-                    `servicePreviewSelContent`
-                  )}
-                >
-                  선정 기준 내용 : {a.selContent}
-                </div>
-                <div
-                  className={classnames(
-                    `servicePreviewContent`,
-                    `servicePreviewSalContent`
-                  )}
-                >
-                  급여 서비스 내용 : {a.salContent}
+                <div className="servicePreviewContentBtnBox">
+                  <button className="servicePreviewContentBtn">
+                    자세히 보기
+                  </button>
                 </div>
               </div>
             );
@@ -165,7 +178,7 @@ function Service() {
         <Pagination
           activePage={page}
           itemsCountPerPage={9}
-          totalItemsCount={_filterSunder === 0 ? centralEndNum : localEndNum}
+          totalItemsCount={sunder === 0 ? centralEndNum : localEndNum}
           pageRangeDisplayed={5}
           firstPageText={"<<"}
           lastPageText={">>"}

@@ -17,15 +17,6 @@ router.post("/getService", async (req, res) => {
         getSidoArrayList(),
       ]);
 
-    let query0 = `SELECT COUNT(id) AS cnt
-                    FROM services
-                    WHERE
-                        (servNm LIKE ? OR deptNm LIKE ? OR lifeArray LIKE ? 
-                        OR gaguArray LIKE ? OR intrsArray LIKE ? OR trgContent LIKE ? 
-                        OR selContent LIKE ? OR salContent LIKE ? OR sido LIKE ? 
-                        OR gungu LIKE ? OR servDgst LIKE ? OR aplPrd LIKE ? 
-                        OR proTyp LIKE ? OR aplWayNm LIKE ? OR aplWayContent LIKE ?)`;
-
     let query1 = `SELECT COUNT(id) AS cnt
                     FROM services
                     WHERE
@@ -123,27 +114,6 @@ router.post("/getService", async (req, res) => {
       : "";
 
     let query4 = " ORDER BY id DESC LIMIT ?, 9";
-
-    const [row0, fields0] = await connection.query(
-      query0 + query1_1 + query1_2 + query1_3,
-      [
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-        req.body.searchWord,
-      ]
-    );
 
     const [row1, fields1] = await connection.query(
       query1 + query1_1 + query1_2 + query1_3,
@@ -266,7 +236,7 @@ router.post("/getService", async (req, res) => {
     }
 
     res.send({
-      total: row0[0].cnt,
+      total: row1[0].cnt + row2[0].cnt,
       centralTotal: row1[0].cnt,
       localTotal: row2[0].cnt,
       lifeArrayList: lifeArrayList,
