@@ -8,7 +8,11 @@ import styled from "styled-components";
 import findImage from "../../../src/image/util/find_gray.png";
 
 // store
-import { getService, getGunguArrayList } from "../../store/modules/service";
+import {
+  getService,
+  getGunguArrayList,
+  resetFilter,
+} from "../../store/modules/service";
 
 // splited data
 
@@ -86,6 +90,19 @@ function SearchFilter() {
       })
     );
   }, [_filterSido]);
+
+  async function filterReset() {
+    let trash = { target: { value: "" } };
+    let trash1 = { target: { value: 0 } };
+    onChangeFilterSearchWord(trash);
+    setFilterLifeArray([]);
+    setFilterGaguArray([]);
+    setFilterIntrsArray([]);
+    onChangeFilterAge(trash1);
+    setFilterSido("전체");
+    setFilterGungu("전체");
+    dispatch(resetFilter());
+  }
 
   return (
     <div className="searchFilterBoxContainer">
@@ -229,7 +246,7 @@ function SearchFilter() {
                       setGunguShowOptions(false);
                     }}
                   >
-                    <label className="customSelectLabel">{_filterSido}</label>
+                    <span className="customSelectSpan">{_filterSido}</span>
                     <ul
                       className={
                         sidoShowOptions
@@ -268,7 +285,7 @@ function SearchFilter() {
                       }
                     }}
                   >
-                    <label className="customSelectLabel">{_filterGungu}</label>
+                    <span className="customSelectSpan">{_filterGungu}</span>
                     <ul
                       className={
                         gunguShowOptions
@@ -302,16 +319,19 @@ function SearchFilter() {
               <button
                 className="subFilterResetBtn"
                 onClick={() => {
-                  setFilterLifeArray([]);
-                  setFilterGaguArray([]);
-                  setFilterIntrsArray([]);
-                  setFilterSido("전체");
-                  setFilterGungu("전체");
+                  filterReset();
                 }}
               >
                 초기화
               </button>
-              <button className="subFilterSearchBtn">검색</button>
+              <button
+                className="subFilterSearchBtn"
+                onClick={() => {
+                  getServiceList();
+                }}
+              >
+                검색
+              </button>
             </div>
           </div>
         </div>

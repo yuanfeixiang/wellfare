@@ -29,10 +29,14 @@
   --purple-color: #692cb9;
   --green-color: #3bc978;
   --light-green-color: #c8e8b0;
-  --yellow-color: #fee536;
-  --gray-color: #dcdfe2;
+  --yellow-color: #ffe090;
+  --gray-color: #b1b3b6;
   --dark-gray-color: #7d7d7d;
   --red-color: #e2757e;
+  --pistachio-color: #8fbc8f;
+  --beige-color: rgba(241, 240, 232, 0.6);
+  --brown-color: #a27c4c99;
+  --light-brown-color: #a37c4d66;
   --deep-dark-gray-color: #444444;
 
   /* Font Size */
@@ -113,7 +117,6 @@ body {
   align-items: center;
   overflow-x: hidden;
   overflow-y: scroll;
-  background-color: white;
 }
 
 #root {
@@ -139,6 +142,12 @@ body {
 #greenM2 {
   color: var(--green-color);
   font-size: 28px;
+}
+
+.darkGray1600UnderBar {
+  width: 1600px;
+  border-bottom: var(--dark-gray-color) 1px solid;
+  margin-bottom: 50px;
 }
 
 @keyframes Fadein {
@@ -419,7 +428,7 @@ nav ul li {
   width: 1600px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--bigger-padding);
+  grid-gap: calc(var(--big-padding) * 2);
   line-height: 1.5rem;
 }
 
@@ -432,11 +441,13 @@ nav ul li {
   border-radius: 30px 30px;
   padding: var(--big-padding);
   font-size: var(--font-smaller);
+  background-color: white;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 .servicePreviewContentBox {
   width: 100%;
-  height: 70%;
+  height: 75%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -444,7 +455,7 @@ nav ul li {
 
 .servicePreviewStatusContainter {
   width: 100%;
-  height: 40px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -467,7 +478,7 @@ nav ul li {
   justify-content: center;
   padding: 0 5px;
   font-size: var(--font-micro);
-  height: 40px;
+  height: 35px;
 }
 
 .servicePreviewFavoriteBox {
@@ -479,8 +490,8 @@ nav ul li {
 }
 
 .servicePreviewFacvoriteBtnBox {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
 }
 
@@ -499,7 +510,7 @@ nav ul li {
 
 .servicePreviewTrgContent {
   width: 100%;
-  height: 25%;
+  height: 22%;
   word-wrap: break-word;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -513,6 +524,16 @@ nav ul li {
   font-size: var(--font-smaller);
 }
 
+.servicePreviewDeptNm {
+  width: 100%;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .servicePreviewContentBtnBox {
   width: 100%;
   display: flex;
@@ -524,10 +545,13 @@ nav ul li {
   width: 100%;
   height: 50px;
   font-size: var(--font-small);
-  background-color: var(--green-color);
-  border: var(--black-color) 2px solid;
+  background-color: var(--pistachio-color);
   border-radius: 10px;
   color: white;
+}
+
+.servicePreviewContentBtn:hover {
+  border: var(--black-color) 2px solid;
 }
 
 /* serviceTab */
@@ -562,6 +586,7 @@ nav ul li {
   justify-content: center;
   cursor: pointer;
   padding: var(--small-padding) var(--smaller-padding);
+  background-color: white;
 }
 
 .serviceTabTextBox {
@@ -609,6 +634,7 @@ nav ul li {
   justify-content: space-between;
   align-items: center;
   padding: 0px 15px;
+  background-color: white;
 }
 
 .searchIconBox {
@@ -641,13 +667,20 @@ nav ul li {
   grid-template-columns: repeat(3, 1fr);
   border-top: var(--black-color) 2px solid;
   border-left: var(--black-color) 2px solid;
-  border-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow: hidden;
 }
 
 .filterBox > div {
   border-right: var(--black-color) 2px solid;
   border-bottom: var(--black-color) 2px solid;
-  border-radius: 30px;
+  border-top-right-radius: 30px;
+  overflow: hidden;
+}
+
+.filterBox > div:not(:last-of-type) {
+  border-top-right-radius: 0px;
 }
 
 .arrayFilterTitleBox {
@@ -656,26 +689,29 @@ nav ul li {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: var(--black-color) 2px solid;
   font-size: var(--font-medium2);
   font-weight: 500;
+  background-color: var(--pistachio-color);
+  color: white;
 }
 
-.arrayFilterElementBox {
-  height: 80%;
-  padding: var(--small-padding);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  font-size: var(--font-small);
-}
-
+.arrayFilterElementBox,
 .intrsArrayFilterElementBox {
   height: 80%;
   padding: var(--small-padding);
+  font-size: var(--font-small);
+  background-color: white;
+}
+
+.arrayFilterElementBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.intrsArrayFilterElementBox {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  font-size: var(--font-small);
 }
 
 .arrayFilterElement {
@@ -710,7 +746,8 @@ nav ul li {
   border-right: var(--black-color) 2px solid;
   border-left: var(--black-color) 2px solid;
   border-bottom: var(--black-color) 2px solid;
-  border-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 .subFilterElementBox {
@@ -745,6 +782,7 @@ nav ul li {
   justify-content: space-around;
   padding: var(--micro-padding);
   margin-left: 30px;
+  background-color: white;
 }
 
 .subFilterAgeInputText {
@@ -798,10 +836,15 @@ nav ul li {
 .subFilterResetBtn,
 .subFilterSearchBtn {
   width: 140px;
-  border: var(--black-color) 2px solid;
   border-radius: 10px;
   font-size: var(--font-small);
   height: 100%;
+  color: white;
+}
+
+.subFilterResetBtn:hover,
+.subFilterSearchBtn:hover {
+  border: var(--black-color) 2px solid;
 }
 
 .subFilterResetBtn {
@@ -809,8 +852,7 @@ nav ul li {
 }
 
 .subFilterSearchBtn {
-  background-color: var(--green-color);
-  color: white;
+  background-color: var(--pistachio-color);
 }
 
 /* custom_selectBox */
@@ -839,7 +881,7 @@ nav ul li {
   font-size: 30px;
 }
 
-.customSelectLabel {
+.customSelectSpan {
   font-size: var(--font-smaller);
   text-align: center;
   cursor: pointer;
@@ -871,7 +913,7 @@ nav ul li {
 }
 
 .customSelectLiSelected {
-  background-color: rgba(59, 201, 120, 0.8);
+  background-color: rgba(221, 218, 218, 0.8);
 }
 
 .customSelectLi,
@@ -885,7 +927,7 @@ nav ul li {
 }
 
 .customSelectLi:hover {
-  background-color: rgba(59, 201, 120, 0.8);
+  background-color: rgba(221, 218, 218, 0.8);
 }
 
 .customSelectUl::-webkit-scrollbar,
@@ -915,7 +957,7 @@ nav ul li {
   gap: 30px;
   align-items: center;
   justify-content: center;
-  margin: var(--big-padding) auto;
+  margin: calc(var(--bigger-padding) * 1.8) auto;
   font-size: var(--font-smaller);
   z-index: var(--pagination-zindex);
 }
@@ -926,12 +968,13 @@ ul.pagination li {
   border: var(--black-color) 1px solid;
   border-radius: 50%;
   transition: all 0.3s;
+  background-color: white;
 }
 
 ul.pagination li:hover,
 ul.pagination li:active,
 ul.pagination li.active {
-  background-color: var(--green-color);
+  background-color: var(--gray-color);
 }
 
 ul.pagination li a {
@@ -941,4 +984,9 @@ ul.pagination li a {
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+ul.pagination li a.undefined,
+ul.pagination li a:hover {
+  color: white;
 }

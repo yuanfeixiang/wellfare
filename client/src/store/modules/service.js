@@ -93,6 +93,31 @@ export const getGunguArrayList = createAsyncThunk(
   }
 );
 
+export const resetFilter = createAsyncThunk("service/resetFilter", async () => {
+  const res = await getServiceListFromServer(
+    0,
+    0,
+    "",
+    [],
+    [],
+    [],
+    0,
+    "전체",
+    "전체"
+  );
+
+  return {
+    serviceArray: res.serviceArray,
+    lifeArrayList: res.lifeArrayList,
+    gaguArrayList: res.gaguArrayList,
+    intrsArrayList: res.intrsArrayList,
+    sidoArrayList: res.sidoArrayList,
+    centralTotal: res.centralTotal,
+    localTotal: res.localTotal,
+    total: res.total,
+  };
+});
+
 async function getServiceListFromServer(
   startNum,
   sunder,
@@ -144,6 +169,25 @@ const serviceSlice = createSlice({
     });
     builder.addCase(getGunguArrayList.fulfilled, (state, action) => {
       state.gunguArrayList = action.payload._gunguArrayList;
+    });
+    builder.addCase(resetFilter.fulfilled, (state, action) => {
+      state.page = 1;
+      state.sunder = 0;
+      state.searchWord = "";
+      state.serviceArray = action.payload.serviceArray;
+      state.lifeArrayList = action.payload.lifeArrayList;
+      state.gaguArrayList = action.payload.gaguArrayList;
+      state.intrsArrayList = action.payload.intrsArrayList;
+      state.sidoArrayList = action.payload.sidoArrayList;
+      state.lifeArray = [];
+      state.gaguArray = [];
+      state.intrsArray = [];
+      state.age = 0;
+      state.sido = "전체";
+      state.gungu = "전체";
+      state.centralEndNum = action.payload.centralTotal;
+      state.localEndNum = action.payload.localTotal;
+      state.totalEndNum = action.payload.total;
     });
   },
 });

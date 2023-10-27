@@ -113,7 +113,7 @@ router.post("/getService", async (req, res) => {
       ? (query1_3 = " AND (" + query1_3 + ")")
       : "";
 
-    let query4 = " ORDER BY id DESC LIMIT ?, 9";
+    let query4 = " ORDER BY id ASC LIMIT ?, 9";
 
     const [row1, fields1] = await connection.query(
       query1 + query1_1 + query1_2 + query1_3,

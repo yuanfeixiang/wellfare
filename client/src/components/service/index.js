@@ -5,6 +5,7 @@ import classnames from "classnames";
 
 // image
 import star_white from "../../image/util/star_white.png";
+import star_yellow from "../../image/util/star_yellow.png";
 
 // store
 import { getService } from "../../store/modules/service";
@@ -14,6 +15,8 @@ import SearchFilter from "./searchFilter";
 
 function Service() {
   const dispatch = useDispatch();
+
+  const [test, setTest] = useState(true);
 
   const {
     page,
@@ -100,6 +103,7 @@ function Service() {
             </span>
           </div>
         </div>
+        <div className="darkGray1600UnderBar"></div>
       </div>
       <div className="servicePreviewContainer">
         <div className="servicePreviewBox">
@@ -113,7 +117,9 @@ function Service() {
                         ? a.lifeArray
                             .split(",")
                             .map((data, index) => (
-                              <div className="servicePreviewStatus">{data}</div>
+                              <div className="servicePreviewStatus">
+                                {data.replace(/(\s*)/g, "")}
+                              </div>
                             ))
                         : ""}
                       {a.gaguArray
@@ -134,9 +140,10 @@ function Service() {
                     <div className="servicePreviewFavoriteBox">
                       <div className="servicePreviewFacvoriteBtnBox">
                         <img
-                          src={star_white}
+                          src={test === true ? star_white : star_yellow}
                           className="image100"
                           alt="즐겨찾기 버튼"
+                          onClick={() => setTest(!test)}
                         />
                       </div>
                     </div>
