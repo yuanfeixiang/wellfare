@@ -4,17 +4,19 @@ import { persistReducer } from "redux-persist";
 
 import serviceSlice from "./modules/service";
 import etcSlice from "./modules/etc";
+import favoriteSlice from "./modules/favorite";
 
 const reducers = combineReducers({
   service: serviceSlice,
   etc: etcSlice,
+  favorite: favoriteSlice,
 });
 
 // config 작성
 const persistConfig = {
   key: "root",
   storage, // 로컬 스토리지에 저장
-  whitelist: ["service"],
+  whitelist: ["service", "favorite"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

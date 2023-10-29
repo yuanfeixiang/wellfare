@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import classnames from "classnames";
 import useInput from "../../hooks/useInput";
 import styled from "styled-components";
+import Swal from "sweetalert2";
 
 // image
 import findImage from "../../../src/image/util/find_gray.png";
@@ -17,6 +18,26 @@ import {
 // splited data
 
 function SearchFilter() {
+  const SidoRef = useRef();
+  const GunguRef = useRef();
+
+  useEffect(() => {
+    document.addEventListener("mousedown", clickCustomSelectBoxOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", clickCustomSelectBoxOutside);
+    };
+  });
+
+  const clickCustomSelectBoxOutside = (event) => {
+    if (!SidoRef.current.contains(event.target)) {
+      setSidoShowOptions(false);
+    }
+    if (!GunguRef.current.contains(event.target)) {
+      setGunguShowOptions(false);
+    }
+  };
+
   const dispatch = useDispatch();
 
   const {
@@ -89,7 +110,7 @@ function SearchFilter() {
         sido: _filterSido,
       })
     );
-  }, [_filterSido]);
+  }, [dispatch, _filterSido]);
 
   async function filterReset() {
     let trash = { target: { value: "" } };
@@ -241,9 +262,9 @@ function SearchFilter() {
                   <span className="subFilterAreaTitle">지역</span>
                   <div
                     className="customSelectBox"
+                    ref={SidoRef}
                     onClick={() => {
                       setSidoShowOptions((prev) => !prev);
-                      setGunguShowOptions(false);
                     }}
                   >
                     <span className="customSelectSpan">{_filterSido}</span>
@@ -276,12 +297,18 @@ function SearchFilter() {
                   </div>
                   <div
                     className="customSelectBox"
+                    ref={GunguRef}
                     onClick={() => {
                       if (gunguArrayList.length > 1) {
                         setGunguShowOptions((prev) => !prev);
-                        setSidoShowOptions(false);
                       } else {
-                        return;
+                        Swal.fire({
+                          position: "center",
+                          icon: "warning",
+                          title: "시, 도를 먼저 선택해주세요",
+                          showConfirmButton: false,
+                          timer: 1500,
+                        });
                       }
                     }}
                   >

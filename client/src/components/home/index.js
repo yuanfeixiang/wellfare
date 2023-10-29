@@ -8,8 +8,7 @@ import classnames from "classnames";
 // store
 
 // splited page
-import Home_banner from "./home_banner";
-import Service from "../service";
+import HomeBanner from "./home_banner";
 
 function Home() {
   return (
@@ -17,7 +16,7 @@ function Home() {
       <Helmet>
         <title>Wellfare :: 최고의 복지</title>
       </Helmet>
-      <Home_banner />
+      <HomeBanner />
       <div className="homeIntroContainer">
         <span className="homeIntro">
           몰라서 받지 못했던 지원금을 한눈에 조회하고 관리하세요.

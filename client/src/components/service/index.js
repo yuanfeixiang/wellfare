@@ -6,17 +6,18 @@ import classnames from "classnames";
 // image
 import star_white from "../../image/util/star_white.png";
 import star_yellow from "../../image/util/star_yellow.png";
+import exclamation from "../../image/util/exclamation.png";
+import empty_file from "../../image/util/empty_file.png";
 
 // store
 import { getService } from "../../store/modules/service";
+import { updateFavorite } from "../../store/modules/favorite";
 
 // splited page
 import SearchFilter from "./searchFilter";
 
 function Service() {
   const dispatch = useDispatch();
-
-  const [test, setTest] = useState(true);
 
   const {
     page,
@@ -33,6 +34,10 @@ function Service() {
     sido,
     gungu,
   } = useSelector((state) => state.service);
+
+  const { centralFavoriteArray, localFavoriteArray } = useSelector(
+    (state) => state.favorite
+  );
 
   const handlePageChange = (newPage) => {
     if (page === newPage) return;
@@ -107,92 +112,120 @@ function Service() {
       </div>
       <div className="servicePreviewContainer">
         <div className="servicePreviewBox">
-          {serviceArray.map(function (a, index) {
-            return (
-              <div className="servicePreviewContentContainer">
-                <div className="servicePreviewContentBox">
-                  <div className="servicePreviewStatusContainter">
-                    <div className="servicePreviewStatusBox">
-                      {a.lifeArray != null
-                        ? a.lifeArray
-                            .split(",")
-                            .map((data, index) => (
-                              <div className="servicePreviewStatus">
-                                {data.replace(/(\s*)/g, "")}
-                              </div>
-                            ))
-                        : ""}
-                      {a.gaguArray
-                        ? a.gaguArray
-                            .split(",")
-                            .map((data, index) => (
-                              <div className="servicePreviewStatus">{data}</div>
-                            ))
-                        : ""}
-                      {a.intrsArray
-                        ? a.intrsArray
-                            .split(",")
-                            .map((data, index) => (
-                              <div className="servicePreviewStatus">{data}</div>
-                            ))
-                        : ""}
-                    </div>
-                    <div className="servicePreviewFavoriteBox">
-                      <div className="servicePreviewFacvoriteBtnBox">
-                        <img
-                          src={test === true ? star_white : star_yellow}
-                          className="image100"
-                          alt="즐겨찾기 버튼"
-                          onClick={() => setTest(!test)}
-                        />
+          {serviceArray.length === 0 ? (
+            <div className="noItemContainer">
+              <div className="noItemIconBox">
+                <img className="image100" src={empty_file} alt="빈상자" />
+              </div>
+              <div className="noItemTitleBox">
+                <span className="noItemTitle">데이터가 존재하지 않습니다.</span>
+              </div>
+            </div>
+          ) : (
+            serviceArray.map(function (a, index) {
+              return (
+                <div className="servicePreviewContentContainer">
+                  <div className="servicePreviewContentBox">
+                    <div className="servicePreviewStatusContainter">
+                      <div className="servicePreviewStatusBox">
+                        {a.lifeArray != null
+                          ? a.lifeArray
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data.replace(/(\s*)/g, "")}
+                                </div>
+                              ))
+                          : ""}
+                        {a.gaguArray
+                          ? a.gaguArray
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
+                          : ""}
+                        {a.intrsArray
+                          ? a.intrsArray
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
+                          : ""}
+                      </div>
+                      <div className="servicePreviewFavoriteBox">
+                        <div className="servicePreviewFacvoriteBtnBox">
+                          <img
+                            src={
+                              centralFavoriteArray.some(
+                                (element) => element.servId === a.servId
+                              ) ||
+                              localFavoriteArray.some(
+                                (element) => element.servId === a.servId
+                              )
+                                ? star_yellow
+                                : star_white
+                            }
+                            className="image100"
+                            alt="즐겨찾기 버튼"
+                            onClick={() => dispatch(updateFavorite(a))}
+                          />
+                        </div>
                       </div>
                     </div>
+                    <div
+                      className={classnames(
+                        `servicePreviewContent`,
+                        `servicePreviewServNm`
+                      )}
+                    >
+                      {a.servNm}
+                    </div>
+                    <div
+                      className={classnames(
+                        `servicePreviewContent`,
+                        `servicePreviewTrgContent`
+                      )}
+                    >
+                      {a.trgContent}
+                    </div>
+                    <div
+                      className={classnames(
+                        `servicePreviewContent`,
+                        `servicePreviewDeptNm`
+                      )}
+                    >
+                      · 담당부서 : {a.deptNm}
+                    </div>
                   </div>
-                  <div
-                    className={classnames(
-                      `servicePreviewContent`,
-                      `servicePreviewServNm`
-                    )}
-                  >
-                    {a.servNm}
-                  </div>
-                  <div
-                    className={classnames(
-                      `servicePreviewContent`,
-                      `servicePreviewTrgContent`
-                    )}
-                  >
-                    {a.trgContent}
-                  </div>
-                  <div
-                    className={classnames(
-                      `servicePreviewContent`,
-                      `servicePreviewDeptNm`
-                    )}
-                  >
-                    · 담당부서 : {a.deptNm}
+                  <div className="servicePreviewContentBtnBox">
+                    <button className="servicePreviewContentBtn">
+                      자세히 보기
+                    </button>
                   </div>
                 </div>
-                <div className="servicePreviewContentBtnBox">
-                  <button className="servicePreviewContentBtn">
-                    자세히 보기
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
-        <Pagination
-          activePage={page}
-          itemsCountPerPage={9}
-          totalItemsCount={sunder === 0 ? centralEndNum : localEndNum}
-          pageRangeDisplayed={5}
-          firstPageText={"<<"}
-          lastPageText={">>"}
-          prevPageText={"<"}
-          nextPageText={">"}
-          onChange={handlePageChange}
-        />
+        {serviceArray.length === 0 ? (
+          ""
+        ) : (
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={9}
+            totalItemsCount={sunder === 0 ? centralEndNum : localEndNum}
+            pageRangeDisplayed={5}
+            firstPageText={"<<"}
+            lastPageText={">>"}
+            prevPageText={"<"}
+            nextPageText={">"}
+            onChange={handlePageChange}
+          />
+        )}
       </div>
     </>
   );
