@@ -250,6 +250,19 @@ router.post("/getService", async (req, res) => {
   }
 });
 
+router.post("/getEachService", async (req, res) => {
+  try {
+    const [row, fields] = await connection.query(
+      `SELECT * FROM inquiries WHERE servId = ?`,
+      [req.body.servId]
+    );
+
+    res.send({ detailArrayList: row });
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 router.post("/getGunguArrayList", async (req, res) => {
   try {
     const [row, fields] = await connection.query(

@@ -3,12 +3,10 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 
 import serviceSlice from "./modules/service";
-import etcSlice from "./modules/etc";
 import favoriteSlice from "./modules/favorite";
 
 const reducers = combineReducers({
   service: serviceSlice,
-  etc: etcSlice,
   favorite: favoriteSlice,
 });
 

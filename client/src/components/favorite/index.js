@@ -121,7 +121,7 @@ function Favorite() {
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
-                          <div className="servicePreviewFacvoriteBtnBox">
+                          <div className="servicePreviewFavoriteBtnBox">
                             <img
                               src={star_yellow}
                               className="image100"
@@ -157,9 +157,19 @@ function Favorite() {
                       </div>
                     </div>
                     <div className="servicePreviewContentBtnBox">
-                      <button className="servicePreviewContentBtn">
-                        자세히 보기
-                      </button>
+                      <Link
+                        to={"/eachService/" + a.servId}
+                        onClick={() => {
+                          window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                          });
+                        }}
+                      >
+                        <button className="servicePreviewContentBtn">
+                          자세히 보기
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 );
@@ -202,7 +212,7 @@ function Favorite() {
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
-                          <div className="servicePreviewFacvoriteBtnBox">
+                          <div className="servicePreviewFavoriteBtnBox">
                             <img
                               src={star_yellow}
                               className="image100"
@@ -238,9 +248,19 @@ function Favorite() {
                       </div>
                     </div>
                     <div className="servicePreviewContentBtnBox">
-                      <button className="servicePreviewContentBtn">
-                        자세히 보기
-                      </button>
+                      <Link
+                        to={"/eachService/" + a.servId}
+                        onClick={() => {
+                          window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                          });
+                        }}
+                      >
+                        <button className="servicePreviewContentBtn">
+                          자세히 보기
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 );
@@ -320,7 +340,7 @@ function Favorite() {
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
-                          <div className="servicePreviewFacvoriteBtnBox">
+                          <div className="servicePreviewFavoriteBtnBox">
                             <img
                               src={star_yellow}
                               className="image100"
@@ -356,9 +376,19 @@ function Favorite() {
                       </div>
                     </div>
                     <div className="servicePreviewContentBtnBox">
-                      <button className="servicePreviewContentBtn">
-                        자세히 보기
-                      </button>
+                      <Link
+                        to={"/eachService/" + a.servId}
+                        onClick={() => {
+                          window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                          });
+                        }}
+                      >
+                        <button className="servicePreviewContentBtn">
+                          자세히 보기
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 );
@@ -401,7 +431,7 @@ function Favorite() {
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
-                          <div className="servicePreviewFacvoriteBtnBox">
+                          <div className="servicePreviewFavoriteBtnBox">
                             <img
                               src={star_yellow}
                               className="image100"
@@ -437,9 +467,19 @@ function Favorite() {
                       </div>
                     </div>
                     <div className="servicePreviewContentBtnBox">
-                      <button className="servicePreviewContentBtn">
-                        자세히 보기
-                      </button>
+                      <Link
+                        to={"/eachService/" + a.servId}
+                        onClick={() => {
+                          window.scrollTo({
+                            top: 0,
+                            behavior: "smooth",
+                          });
+                        }}
+                      >
+                        <button className="servicePreviewContentBtn">
+                          자세히 보기
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 );

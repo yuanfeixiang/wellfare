@@ -20,6 +20,7 @@ const initialState = {
   centralEndNum: 0,
   localEndNum: 0,
   totalEndNum: 0,
+  detailArrayList: [],
 };
 
 export const getService = createAsyncThunk(
@@ -75,6 +76,23 @@ export const getService = createAsyncThunk(
   }
 );
 
+export const getEachService = createAsyncThunk(
+  "service/getEachService",
+  async (data) => {
+    const { servId } = data;
+
+    try {
+      const res = await getEachServiceListFromServer(servId);
+
+      return {
+        detailArrayList: res.detailArrayList,
+      };
+    } catch (err) {
+      console.error(err);
+    }
+  }
+);
+
 export const getGunguArrayList = createAsyncThunk(
   "service/getGunguArrayList",
   async (data) => {
@@ -85,7 +103,7 @@ export const getGunguArrayList = createAsyncThunk(
       });
 
       return {
-        _gunguArrayList: res.data.gunguArrayList,
+        gunguArrayList: res.data.gunguArrayList,
       };
     } catch (err) {
       console.error(err);
@@ -143,6 +161,13 @@ async function getServiceListFromServer(
   return res.data;
 }
 
+async function getEachServiceListFromServer(servId) {
+  const res = await axios.post("/api/db/service/getEachService", {
+    servId: servId,
+  });
+  return res.data;
+}
+
 const serviceSlice = createSlice({
   name: "service",
   initialState,
@@ -168,7 +193,7 @@ const serviceSlice = createSlice({
       state.totalEndNum = action.payload.total;
     });
     builder.addCase(getGunguArrayList.fulfilled, (state, action) => {
-      state.gunguArrayList = action.payload._gunguArrayList;
+      state.gunguArrayList = action.payload.gunguArrayList;
     });
     builder.addCase(resetFilter.fulfilled, (state, action) => {
       state.page = 1;
@@ -188,6 +213,9 @@ const serviceSlice = createSlice({
       state.centralEndNum = action.payload.centralTotal;
       state.localEndNum = action.payload.localTotal;
       state.totalEndNum = action.payload.total;
+    });
+    builder.addCase(getEachService.fulfilled, (state, action) => {
+      state.detailArrayList = action.payload.detailArrayList;
     });
   },
 });

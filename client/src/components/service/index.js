@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import classnames from "classnames";
 
 // image
 import star_white from "../../image/util/star_white.png";
 import star_yellow from "../../image/util/star_yellow.png";
-import exclamation from "../../image/util/exclamation.png";
 import empty_file from "../../image/util/empty_file.png";
 
 // store
@@ -157,7 +157,7 @@ function Service() {
                           : ""}
                       </div>
                       <div className="servicePreviewFavoriteBox">
-                        <div className="servicePreviewFacvoriteBtnBox">
+                        <div className="servicePreviewFavoriteBtnBox">
                           <img
                             src={
                               centralFavoriteArray.some(
@@ -202,9 +202,19 @@ function Service() {
                     </div>
                   </div>
                   <div className="servicePreviewContentBtnBox">
-                    <button className="servicePreviewContentBtn">
-                      자세히 보기
-                    </button>
+                    <Link
+                      to={"/eachService/" + a.servId}
+                      onClick={() => {
+                        window.scrollTo({
+                          top: 0,
+                          behavior: "smooth",
+                        });
+                      }}
+                    >
+                      <button className="servicePreviewContentBtn">
+                        자세히 보기
+                      </button>
+                    </Link>
                   </div>
                 </div>
               );

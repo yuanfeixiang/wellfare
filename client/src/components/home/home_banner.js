@@ -1,5 +1,8 @@
 // image
 import banner from "../../../src/image/banner/banner.png";
+import background from "../../../src/image/banner/background.png";
+import welfare from "../../../src/image/banner/welfare.png";
+import test from "../../../src/image/banner/test.png";
 import arrow from "../../../src/image/util/down_arrow.png";
 
 function Home_banner() {
@@ -30,7 +33,7 @@ function Home_banner() {
           </button>
         </div>
         <div className="homeBannerImageBox">
-          <img className="homeBannerImage" src={banner} alt="메인 배너" />
+          <img className="homeBannerImage" src={test} alt="메인 배너" />
         </div>
       </div>
     </div>

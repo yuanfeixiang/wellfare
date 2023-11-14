@@ -28,6 +28,7 @@
   --black-color: #0a0a0a;
   --purple-color: #692cb9;
   --green-color: #3bc978;
+  --deep-green-color: #026702;
   --light-green-color: #c8e8b0;
   --yellow-color: #ffe090;
   --orange-color: #faa61a;
@@ -148,6 +149,11 @@ body {
 #greenM2 {
   color: var(--green-color);
   font-size: 28px;
+}
+
+#deepGreenSmer {
+  color: var(--deep-green-color);
+  font-size: var(--font-smaller);
 }
 
 .darkGray1600UnderBar {
@@ -301,6 +307,58 @@ nav ul li {
   }
 }
 
+/* footer */
+.footer {
+  border-top: rgba(0, 27, 55, 0.1) 2px solid;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.serviceArrangeBox {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 0 0 0;
+}
+
+.serviceArrange {
+  font-size: var(--font-content);
+  margin-right: var(--medium-padding);
+  cursor: pointer;
+}
+
+.copyright {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 0;
+  font-size: var(--font-micro);
+}
+
+.footerLogo {
+  width: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0;
+}
+
+.footerLogoIcon {
+  margin-right: 20px;
+  width: 24px;
+  height: 24px;
+}
+
+.footerLogoImage {
+  width: 100%;
+  height: 100%;
+}
+
 /* homeMain */
 .homeMainContainer {
   width: 100%;
@@ -354,8 +412,8 @@ nav ul li {
 .homeBannerTextBox {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 14%;
+  transform: translate(-14%, -50%);
   -webkit-box-align: center;
   align-items: center;
   display: flex;
@@ -372,21 +430,23 @@ nav ul li {
   width: 100%;
   font-family: "Danjo-bold-Regular";
   letter-spacing: 3px;
-  background: linear-gradient(to right, #e6d5d4, #bbabab);
-  color: transparent;
-  background-clip: border-box;
-  -webkit-background-clip: text;
+  color: var(--black-color);
 }
 
 .homeBannerImageBox {
   width: 100%;
+  padding-top: 110px;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .homeBannerImage {
-  width: 100%;
+  width: 50%;
   height: 100%;
   object-fit: cover;
+  padding: 50px;
 }
 
 .homeBannerBtnBox {
@@ -528,13 +588,12 @@ nav ul li {
 
 .servicePreviewFavoriteBox {
   height: 100%;
-  width: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.servicePreviewFacvoriteBtnBox {
+.servicePreviewFavoriteBtnBox {
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -584,6 +643,10 @@ nav ul li {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.servicePreviewContentBtnBox a {
+  width: 100%;
 }
 
 .servicePreviewContentBtn {
@@ -1003,7 +1066,7 @@ nav ul li {
   gap: 30px;
   align-items: center;
   justify-content: center;
-  margin: calc(var(--bigger-padding) * 2.5) auto;
+  margin: calc(var(--bigger-padding) * 2.5) auto 0 auto;
   font-size: var(--font-smaller);
   z-index: var(--pagination-zindex);
 }
@@ -1032,6 +1095,284 @@ ul.pagination li a {
   border-radius: 50%;
 }
 
+/* eachService */
+.eachServiceMainBackContainer {
+  width: 100%;
+  padding: 200px 0 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eachServiceMainBackBox {
+  width: 1600px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.eachServiceMainBackImgBox {
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.eachServiceMainBackTextBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.eachServiceMainBackText {
+  font-size: var(--font-small);
+}
+
+.eachServiceMainContainer {
+  width: 100%;
+  height: 550px;
+  padding: 0 0 100px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eachServiceMainBox {
+  width: 1600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: var(--black-color) 3px solid;
+  border-radius: 15px;
+  padding: calc(var(--bigger-padding) * 1.2);
+}
+
+.eachServiceMainStatusContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eachServiceMainStatusBox {
+  grid-gap: 0 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, auto));
+  width: 90%;
+  height: 35px;
+}
+
+.eachServiceMainStatus {
+  border: 1px solid var(--black-color);
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: var(--font-content);
+  height: 100%;
+}
+
+.eachServiceMainFavoriteBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eachServiceMainFavoriteBtnBox {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.eachServiceMainTitleBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.eachServiceTitle {
+  font-size: calc(var(--font-medium2) * 1.1);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.eachServiceDgst {
+  font-size: var(--font-content);
+}
+
+.eachServiceMainTable {
+  width: 100%;
+  height: 130px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: var(--black-color) 1px solid;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.eachServiceMainTableThead {
+  width: 100%;
+  height: 50%;
+}
+
+.eachServiceMainTableTbody {
+  width: 100%;
+  height: 50%;
+}
+
+.eachServiceMainTableTheadTd {
+  text-align: center;
+  background-color: var(--light-green-color);
+  font-size: var(--font-small);
+  letter-spacing: 2px;
+}
+
+.eachServiceMainTableTheadTd:not(:last-of-type) {
+  border-right: var(--black-color) 1px solid;
+}
+
+.eachServiceMainTableTbodyTd {
+  text-align: center;
+  font-size: var(--font-smaller);
+}
+
+.eachServiceMainTableTbodyTd:not(:last-of-type) {
+  border-right: var(--black-color) 1px solid;
+}
+
+.eachServiceTabContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.eachServiceTabTitleBox {
+  width: 1600px;
+  font-size: var(--font-medium2);
+  margin-bottom: var(--small-padding);
+  margin-left: var(--micro-padding);
+}
+
+.eachServiceTabTextBoxContainer {
+  width: 1600px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  border-bottom: var(--black-color) 3px solid;
+}
+
+.eachServiceTabTextBox,
+.selectedEachServiceTabTextBox {
+  width: 250px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: var(--small-padding) var(--smaller-padding);
+  background-color: white;
+}
+
+.eachServiceTabTextBox {
+  border-top: var(--black-color) 1px solid;
+  border-right: var(--black-color) 1px solid;
+}
+
+.eachServiceTabTextBox:nth-child(1) {
+  border-left: var(--black-color) 1px solid;
+}
+
+.selectedEachServiceTabTextBox {
+  border-top: var(--black-color) 3px solid;
+  border-right: var(--black-color) 3px solid;
+  border-left: var(--black-color) 3px solid;
+}
+
+.eachServiceTabText {
+  font-size: calc(var(--font-small) * 1.2);
+}
+
+.selectedEachServiceTabText {
+  font-size: calc(var(--font-small) * 1.2);
+  color: var(--deep-green-color);
+  border-bottom: var(--pistachio-color) 2px solid;
+  padding-bottom: 5px;
+}
+
+.eachServiceInfoContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.eachServiceInfoBox {
+  width: 1600px;
+  min-height: 300px;
+  padding: var(--bigger-padding);
+  border-left: var(--black-color) 3px solid;
+  border-right: var(--black-color) 3px solid;
+  border-bottom: var(--black-color) 3px solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eachServiceInfo {
+  width: 100%;
+}
+
+.eachServiceInfo:not(:first-of-type) {
+  margin-top: 40px;
+}
+
+.eachServiceInfoTitleBox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.eachServiceInfoTitleImg {
+  width: 13px;
+  height: 13px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eachServiceInfoTitle {
+  width: 100%;
+  font-size: var(--font-small);
+  font-weight: 700;
+}
+
+.eachServiceInfoDescBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0 0 20px;
+}
+
+.eachServiceInfoDesc {
+  width: 100%;
+  font-size: var(--font-smaller);
+  white-space: pre-wrap;
+  line-height: 1.8;
+}
+
 /* sweetAlert */
 .swal2-popup {
   width: 800px;
@@ -1058,11 +1399,11 @@ ul.pagination li a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 170px;
+  padding-top: 200px;
 }
 
 .favoritePreviewContainer2 {
-  padding: 150px 0 200px 0;
+  padding-top: 150px;
 }
 
 .favoritePreviewBox {
@@ -1183,11 +1524,11 @@ ul.pagination li a {
 /* KMap */
 .searchMapContainer {
   width: 100%;
-  height: 1250px;
+  height: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 200px 0px 50px 0px;
+  padding-top: 200px;
 }
 
 .showMapContainer {

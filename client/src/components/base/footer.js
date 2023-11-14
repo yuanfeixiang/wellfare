@@ -1,42 +1,77 @@
-// import { useEffect } from "react";
-// import Image from 'next/image';
+import React from "react";
+import { Link } from "react-router-dom";
 
-// //image
-// import linkIcon from '../../src/image/utils/link.png'
+//image
+// import twitterLogo from "../../image/utils/snsLogo/twitter.svg";
+// import kakaotalkLogo from "../../image/utils/snsLogo/kakaotalk.svg";
+// import mediumLogo from "../../image/utils/snsLogo/medium.svg";
+import githubLogo from "../../image/util/github.svg";
 
-// // css
-// import classnames from 'classnames';
-// import BaseCSS from "../../styles/base.module.css"
+function Footer() {
+  return (
+    <div className="footer">
+      <div className="serviceArrangeBox">
+        <span className="serviceArrange">
+          <Link
+            to="/service"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }}
+          >
+            복지서비스
+          </Link>
+        </span>
+        <span className="serviceArrange">
+          <Link
+            to="/map"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }}
+          >
+            복지지도
+          </Link>
+        </span>
+        <span className="serviceArrange">
+          <Link
+            to="/favorite"
+            onClick={() => {
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }}
+          >
+            즐겨찾기
+          </Link>
+        </span>
+        <a
+          className="footerLogoIcon"
+          href="https://github.com/yuanfeixiang/wellfare"
+          target="_blank"
+        >
+          <img className="footerLogoImage" src={githubLogo} />
+        </a>
+      </div>
+      <div className="copyright">
+        Copyright 2023. Wellfare Team. all rights reserved.
+      </div>
+      {/* <div className="footerLogo">
+        <a
+          className="footerLogoIcon"
+          href="https://github.com/klaychicken"
+          target="_blank"
+        >
+          <img className="footerLogoImage" src={githubLogo} />
+        </a>
+      </div> */}
+    </div>
+  );
+}
 
-// function Footer() {
-
-//     useEffect(() => {
-//         async function loadCrate() {
-//             const result = await import("@widgetbot/crate");
-//             const Crate = await result.cdn();
-
-//             new Crate({
-//                 server: "888688918944423937",
-//                 channel: "888719948178919464",
-//             });
-//         }
-
-//         loadCrate();
-//     }, []);
-
-//     return (
-//         <div className={BaseCSS.footer}>
-//             <div className={classnames(BaseCSS.footerLogoBox, "neonShine")} onClick={() => window.open("https://linktr.ee/klaychicken")}>
-//                 <div className={BaseCSS.footerLogoImageBox}>
-//                     <Image className="image100" src={linkIcon} alt="" />
-//                 </div>
-//                 <span className={BaseCSS.footerLogoTitle}>
-//                     KlayChicken LinkTree
-//                 </span>
-//             </div>
-//             <div className={BaseCSS.copyright}><b id="notoSans">ⓒ</b> 2022. KlayChicken Team. all rights reserved.</div>
-//         </div>
-//     );
-// }
-
-// export default Footer;
+export default Footer;

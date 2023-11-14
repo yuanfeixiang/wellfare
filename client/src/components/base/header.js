@@ -58,7 +58,7 @@ function Header() {
                       });
                     }}
                   >
-                    복지 서비스
+                    복지서비스
                   </Link>
                 </li>
                 <li className="navi_li">
@@ -71,7 +71,7 @@ function Header() {
                       });
                     }}
                   >
-                    복지 지도
+                    복지지도
                   </Link>
                 </li>
                 <li className="navi_li">
