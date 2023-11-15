@@ -17,23 +17,18 @@ function EachService() {
   const dispatch = useDispatch();
   const { servId } = useParams();
 
-  const { serviceArray, sunder, detailArrayList } = useSelector(
+  const { sunder, selectedServiceArray, detailArrayList } = useSelector(
     (state) => state.service
   );
   const { centralFavoriteArray, localFavoriteArray } = useSelector(
     (state) => state.favorite
   );
-  const [selectedServiceArray, setSelectedServiceArray] = useState([]);
+
   const [tabNum, setTabNum] = useState(0);
   const [year, setYear] = useState(0);
 
   useEffect(() => {
     dispatch(getEachService({ servId: servId }));
-  }, []);
-
-  useEffect(() => {
-    const result = serviceArray.filter((data) => data.servId === servId);
-    setSelectedServiceArray(...result);
   }, []);
 
   useEffect(() => {
@@ -59,7 +54,6 @@ function EachService() {
               <img src={back} className="image100" alt="뒤로가기버튼" />
             </div>
           </Link>
-
           <Link
             to="/service"
             onClick={() => {
@@ -86,26 +80,26 @@ function EachService() {
               )}
               {selectedServiceArray.lifeArray != null
                 ? selectedServiceArray.lifeArray
-                    .split(",")
-                    .map((data, index) => (
-                      <div className="eachServiceMainStatus">
-                        {data.replace(/(\s*)/g, "")}
-                      </div>
-                    ))
+                  .split(",")
+                  .map((data, index) => (
+                    <div className="eachServiceMainStatus">
+                      {data.replace(/(\s*)/g, "")}
+                    </div>
+                  ))
                 : ""}
               {selectedServiceArray.gaguArray
                 ? selectedServiceArray.gaguArray
-                    .split(",")
-                    .map((data, index) => (
-                      <div className="eachServiceMainStatus">{data}</div>
-                    ))
+                  .split(",")
+                  .map((data, index) => (
+                    <div className="eachServiceMainStatus">{data}</div>
+                  ))
                 : ""}
               {selectedServiceArray.intrsArray
                 ? selectedServiceArray.intrsArray
-                    .split(",")
-                    .map((data, index) => (
-                      <div className="eachServiceMainStatus">{data}</div>
-                    ))
+                  .split(",")
+                  .map((data, index) => (
+                    <div className="eachServiceMainStatus">{data}</div>
+                  ))
                 : ""}
             </div>
             <div className="eachServiceMainFavoriteBox">
@@ -115,9 +109,9 @@ function EachService() {
                     centralFavoriteArray.some(
                       (element) => element.servId === servId
                     ) ||
-                    localFavoriteArray.some(
-                      (element) => element.servId === servId
-                    )
+                      localFavoriteArray.some(
+                        (element) => element.servId === servId
+                      )
                       ? star_yellow
                       : star_white
                   }
@@ -362,7 +356,7 @@ function EachService() {
                               <a
                                 className="eachServiceInfoDescWeb"
                                 href={"https://" + data.servSeDetailContent}
-                                target="_blank"
+                                target="_blank" rel="noreferrer"
                               >
                                 <b id="deepGreenSmer">
                                   {data.servSeDetailContent}

@@ -1262,7 +1262,7 @@ ul.pagination li a {
 
 .eachServiceTabTextBoxContainer {
   width: 1600px;
-  height: 90px;
+  height: 89px;
   display: flex;
   align-items: center;
   border-bottom: var(--black-color) 3px solid;

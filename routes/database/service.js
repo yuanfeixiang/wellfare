@@ -65,8 +65,8 @@ router.post("/getService", async (req, res) => {
           ? (query1_4_1 = " OR ")
           : ""
         : req.body.age > 0
-        ? (query1_4_1 = " AND (")
-        : "";
+          ? (query1_4_1 = " AND (")
+          : "";
 
     if (req.body.age >= 1 && req.body.age <= 5) {
       query1_4 = query1_4_1 + `lifeArray LIKE "%영유아%"`;
@@ -87,8 +87,8 @@ router.post("/getService", async (req, res) => {
         ? ""
         : ""
       : req.body.age > 0
-      ? (query1_4 = query1_4 + ")")
-      : "";
+        ? (query1_4 = query1_4 + ")")
+        : "";
 
     req.body.lifeArray.forEach((element) => {
       query1_1 = query1_1 + "lifeArray LIKE " + '"%' + element + '%"' + " OR ";
@@ -252,12 +252,17 @@ router.post("/getService", async (req, res) => {
 
 router.post("/getEachService", async (req, res) => {
   try {
-    const [row, fields] = await connection.query(
+    const [row0, fields0] = await connection.query(
+      `SELECT * FROM services WHERE servId = ?`,
+      [req.body.servId]
+    );
+
+    const [row1, fields1] = await connection.query(
       `SELECT * FROM inquiries WHERE servId = ?`,
       [req.body.servId]
     );
 
-    res.send({ detailArrayList: row });
+    res.send({ selectedServiceArray: row0[0], detailArrayList: row1 });
   } catch (err) {
     console.error(err);
   }

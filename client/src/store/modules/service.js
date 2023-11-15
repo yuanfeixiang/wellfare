@@ -20,6 +20,7 @@ const initialState = {
   centralEndNum: 0,
   localEndNum: 0,
   totalEndNum: 0,
+  selectedServiceArray: [],
   detailArrayList: [],
 };
 
@@ -85,7 +86,8 @@ export const getEachService = createAsyncThunk(
       const res = await getEachServiceListFromServer(servId);
 
       return {
-        detailArrayList: res.detailArrayList,
+        selectedServiceArray: res.selectedServiceArray,
+        detailArrayList: res.detailArrayList
       };
     } catch (err) {
       console.error(err);
@@ -215,6 +217,7 @@ const serviceSlice = createSlice({
       state.totalEndNum = action.payload.total;
     });
     builder.addCase(getEachService.fulfilled, (state, action) => {
+      state.selectedServiceArray = action.payload.selectedServiceArray;
       state.detailArrayList = action.payload.detailArrayList;
     });
   },
