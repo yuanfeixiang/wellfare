@@ -108,7 +108,7 @@ function Service() {
             </span>
           </div>
         </div>
-        <div className="darkGray1600UnderBar"></div>
+        <div className="darkGrayUnderBar"></div>
       </div>
       <div className="servicePreviewContainer">
         <div className="servicePreviewBox">
@@ -130,30 +130,30 @@ function Service() {
                       <div className="servicePreviewStatusBox">
                         {a.lifeArray != null
                           ? a.lifeArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data.replace(/(\s*)/g, "")}
-                                </div>
-                              ))
+                            .split(",")
+                            .map((data, index) => (
+                              <div className="servicePreviewStatus">
+                                {data.replace(/(\s*)/g, "")}
+                              </div>
+                            ))
                           : ""}
                         {a.gaguArray
                           ? a.gaguArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                            .split(",")
+                            .map((data, index) => (
+                              <div className="servicePreviewStatus">
+                                {data}
+                              </div>
+                            ))
                           : ""}
                         {a.intrsArray
                           ? a.intrsArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                            .split(",")
+                            .map((data, index) => (
+                              <div className="servicePreviewStatus">
+                                {data}
+                              </div>
+                            ))
                           : ""}
                       </div>
                       <div className="servicePreviewFavoriteBox">
@@ -163,9 +163,9 @@ function Service() {
                               centralFavoriteArray.some(
                                 (element) => element.servId === a.servId
                               ) ||
-                              localFavoriteArray.some(
-                                (element) => element.servId === a.servId
-                              )
+                                localFavoriteArray.some(
+                                  (element) => element.servId === a.servId
+                                )
                                 ? star_yellow
                                 : star_white
                             }

@@ -21,16 +21,6 @@ import { updateFavorite } from "../../store/modules/favorite";
 function Favorite() {
   const dispatch = useDispatch();
 
-  const StyledSlider = styled(Slider)`
-    .slick-slide > div {
-      margin: 50px 40px;
-    }
-
-    .slick-list {
-      margin: -50px -40px;
-    }
-  `;
-
   const { centralFavoriteArray, localFavoriteArray } = useSelector(
     (state) => state.favorite
   );
@@ -57,7 +47,7 @@ function Favorite() {
               중앙부처 <b className="favoriteTitleOrangeM"> 즐겨찾기 </b> 목록
             </span>
           </div>
-          <div className="darkGray1600UnderBar"></div>
+          <div className="darkGrayUnderBar"></div>
           {centralFavoriteArray.length === 0 ? (
             <div className="noFavoriteItemContainer">
               <div className="noFavoriteItemIconBox">
@@ -94,30 +84,30 @@ function Favorite() {
                         <div className="servicePreviewStatusBox">
                           {a.lifeArray != null
                             ? a.lifeArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data.replace(/(\s*)/g, "")}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data.replace(/(\s*)/g, "")}
+                                </div>
+                              ))
                             : ""}
                           {a.gaguArray
                             ? a.gaguArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                             : ""}
                           {a.intrsArray
                             ? a.intrsArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
@@ -176,7 +166,7 @@ function Favorite() {
               })}
             </div>
           ) : (
-            <StyledSlider {...settings}>
+            <Slider {...settings}>
               {centralFavoriteArray.map(function (a, index) {
                 return (
                   <div className="servicePreviewContentContainer">
@@ -185,30 +175,30 @@ function Favorite() {
                         <div className="servicePreviewStatusBox">
                           {a.lifeArray != null
                             ? a.lifeArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data.replace(/(\s*)/g, "")}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data.replace(/(\s*)/g, "")}
+                                </div>
+                              ))
                             : ""}
                           {a.gaguArray
                             ? a.gaguArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                             : ""}
                           {a.intrsArray
                             ? a.intrsArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
@@ -265,7 +255,7 @@ function Favorite() {
                   </div>
                 );
               })}
-            </StyledSlider>
+            </Slider>
           )}
         </div>
       </div>
@@ -276,7 +266,7 @@ function Favorite() {
               지자체 <b className="favoriteTitleOrangeM"> 즐겨찾기 </b> 목록
             </span>
           </div>
-          <div className="darkGray1600UnderBar"></div>
+          <div className="darkGrayUnderBar"></div>
           {localFavoriteArray.length === 0 ? (
             <div className="noFavoriteItemContainer">
               <div className="noFavoriteItemIconBox">
@@ -313,30 +303,30 @@ function Favorite() {
                         <div className="servicePreviewStatusBox">
                           {a.lifeArray != null
                             ? a.lifeArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data.replace(/(\s*)/g, "")}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data.replace(/(\s*)/g, "")}
+                                </div>
+                              ))
                             : ""}
                           {a.gaguArray
                             ? a.gaguArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                             : ""}
                           {a.intrsArray
                             ? a.intrsArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
@@ -395,7 +385,7 @@ function Favorite() {
               })}
             </div>
           ) : (
-            <StyledSlider {...settings}>
+            <Slider {...settings}>
               {localFavoriteArray.map(function (a, index) {
                 return (
                   <div className="servicePreviewContentContainer">
@@ -404,30 +394,30 @@ function Favorite() {
                         <div className="servicePreviewStatusBox">
                           {a.lifeArray != null
                             ? a.lifeArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data.replace(/(\s*)/g, "")}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data.replace(/(\s*)/g, "")}
+                                </div>
+                              ))
                             : ""}
                           {a.gaguArray
                             ? a.gaguArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                             : ""}
                           {a.intrsArray
                             ? a.intrsArray
-                                .split(",")
-                                .map((data, index) => (
-                                  <div className="servicePreviewStatus">
-                                    {data}
-                                  </div>
-                                ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
@@ -484,7 +474,7 @@ function Favorite() {
                   </div>
                 );
               })}
-            </StyledSlider>
+            </Slider>
           )}
         </div>
       </div>

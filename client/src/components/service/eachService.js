@@ -80,26 +80,26 @@ function EachService() {
               )}
               {selectedServiceArray.lifeArray != null
                 ? selectedServiceArray.lifeArray
-                    .split(",")
-                    .map((data, index) => (
-                      <div className="eachServiceMainStatus">
-                        {data.replace(/(\s*)/g, "")}
-                      </div>
-                    ))
+                  .split(",")
+                  .map((data, index) => (
+                    <div className="eachServiceMainStatus">
+                      {data.replace(/(\s*)/g, "")}
+                    </div>
+                  ))
                 : ""}
               {selectedServiceArray.gaguArray
                 ? selectedServiceArray.gaguArray
-                    .split(",")
-                    .map((data, index) => (
-                      <div className="eachServiceMainStatus">{data}</div>
-                    ))
+                  .split(",")
+                  .map((data, index) => (
+                    <div className="eachServiceMainStatus">{data}</div>
+                  ))
                 : ""}
               {selectedServiceArray.intrsArray
                 ? selectedServiceArray.intrsArray
-                    .split(",")
-                    .map((data, index) => (
-                      <div className="eachServiceMainStatus">{data}</div>
-                    ))
+                  .split(",")
+                  .map((data, index) => (
+                    <div className="eachServiceMainStatus">{data}</div>
+                  ))
                 : ""}
             </div>
             <div className="eachServiceMainFavoriteBox">
@@ -109,9 +109,9 @@ function EachService() {
                     centralFavoriteArray.some(
                       (element) => element.servId === servId
                     ) ||
-                    localFavoriteArray.some(
-                      (element) => element.servId === servId
-                    )
+                      localFavoriteArray.some(
+                        (element) => element.servId === servId
+                      )
                       ? star_yellow
                       : star_white
                   }

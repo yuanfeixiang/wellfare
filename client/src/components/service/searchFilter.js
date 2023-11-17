@@ -165,10 +165,10 @@ function SearchFilter() {
                       onChange={(e) =>
                         _filterLifeArray.includes(data)
                           ? setFilterLifeArray(
-                              _filterLifeArray.filter(
-                                (element) => element !== data
-                              )
+                            _filterLifeArray.filter(
+                              (element) => element !== data
                             )
+                          )
                           : setFilterLifeArray([..._filterLifeArray, data])
                       }
                     />
@@ -196,10 +196,10 @@ function SearchFilter() {
                       onChange={(e) =>
                         _filterGaguArray.includes(data)
                           ? setFilterGaguArray(
-                              _filterGaguArray.filter(
-                                (element) => element !== data
-                              )
+                            _filterGaguArray.filter(
+                              (element) => element !== data
                             )
+                          )
                           : setFilterGaguArray([..._filterGaguArray, data])
                       }
                     />
@@ -225,10 +225,10 @@ function SearchFilter() {
                       onChange={(e) =>
                         _filterIntrsArray.includes(data)
                           ? setFilterIntrsArray(
-                              _filterIntrsArray.filter(
-                                (element) => element !== data
-                              )
+                            _filterIntrsArray.filter(
+                              (element) => element !== data
                             )
+                          )
                           : setFilterIntrsArray([..._filterIntrsArray, data])
                       }
                     />
