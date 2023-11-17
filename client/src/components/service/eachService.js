@@ -17,7 +17,7 @@ function EachService() {
   const dispatch = useDispatch();
   const { servId } = useParams();
 
-  const { sunder, selectedServiceArray, detailArrayList } = useSelector(
+  const { selectedServiceArray, detailArrayList } = useSelector(
     (state) => state.service
   );
   const { centralFavoriteArray, localFavoriteArray } = useSelector(
@@ -73,33 +73,33 @@ function EachService() {
         <div className="eachServiceMainBox">
           <div className="eachServiceMainStatusContainer">
             <div className="eachServiceMainStatusBox">
-              {sunder === 0 ? (
+              {selectedServiceArray.sunder === 0 ? (
                 <div className="eachServiceMainStatus">중앙부처 복지사업</div>
               ) : (
                 <div className="eachServiceMainStatus">지자체 복지사업</div>
               )}
               {selectedServiceArray.lifeArray != null
                 ? selectedServiceArray.lifeArray
-                  .split(",")
-                  .map((data, index) => (
-                    <div className="eachServiceMainStatus">
-                      {data.replace(/(\s*)/g, "")}
-                    </div>
-                  ))
+                    .split(",")
+                    .map((data, index) => (
+                      <div className="eachServiceMainStatus">
+                        {data.replace(/(\s*)/g, "")}
+                      </div>
+                    ))
                 : ""}
               {selectedServiceArray.gaguArray
                 ? selectedServiceArray.gaguArray
-                  .split(",")
-                  .map((data, index) => (
-                    <div className="eachServiceMainStatus">{data}</div>
-                  ))
+                    .split(",")
+                    .map((data, index) => (
+                      <div className="eachServiceMainStatus">{data}</div>
+                    ))
                 : ""}
               {selectedServiceArray.intrsArray
                 ? selectedServiceArray.intrsArray
-                  .split(",")
-                  .map((data, index) => (
-                    <div className="eachServiceMainStatus">{data}</div>
-                  ))
+                    .split(",")
+                    .map((data, index) => (
+                      <div className="eachServiceMainStatus">{data}</div>
+                    ))
                 : ""}
             </div>
             <div className="eachServiceMainFavoriteBox">
@@ -109,9 +109,9 @@ function EachService() {
                     centralFavoriteArray.some(
                       (element) => element.servId === servId
                     ) ||
-                      localFavoriteArray.some(
-                        (element) => element.servId === servId
-                      )
+                    localFavoriteArray.some(
+                      (element) => element.servId === servId
+                    )
                       ? star_yellow
                       : star_white
                   }
@@ -126,7 +126,7 @@ function EachService() {
             <span className="eachServiceTitle">
               {selectedServiceArray.servNm}
             </span>
-            {sunder === 1 ? (
+            {selectedServiceArray.sunder === 1 ? (
               <span className="eachServiceDgst">
                 {selectedServiceArray.servDgst}
               </span>
@@ -134,8 +134,7 @@ function EachService() {
               ""
             )}
           </div>
-
-          {sunder === 0 ? (
+          {selectedServiceArray.sunder === 0 ? (
             <table className="eachServiceMainTable">
               <thead className="eachServiceMainTableThead">
                 <tr className="eachServiceMainTableTr">
@@ -356,7 +355,8 @@ function EachService() {
                               <a
                                 className="eachServiceInfoDescWeb"
                                 href={"https://" + data.servSeDetailContent}
-                                target="_blank" rel="noreferrer"
+                                target="_blank"
+                                rel="noreferrer"
                               >
                                 <b id="deepGreenSmer">
                                   {data.servSeDetailContent}
@@ -371,7 +371,7 @@ function EachService() {
                     })}
                   </div>
                 </div>
-                {sunder === 1 ? (
+                {selectedServiceArray.sunder === 1 ? (
                   <>
                     <div className="eachServiceInfo">
                       <div className="eachServiceInfoTitleBox">

@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import classnames from "classnames";
 
 // image
+import phone from "../../image/util/phone.png";
 
 // store
 
@@ -26,13 +27,27 @@ function Home() {
           Wellfare와 함께하세요.
         </span>
       </div>
-      <div className="homeServiceIntroContainer"></div>
-      {/* <div className="homeMainContainer">
-        <div className="homeMainBox">
-          <div className="homeMainTitle">서비스 목록</div>
-          <Service />
+      <div className="homeServiceIntroContainer">
+        <div className="homeServiceIntroBox">
+          <div className="homeServiceIntroTitleBox">
+            <span className="homeServiceIntroTitle">복지서비스 검색</span>
+          </div>
+          <div className="homeServiceIntroLeftPhoneBox">
+            <img
+              src={phone}
+              className="homeServiceIntroLeftPhone"
+              alt="왼쪽 핸드폰"
+            />
+          </div>
+          <div className="homeServiceIntroRightPhoneBox">
+            <img
+              src={phone}
+              className="homeServiceIntroRightPhone"
+              alt="오른쪽 핸드폰"
+            />
+          </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
