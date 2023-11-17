@@ -6,25 +6,9 @@ import classnames from "classnames";
 import mainLogo from "../../../src/image/logo/main_logo.png";
 
 function Header() {
-  // state
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  const updateScroll = () => {
-    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", updateScroll);
-    return () => {
-      window.removeEventListener("scroll", updateScroll);
-    };
-  }, []);
-
   return (
     <>
-      <div
-        className={scrollPosition < 100 ? "original_header" : "change_header"}
-      >
+      <div className="header">
         <div className="nav">
           <div className="logoBox">
             <div

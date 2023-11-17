@@ -71,7 +71,6 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Pretendard-Regular";
-  letter-spacing: -2.5%;
   scroll-behavior: smooth;
 }
 
@@ -216,8 +215,7 @@ body {
 }
 
 /* header */
-.original_header,
-.change_header {
+.header {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -227,10 +225,6 @@ body {
   width: 100%;
   z-index: var(--header-zindex);
   box-sizing: initial;
-}
-
-.change_header {
-  border-bottom: rgba(0, 27, 55, 0.1) 2px solid;
 }
 
 nav {
@@ -284,12 +278,6 @@ nav {
 .header_link_logo {
   display: flex;
   margin: auto 0px;
-}
-
-.header_logo_icon {
-  margin-right: 24px;
-  width: 32px;
-  height: 32px;
 }
 
 .navi_ul {
@@ -348,14 +336,6 @@ nav ul li {
   justify-content: flex-start;
   padding: 40px 0;
   font-size: var(--font-micro);
-}
-
-.footerLogo {
-  width: 55%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 20px 0;
 }
 
 .footerLogoIcon {
@@ -1710,4 +1690,82 @@ ul.pagination li a {
   color: white;
   font-size: var(--font-medium2);
   border-radius: 15px;
+}
+
+@media screen and (max-width: 1680px) {
+  :root {
+    /* Font Size */
+    --font-large: 40px;
+    --font-medium: 34px;
+    --font-medium2: 28px;
+    --font-small: 22px;
+    --font-smaller: 16px;
+    --font-content: 15px;
+    --font-micro: 14px;
+
+    /* Padding */
+    /* --micro-padding: 10px;
+    --smaller-padding: 18px;
+    --small-padding: 24px;
+    --basic-padding: 30px;
+    --medium-padding: 36px;
+    --big-padding: 40px;
+    --bigger-padding: 48px; */
+  }
+
+  /* header */
+  .header {
+    height: 110px;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  nav ul li {
+    font-size: calc(var(--font-small) * 1.2);
+  }
+
+  .nav {
+    width: 1300px;
+  }
+
+  /* footer */
+  .serviceArrangeBox {
+    padding: 40px 0 0 0;
+  }
+
+  .serviceArrange {
+    font-size: calc(var(--font-smaller) * 1.2);
+  }
+
+  .copyright {
+    padding: 40px 0;
+    font-size: var(--font-smaller);
+  }
+
+  /* homeBanner */
+  .homeBannerTextBox {
+    top: 45%;
+    left: 13%;
+    transform: translate(-13%, -45%);
+  }
+
+  /* homeIntro */
+  /* .homeIntroContainer {
+    padding: 120px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+    background-color: #f9fafb;
+  }
+
+  .homeIntro {
+    font-size: var(--font-medium);
+    line-height: 1.7;
+    text-align: center;
+  } */
 }
