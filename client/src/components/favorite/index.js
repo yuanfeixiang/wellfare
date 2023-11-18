@@ -84,30 +84,30 @@ function Favorite() {
                         <div className="servicePreviewStatusBox">
                           {a.lifeArray != null
                             ? a.lifeArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data.replace(/(\s*)/g, "")}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data.replace(/(\s*)/g, "")}
+                                  </div>
+                                ))
                             : ""}
                           {a.gaguArray
                             ? a.gaguArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data}
+                                  </div>
+                                ))
                             : ""}
                           {a.intrsArray
                             ? a.intrsArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data}
+                                  </div>
+                                ))
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
@@ -175,30 +175,30 @@ function Favorite() {
                         <div className="servicePreviewStatusBox">
                           {a.lifeArray != null
                             ? a.lifeArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data.replace(/(\s*)/g, "")}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data.replace(/(\s*)/g, "")}
+                                  </div>
+                                ))
                             : ""}
                           {a.gaguArray
                             ? a.gaguArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data}
+                                  </div>
+                                ))
                             : ""}
                           {a.intrsArray
                             ? a.intrsArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data}
+                                  </div>
+                                ))
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
@@ -303,30 +303,30 @@ function Favorite() {
                         <div className="servicePreviewStatusBox">
                           {a.lifeArray != null
                             ? a.lifeArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data.replace(/(\s*)/g, "")}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data.replace(/(\s*)/g, "")}
+                                  </div>
+                                ))
                             : ""}
                           {a.gaguArray
                             ? a.gaguArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data}
+                                  </div>
+                                ))
                             : ""}
                           {a.intrsArray
                             ? a.intrsArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data}
+                                  </div>
+                                ))
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">
@@ -394,30 +394,30 @@ function Favorite() {
                         <div className="servicePreviewStatusBox">
                           {a.lifeArray != null
                             ? a.lifeArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data.replace(/(\s*)/g, "")}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data.replace(/(\s*)/g, "")}
+                                  </div>
+                                ))
                             : ""}
                           {a.gaguArray
                             ? a.gaguArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data}
+                                  </div>
+                                ))
                             : ""}
                           {a.intrsArray
                             ? a.intrsArray
-                              .split(",")
-                              .map((data, index) => (
-                                <div className="servicePreviewStatus">
-                                  {data}
-                                </div>
-                              ))
+                                .split(",")
+                                .map((data, index) => (
+                                  <div className="servicePreviewStatus">
+                                    {data}
+                                  </div>
+                                ))
                             : ""}
                         </div>
                         <div className="servicePreviewFavoriteBox">

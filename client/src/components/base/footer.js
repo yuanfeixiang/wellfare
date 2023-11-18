@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 //image
-// import twitterLogo from "../../image/utils/snsLogo/twitter.svg";
-// import kakaotalkLogo from "../../image/utils/snsLogo/kakaotalk.svg";
-// import mediumLogo from "../../image/utils/snsLogo/medium.svg";
 import githubLogo from "../../image/util/github.svg";
 
 function Footer() {
@@ -61,15 +58,6 @@ function Footer() {
       <div className="copyright">
         Copyright 2023. Wellfare Team. all rights reserved.
       </div>
-      {/* <div className="footerLogo">
-        <a
-          className="footerLogoIcon"
-          href="https://github.com/klaychicken"
-          target="_blank"
-        >
-          <img className="footerLogoImage" src={githubLogo} />
-        </a>
-      </div> */}
     </div>
   );
 }

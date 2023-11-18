@@ -1484,10 +1484,10 @@ ul.pagination li a {
 }
 
 /* slick-dots */
-.slick-slide>div {
+.slick-slide > div {
   margin: 50px 40px !important;
 }
-    
+
 .slick-list {
   margin: -50px -40px !important;
 }
@@ -1729,7 +1729,7 @@ ul.pagination li a {
     color: var(--black-color);
     font-size: calc(var(--font-large) * 1.2);
   }
-  
+
   #pistachioL {
     color: #609c60;
     font-size: calc(var(--font-large) * 1.3);
@@ -1761,12 +1761,12 @@ ul.pagination li a {
   }
 
   /* homeBanner */
-    .homeBannerText {
-      font-size: var(--font-large);
-    }
+  .homeBannerText {
+    font-size: var(--font-large);
+  }
 
-    /* homeServiceIntro */
-    /* .homeServiceIntroContainer {
+  /* homeServiceIntro */
+  /* .homeServiceIntroContainer {
       padding: 200px 0 0 0;
       display: flex;
       flex-direction: column;
@@ -1816,32 +1816,32 @@ ul.pagination li a {
       width: 100%;
       height: 100%;
     } */
-  
+
   /* service */
   .servicePreviewBox {
     width: 1300px;
     grid-gap: calc(var(--basic-padding) * 2.5);
   }
-  
+
   .noItemContainer {
     width: 1300px;
     height: 600px;
   }
-  
+
   .noItemIconBox {
     height: 80px;
     width: 80px;
   }
-  
+
   .noItemTitle {
     font-size: var(--font-medium2);
   }
-  
+
   .servicePreviewContentContainer {
     height: 425px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
   }
-  
+
   .servicePreviewStatusContainter {
     height: 30px;
   }
@@ -1849,39 +1849,39 @@ ul.pagination li a {
   .servicePreviewStatus {
     height: 30px;
   }
-  
+
   .servicePreviewFavoriteBtnBox {
     width: 20px;
     height: 20px;
   }
-  
+
   .servicePreviewTrgContent {
     height: 27%;
   }
-  
+
   .servicePreviewContentBtn {
     height: 45px;
   }
-  
-    /* serviceTab */
+
+  /* serviceTab */
   .serviceTabTitleBox {
     width: 1300px;
   }
-  
+
   .serviceTabTextBoxContainer {
     width: 1300px;
   }
-  
+
   .serviceTabTextBox,
   .selectedServiceTabTextBox {
-    width: 220px; 
+    width: 220px;
     padding: var(--basic-padding) var(--small-padding);
   }
 
   .serviceTabText {
     font-size: calc(var(--font-small) * 1.1);
   }
-  
+
   /* search */
   .searchFilterBoxContainer {
     height: 1050px;
@@ -1895,7 +1895,7 @@ ul.pagination li a {
     font-size: calc(var(--font-smaller) * 1.1);
   }
 
-  /* filter */  
+  /* filter */
   .filterBox {
     width: 1300px;
     height: 400px;
@@ -2057,14 +2057,14 @@ ul.pagination li a {
   }
 
   .noFavoriteItemBtn {
-    font-size: calc(var(--font-small)*1.2);
+    font-size: calc(var(--font-small) * 1.2);
   }
 
   /* slick-dots */
-  .slick-slide>div {
+  .slick-slide > div {
     margin: 50px 25px !important;
   }
-  
+
   .slick-list {
     margin: -50px -25px !important;
   }
@@ -2110,10 +2110,10 @@ ul.pagination li a {
   }
 }
 
-@media screen and (max-width:1199px) {
-/* 타블렛 가로 */
-:root {
-   /* Font Size */
+@media screen and (max-width: 1199px) {
+  /* 타블렛 가로 */
+  :root {
+    /* Font Size */
     --font-large: 34px;
     --font-medium: 26px;
     --font-medium2: 20px;
@@ -2121,7 +2121,7 @@ ul.pagination li a {
     --font-smaller: 12px;
     --font-content: 10px;
     --font-micro: 8px;
-      
+
     /* Padding */
     --micro-padding: 6px;
     --smaller-padding: 12px;
@@ -2131,7 +2131,7 @@ ul.pagination li a {
     --big-padding: 26px;
     --bigger-padding: 34px;
   }
-      
+
   /* etc */
   #greenM2 {
     font-size: 24px;
@@ -2140,8 +2140,8 @@ ul.pagination li a {
   .darkGrayUnderBar {
     width: 950px;
     margin-bottom: 40px;
-  } 
-      
+  }
+
   /* header */
   .header {
     height: 90px;
@@ -2154,12 +2154,12 @@ ul.pagination li a {
   .link_logo_nav {
     width: 400px;
   }
-      
+
   .logo {
     width: 150px;
     height: 50px;
   }
-      
+
   /* homeBanner */
   .homeBannerTextBox {
     left: 13%;
@@ -2172,7 +2172,7 @@ ul.pagination li a {
   .homeIntroContainer {
     height: 400px;
   }
-      
+
   /* homeServiceIntro */
   /* .homeServiceIntroContainer {
       padding: 200px 0 0 0;
@@ -2224,65 +2224,65 @@ ul.pagination li a {
       width: 100%;
       height: 100%;
     } */
-  /* service */ 
+  /* service */
   .servicePreviewBox {
     width: 950px;
     grid-gap: calc(var(--basic-padding) * 2.5);
   }
-      
+
   .noItemContainer {
     width: 950px;
     height: 600px;
   }
-      
+
   .servicePreviewContentContainer {
     height: 325px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
   }
-      
+
   .servicePreviewStatusContainter {
     height: 25px;
   }
-      
+
   .servicePreviewStatus {
     height: 25px;
-    font-size: calc(var(--font-micro)*1.2);
+    font-size: calc(var(--font-micro) * 1.2);
   }
-      
+
   .servicePreviewFavoriteBtnBox {
     width: 16px;
     height: 16px;
   }
-      
+
   .servicePreviewTrgContent {
     height: 24%;
     -webkit-line-clamp: 2;
   }
-      
+
   .servicePreviewContentBtn {
     height: 35px;
   }
-      
+
   /* serviceTab */
   .serviceTabTitleBox {
     width: 950px;
   }
-      
+
   .serviceTabTextBoxContainer {
     width: 950px;
     margin-bottom: 40px;
   }
-      
+
   .serviceTabTextBox,
   .selectedServiceTabTextBox {
     width: 190px;
     padding: var(--basic-padding) var(--small-padding);
   }
-      
+
   .serviceTabText {
     font-size: calc(var(--font-small) * 1.2);
   }
-      
+
   /* search */
   .searchFilterBoxContainer {
     padding-top: 175px;
@@ -2297,45 +2297,45 @@ ul.pagination li a {
   .searchBoxContainer {
     height: 45px;
   }
-      
+
   .searchBox {
     width: 650px;
   }
-      
+
   /* filter */
   .filterBox {
     width: 950px;
     height: 300px;
   }
-  
+
   /* subFilter */
   .subFilterBox {
     width: 950px;
     height: 170px;
   }
-      
+
   .subFilterElementBox {
     padding: 0 50px;
   }
-      
+
   .subFilterAgeInputBox {
-    padding: calc(var(--micro-padding)*1.5);
+    padding: calc(var(--micro-padding) * 1.5);
   }
-      
+
   .subFilterAgeInput {
     font-size: calc(var(--font-small) * 1.3);
   }
-      
+
   .subFilterBtnContainer {
     width: 290px;
     height: 40px;
   }
-      
+
   .subFilterResetBtn,
   .subFilterSearchBtn {
     width: 110px;
   }
-      
+
   /* custom_selectBox */
   .customSelectUl,
   .customSelectUlActive {
@@ -2347,12 +2347,12 @@ ul.pagination li a {
   .customSelectLiSelected {
     height: 40px;
   }
-  
+
   .customSelectBox::before {
     font-size: 20px;
     top: 6px;
   }
-      
+
   /* eachService */
   .eachServiceMainBackContainer {
     padding: 170px 0 30px;
@@ -2366,15 +2366,15 @@ ul.pagination li a {
     width: 20px;
     height: 20px;
   }
-      
+
   .eachServiceMainContainer {
     height: 450px;
   }
-      
+
   .eachServiceMainBox {
     width: 950px;
   }
-      
+
   .eachServiceMainStatusBox {
     height: 30px;
   }
@@ -2386,26 +2386,26 @@ ul.pagination li a {
   .eachServiceMainTable {
     height: 100px;
   }
-      
+
   .eachServiceTabTitleBox {
     width: 950px;
   }
-      
+
   .eachServiceTabTextBoxContainer {
     width: 950px;
     height: 59px;
   }
-      
+
   .eachServiceTabTextBox,
   .selectedEachServiceTabTextBox {
     width: 170px;
   }
-      
+
   .eachServiceInfoBox {
     width: 950px;
     min-height: 200px;
   }
-      
+
   .eachServiceInfoDescBox {
     padding: 20px 0 0 23px;
   }
@@ -2415,42 +2415,42 @@ ul.pagination li a {
     padding-top: 150px;
   }
 
-    .favoritePreviewContainer2 {
-      padding-top: 100px;
-    }
+  .favoritePreviewContainer2 {
+    padding-top: 100px;
+  }
 
   .favoritePreviewContentContainer {
     grid-gap: calc(var(--basic-padding) * 2.5);
   }
-      
+
   .favoritePreviewBox {
     width: 950px;
   }
-      
+
   .favoriteTitleOrangeM {
     width: 125px;
   }
-      
+
   .noFavoriteItemContainer {
     width: 950px;
     margin-top: 120px;
   }
-  
+
   .noFavoriteItemIconBox {
     height: 70px;
     width: 70px;
   }
-      
+
   .noFavoriteItemBtnBox {
     width: 150px;
     height: 45px;
   }
-  
+
   /* slick-dots */
-  .slick-slide>div {
+  .slick-slide > div {
     margin: 50px 20px !important;
   }
-      
+
   .slick-list {
     margin: -50px -20px !important;
   }
@@ -2459,13 +2459,13 @@ ul.pagination li a {
     width: 10px;
     height: 10px;
   }
-  
+
   /* KMap */
   .searchMapContainer {
     padding-top: 150px;
     height: 750px;
   }
-      
+
   .showMapContainer {
     width: 950px;
     height: 500px;
@@ -2475,28 +2475,28 @@ ul.pagination li a {
     width: 300px;
     height: 160px;
   }
-      
+
   .showMapTitleBox .showMapTitle {
     font-size: calc(var(--font-small) * 1.2);
   }
-      
+
   .showMapInfo .showMapCloseBox {
     width: 14px;
     height: 14px;
   }
-      
+
   .showMapDesc .showMapAddress {
     font-size: var(--font-small);
   }
-      
+
   .showMapDesc .showMapPhone {
     font-size: var(--font-small);
   }
-      
+
   .showMapInfo .showMapLink {
     font-size: var(--font-small);
   }
-      
+
   /* error */
   .errorTitleBox {
     margin-bottom: 40px;
@@ -2517,11 +2517,11 @@ ul.pagination li a {
     height: 50px;
   }
 }
-  
-@media screen and (max-width:899px) {
+
+@media screen and (max-width: 899px) {
   /* 모바일 가로, 타블렛 세로 */
 }
-  
-@media screen and (max-width:599px) {
+
+@media screen and (max-width: 599px) {
   /* 모바일 세로 */
 }
