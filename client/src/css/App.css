@@ -1699,7 +1699,7 @@ ul.pagination li a {
   height: 60px;
   background-color: var(--pistachio-color);
   color: white;
-  font-size: var(--font-medium2);
+  font-size: var(--font-small);
   border-radius: 15px;
 }
 
@@ -1817,346 +1817,711 @@ ul.pagination li a {
       height: 100%;
     } */
   
-    /* service */
-    .servicePreviewBox {
-      width: 1300px;
-      grid-gap: calc(var(--basic-padding) * 2.5);
-    }
+  /* service */
+  .servicePreviewBox {
+    width: 1300px;
+    grid-gap: calc(var(--basic-padding) * 2.5);
+  }
   
-    .noItemContainer {
-      width: 1300px;
-      height: 600px;
-    }
+  .noItemContainer {
+    width: 1300px;
+    height: 600px;
+  }
   
-    .noItemIconBox {
-      height: 80px;
-      width: 80px;
-    }
+  .noItemIconBox {
+    height: 80px;
+    width: 80px;
+  }
   
-    .noItemTitle {
-      font-size: var(--font-medium2);
-    }
+  .noItemTitle {
+    font-size: var(--font-medium2);
+  }
   
-    .servicePreviewContentContainer {
-      height: 425px;
-      box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
-    }
+  .servicePreviewContentContainer {
+    height: 425px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+  }
   
-    .servicePreviewStatusContainter {
-      height: 30px;
-    }
+  .servicePreviewStatusContainter {
+    height: 30px;
+  }
 
-    .servicePreviewStatus {
-      height: 30px;
-    }
+  .servicePreviewStatus {
+    height: 30px;
+  }
   
-    .servicePreviewFavoriteBtnBox {
-      width: 20px;
-      height: 20px;
-    }
+  .servicePreviewFavoriteBtnBox {
+    width: 20px;
+    height: 20px;
+  }
   
-    .servicePreviewTrgContent {
-      height: 27%;
-    }
+  .servicePreviewTrgContent {
+    height: 27%;
+  }
   
-    .servicePreviewContentBtn {
-      height: 45px;
-    }
+  .servicePreviewContentBtn {
+    height: 45px;
+  }
   
     /* serviceTab */
-    .serviceTabContainer {
-      width: 100%;
-    }
+  .serviceTabTitleBox {
+    width: 1300px;
+  }
   
-    .serviceTabTitleBox {
-      width: 1300px;
-    }
+  .serviceTabTextBoxContainer {
+    width: 1300px;
+  }
   
-    .serviceTabTextBoxContainer {
-      width: 1300px;
-    }
-  
-    .serviceTabTextBox,
-    .selectedServiceTabTextBox {
-      width: 200px; 
-      padding: var(--basic-padding) var(--small-padding);
-    }
+  .serviceTabTextBox,
+  .selectedServiceTabTextBox {
+    width: 220px; 
+    padding: var(--basic-padding) var(--small-padding);
+  }
 
-    .serviceTabText {
-      font-size: calc(var(--font-small) * 1.1);
-    }
+  .serviceTabText {
+    font-size: calc(var(--font-small) * 1.1);
+  }
   
-    /* search */
-    .searchFilterBoxContainer {
-      height: 1050px;
-    }
-  
-    .searchBox {
-      width: 850px;
-    }
-  
-    .searchInput {
-      font-size: calc(var(--font-smaller) * 1.2);
-    }
-  
-    /* filter */  
-    .filterBox {
-      width: 1300px;
-      height: 400px;
-    }
-  
-    /* subFilter */
-    .subFilterBox {
-      width: 1300px;
-      height: 225px;
-    }
-  
-    .subFilterElementBox {
-      padding: 0 100px;
-    }
-  
-    .subFilterAgeInputBox {
-      padding: var(--smaller-padding);
-    }
-  
-    .subFilterAgeInput {
-      font-size: calc(var(--font-small) * 1.2);
-    }
-  
-    .subFilterBtnContainer {
-      width: 300px;
-      height: 45px;
-    }
-  
-    .subFilterResetBtn,
-    .subFilterSearchBtn {
-      width: 125px;
-    }
-  
-    /* custom_selectBox */
-    .customSelectBox::before {
-      font-size: 25px;
-    }
-  
-    .customSelectUl,
-    .customSelectUlActive {
-      height: 201px;
-    }
-  
-    /* eachService */
-    .eachServiceMainBackBox {
-      width: 1300px;
-    }
-  
-    .eachServiceMainContainer {
-      height: 500px;
-    }
-  
-    .eachServiceMainBox {
-      width: 1300px;
-    }
-  
-    .eachServiceMainStatusBox {
-      grid-template-columns: repeat(auto-fill, minmax(90px, auto));
-    }
-  
-    .eachServiceMainFavoriteBtnBox {
-      width: 20px;
-      height: 20px;
-    }
-  
-    .eachServiceTitle {
-      font-size: calc(var(--font-medium2) * 1.1);
-    }
-  
-    .eachServiceMainTable {
-      height: 110px;
-    }
-  
-    .eachServiceTabTitleBox {
-      width: 1300px;
-    }
-  
-    .eachServiceTabTextBoxContainer {
-      width: 1300px;
-      height: 72px;
-    }
-  
-    .eachServiceTabTextBox,
-    .selectedEachServiceTabTextBox {
-      width: 200px;
-      padding: var(--basic-padding) var(--small-padding);
-    }
-  
-    .eachServiceInfoBox {
-      width: 1300px;
-    }
+  /* search */
+  .searchFilterBoxContainer {
+    height: 1050px;
+  }
 
-    .eachServiceInfoDescBox {
-      padding: 20px 0 0 23px;
-    }
-  
-    /* sweetAlert */
-    .swal2-popup {
-      width: 600px;
-      height: 225px;
-    }
+  .searchBox {
+    width: 850px;
+  }
 
-    .swal2-title {
-      font-size: 1.4rem;
-    }
-  
-    div:where(.swal2-icon) {
-      width: 4em !important;
-      height: 4em !important;
-    }
+  .searchInput {
+    font-size: calc(var(--font-smaller) * 1.1);
+  }
 
-    div:where(.swal2-icon) .swal2-icon-content {
-      font-size: 3em !important;
-    }
+  /* filter */  
+  .filterBox {
+    width: 1300px;
+    height: 400px;
+  }
 
-    /* favorite */
-    .favoritePreviewContentContainer {
-      grid-gap: calc(var(--basic-padding) * 2.5);
-    }
+  /* subFilter */
+  .subFilterBox {
+    width: 1300px;
+    height: 225px;
+  }
 
-    .favoritePreviewBox {
-      width: 1300px;
-    }
-  
-    .favoriteTitleBox {
-      margin-bottom: 20px;
-    }
-  
-    .favoriteTitle {
-      font-size: var(--font-medium2);
-    }
-  
-    .favoriteTitleOrangeM {
-      width: 145px;
-    }
-  
-    .noFavoriteItemContainer {
-      width: 1300px;
-      margin-top: 120px;
-    }
-  
-    .noFavoriteItemIconBox {
-      height: 80px;
-      width: 80px;
-      margin-bottom: var(--bigger-padding);
-    }
-  
-    .noFavoriteItemTitleBox {
-      margin-bottom: var(--bigger-padding);
-    }
-  
-    .noFavoriteItemTitle {
-      font-size: var(--font-medium2);
-    }
-  
-    .noFavoriteItemBtnBox {
-      width: 170px;
-      height: 50px;
-    }
-  
-    .noFavoriteItemBtn {
-      font-size: calc(var(--font-small)*1.2);
-    }
+  .subFilterElementBox {
+    padding: 0 100px;
+  }
 
-    /* slick-dots */
-    .slick-slide>div {
-      margin: 50px 25px !important;
-    }
-    
-    .slick-list {
-      margin: -50px -25px !important;
-    }
-  
-    /* KMap */
-    .searchMapContainer {
-      height: 900px;
-    }
-  
-    .showMapContainer {
-      width: 1300px;
-      height: 550px;
-    }
-  
-    .showMapInfo .showMapTitleBox {
-      padding: var(--smaller-padding) var(--small-padding);
-    }
-  
-    .showMapTitleBox .showMapTitle {
-      font-size: var(--font-small);
-    }
-  
-    .showMapInfo .showMapCloseBox {
-      width: 16px;
-      height: 16px;
-    }
-  
-    .showMapDesc .showMapAddress {
-      font-size: var(--font-smaller);
-    }
-  
-    .showMapDesc .showMapPhone {
-      font-size: var(--font-smaller);
-    }
-  
-    .showMapInfo .showMapLink {
-      font-size: var(--font-smaller);
-    }
+  .subFilterAgeInputBox {
+    padding: var(--smaller-padding);
+  }
 
-    /* error */
-    .errorBox {
+  .subFilterAgeInput {
+    font-size: calc(var(--font-small) * 1.1);
+  }
+
+  .subFilterBtnContainer {
+    width: 320px;
+    height: 45px;
+  }
+
+  .subFilterResetBtn,
+  .subFilterSearchBtn {
+    width: 125px;
+  }
+
+  /* custom_selectBox */
+  .customSelectBox::before {
+    font-size: 25px;
+  }
+
+  .customSelectUl,
+  .customSelectUlActive {
+    height: 201px;
+  }
+
+  /* eachService */
+  .eachServiceMainBackBox {
+    width: 1300px;
+  }
+
+  .eachServiceMainContainer {
+    height: 500px;
+  }
+
+  .eachServiceMainBox {
+    width: 1300px;
+  }
+
+  .eachServiceMainStatusBox {
+    grid-template-columns: repeat(auto-fill, minmax(90px, auto));
+  }
+
+  .eachServiceMainFavoriteBtnBox {
+    width: 20px;
+    height: 20px;
+  }
+
+  .eachServiceTitle {
+    font-size: calc(var(--font-medium2) * 1.2);
+  }
+
+  .eachServiceMainTable {
+    height: 110px;
+  }
+
+  .eachServiceTabTitleBox {
+    width: 1300px;
+  }
+
+  .eachServiceTabTextBoxContainer {
+    width: 1300px;
+    height: 72px;
+  }
+
+  .eachServiceTabTextBox,
+  .selectedEachServiceTabTextBox {
+    width: 220px;
+    padding: var(--basic-padding) var(--small-padding);
+  }
+
+  .eachServiceInfoBox {
+    width: 1300px;
+  }
+
+  .eachServiceInfoDescBox {
+    padding: 20px 0 0 23px;
+  }
+
+  /* sweetAlert */
+  .swal2-popup {
+    width: 600px;
+    height: 225px;
+  }
+
+  .swal2-title {
+    font-size: 1.4rem;
+  }
+
+  div:where(.swal2-icon) {
+    width: 4em !important;
+    height: 4em !important;
+  }
+
+  div:where(.swal2-icon) .swal2-icon-content {
+    font-size: 3em !important;
+  }
+
+  /* favorite */
+  .favoritePreviewContentContainer {
+    grid-gap: calc(var(--basic-padding) * 2.5);
+  }
+
+  .favoritePreviewBox {
+    width: 1300px;
+  }
+
+  .favoriteTitleBox {
+    margin-bottom: 20px;
+  }
+
+  .favoriteTitle {
+    font-size: var(--font-medium2);
+  }
+
+  .favoriteTitleOrangeM {
+    width: 145px;
+  }
+
+  .noFavoriteItemContainer {
+    width: 1300px;
+    margin-top: 120px;
+  }
+
+  .noFavoriteItemIconBox {
+    height: 80px;
+    width: 80px;
+    margin-bottom: var(--bigger-padding);
+  }
+
+  .noFavoriteItemTitleBox {
+    margin-bottom: var(--bigger-padding);
+  }
+
+  .noFavoriteItemTitle {
+    font-size: var(--font-medium2);
+  }
+
+  .noFavoriteItemBtnBox {
+    width: 170px;
+    height: 50px;
+  }
+
+  .noFavoriteItemBtn {
+    font-size: calc(var(--font-small)*1.2);
+  }
+
+  /* slick-dots */
+  .slick-slide>div {
+    margin: 50px 25px !important;
+  }
+  
+  .slick-list {
+    margin: -50px -25px !important;
+  }
+
+  /* KMap */
+  .searchMapContainer {
+    height: 900px;
+  }
+
+  .showMapContainer {
+    width: 1300px;
+    height: 550px;
+  }
+
+  .showMapInfo .showMapTitleBox {
+    padding: var(--smaller-padding) var(--small-padding);
+  }
+
+  .showMapTitleBox .showMapTitle {
+    font-size: var(--font-small);
+  }
+
+  .showMapInfo .showMapCloseBox {
+    width: 16px;
+    height: 16px;
+  }
+
+  .showMapDesc .showMapAddress {
+    font-size: var(--font-smaller);
+  }
+
+  .showMapDesc .showMapPhone {
+    font-size: var(--font-smaller);
+  }
+
+  .showMapInfo .showMapLink {
+    font-size: var(--font-smaller);
+  }
+
+  /* error */
+  .errorBtn {
+    font-size: var(--font-medium2);
+  }
+}
+
+@media screen and (max-width:1199px) {
+/* 타블렛 가로 */
+:root {
+   /* Font Size */
+    --font-large: 34px;
+    --font-medium: 26px;
+    --font-medium2: 20px;
+    --font-small: 14px;
+    --font-smaller: 12px;
+    --font-content: 10px;
+    --font-micro: 8px;
+      
+    /* Padding */
+    --micro-padding: 6px;
+    --smaller-padding: 12px;
+    --small-padding: 14px;
+    --basic-padding: 16px;
+    --medium-padding: 20px;
+    --big-padding: 26px;
+    --bigger-padding: 34px;
+  }
+      
+  /* etc */
+  #greenM2 {
+    font-size: 24px;
+  }
+
+  .darkGrayUnderBar {
+    width: 950px;
+    margin-bottom: 40px;
+  } 
+      
+  /* header */
+  .header {
+    height: 90px;
+  }
+
+  .nav {
+    width: 80%;
+  }
+
+  .link_logo_nav {
+    width: 400px;
+  }
+      
+  .logo {
+    width: 150px;
+    height: 50px;
+  }
+      
+  /* homeBanner */
+  .homeBannerTextBox {
+    left: 13%;
+    top: 45%;
+    -webkit-transform: translate(-13%, -45%);
+    transform: translate(-13%, -45%);
+  }
+
+  /* homeIntro */
+  .homeIntroContainer {
+    height: 400px;
+  }
+      
+  /* homeServiceIntro */
+  /* .homeServiceIntroContainer {
+      padding: 200px 0 0 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
-    }
-  
-    .errorTitleBox {
-      display: flex;
-      align-items: center;
       justify-content: center;
-      margin-bottom: 60px;
+      align-items: center;
+      width: 100%;
     }
-  
-    .errorTitle {
-      font-size: var(--font-large);
-      margin-right: 20px;
+        
+    .homeServiceIntroBox {
+      width: 1000px;
+      height: 1200px;
+      position: relative;
     }
-  
-    .errorImgBox {
-      width: 50px;
-      height: 50px;
+      
+    .homeServiceIntroTitleBox {
+      width: 100%;
+      position: relative;
     }
-  
-    .errorDesc {
-      font-size: var(--font-small);
-      margin-bottom: 60px;
-      line-height: 1.5;
-      text-align: center;
-    }
-  
-    .errorBtn {
-      width: 230px;
-      height: 60px;
-      background-color: var(--pistachio-color);
-      color: white;
+        
+    .homeServiceIntroTitle {
       font-size: var(--font-medium2);
-      border-radius: 15px;
+      color: var(--deep-green-color);
+    }
+        
+    .homeServiceIntroLeftPhoneBox {
+      position: absolute;
+      width: 350px;
+      height: 600px;
+      bottom: 0px;
+      left: 0px;
+    }
+        
+    .homeServiceIntroRightPhoneBox {
+      position: absolute;
+      width: 350px;
+      height: 600px;
+      top: 0;
+      right: 0;
+    }
+        
+    .homeServiceIntroLeftPhone {
+      width: 100%;
+      height: 100%;
+    }
+        
+    .homeServiceIntroRightPhone {
+      width: 100%;
+      height: 100%;
+    } */
+  /* service */ 
+  .servicePreviewBox {
+    width: 950px;
+    grid-gap: calc(var(--basic-padding) * 2.5);
+  }
+      
+  .noItemContainer {
+    width: 950px;
+    height: 600px;
+  }
+      
+  .servicePreviewContentContainer {
+    height: 325px;
+    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+  }
+      
+  .servicePreviewStatusContainter {
+    height: 25px;
+  }
+      
+  .servicePreviewStatus {
+    height: 25px;
+    font-size: calc(var(--font-micro)*1.2);
+  }
+      
+  .servicePreviewFavoriteBtnBox {
+    width: 16px;
+    height: 16px;
+  }
+      
+  .servicePreviewTrgContent {
+    height: 24%;
+    -webkit-line-clamp: 2;
+  }
+      
+  .servicePreviewContentBtn {
+    height: 35px;
+  }
+      
+  /* serviceTab */
+  .serviceTabTitleBox {
+    width: 950px;
+  }
+      
+  .serviceTabTextBoxContainer {
+    width: 950px;
+    margin-bottom: 40px;
+  }
+      
+  .serviceTabTextBox,
+  .selectedServiceTabTextBox {
+    width: 190px;
+    padding: var(--basic-padding) var(--small-padding);
+  }
+      
+  .serviceTabText {
+    font-size: calc(var(--font-small) * 1.2);
+  }
+      
+  /* search */
+  .searchFilterBoxContainer {
+    padding-top: 175px;
+  }
+
+  .searchFilterBoxContainer {
+    height: 795px;
+    padding-top: 150px;
+    padding-bottom: 75px;
+  }
+
+  .searchBoxContainer {
+    height: 45px;
+  }
+      
+  .searchBox {
+    width: 650px;
+  }
+      
+  /* filter */
+  .filterBox {
+    width: 950px;
+    height: 300px;
+  }
+  
+  /* subFilter */
+  .subFilterBox {
+    width: 950px;
+    height: 170px;
+  }
+      
+  .subFilterElementBox {
+    padding: 0 50px;
+  }
+      
+  .subFilterAgeInputBox {
+    padding: calc(var(--micro-padding)*1.5);
+  }
+      
+  .subFilterAgeInput {
+    font-size: calc(var(--font-small) * 1.3);
+  }
+      
+  .subFilterBtnContainer {
+    width: 290px;
+    height: 40px;
+  }
+      
+  .subFilterResetBtn,
+  .subFilterSearchBtn {
+    width: 110px;
+  }
+      
+  /* custom_selectBox */
+  .customSelectUl,
+  .customSelectUlActive {
+    height: 160px;
+    top: 50px;
+  }
+
+  .customSelectLi,
+  .customSelectLiSelected {
+    height: 40px;
+  }
+  
+  .customSelectBox::before {
+    font-size: 20px;
+    top: 6px;
+  }
+      
+  /* eachService */
+  .eachServiceMainBackContainer {
+    padding: 170px 0 30px;
+  }
+
+  .eachServiceMainBackBox {
+    width: 950px;
+  }
+
+  .eachServiceMainBackImgBox {
+    width: 20px;
+    height: 20px;
+  }
+      
+  .eachServiceMainContainer {
+    height: 450px;
+  }
+      
+  .eachServiceMainBox {
+    width: 950px;
+  }
+      
+  .eachServiceMainStatusBox {
+    height: 30px;
+  }
+
+  .eachServiceMainStatus {
+    font-size: var(--font-smaller);
+  }
+
+  .eachServiceMainTable {
+    height: 100px;
+  }
+      
+  .eachServiceTabTitleBox {
+    width: 950px;
+  }
+      
+  .eachServiceTabTextBoxContainer {
+    width: 950px;
+    height: 59px;
+  }
+      
+  .eachServiceTabTextBox,
+  .selectedEachServiceTabTextBox {
+    width: 170px;
+  }
+      
+  .eachServiceInfoBox {
+    width: 950px;
+    min-height: 200px;
+  }
+      
+  .eachServiceInfoDescBox {
+    padding: 20px 0 0 23px;
+  }
+
+  /* favorite */
+  .favoritePreviewContainer {
+    padding-top: 150px;
+  }
+
+    .favoritePreviewContainer2 {
+      padding-top: 100px;
     }
 
+  .favoritePreviewContentContainer {
+    grid-gap: calc(var(--basic-padding) * 2.5);
   }
-    @media screen and (max-width:1199px) {
-      /* 타블렛 가로 */
-    }
+      
+  .favoritePreviewBox {
+    width: 950px;
+  }
+      
+  .favoriteTitleOrangeM {
+    width: 125px;
+  }
+      
+  .noFavoriteItemContainer {
+    width: 950px;
+    margin-top: 120px;
+  }
   
-    @media screen and (max-width:899px) {
-      /* 모바일 가로, 타블렛 세로 */
-    }
+  .noFavoriteItemIconBox {
+    height: 70px;
+    width: 70px;
+  }
+      
+  .noFavoriteItemBtnBox {
+    width: 150px;
+    height: 45px;
+  }
   
-    @media screen and (max-width:599px) {
-      /* 모바일 세로 */
-    }
+  /* slick-dots */
+  .slick-slide>div {
+    margin: 50px 20px !important;
+  }
+      
+  .slick-list {
+    margin: -50px -20px !important;
+  }
+
+  .dots_custom li button {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* KMap */
+  .searchMapContainer {
+    padding-top: 150px;
+    height: 750px;
+  }
+      
+  .showMapContainer {
+    width: 950px;
+    height: 500px;
+  }
+
+  .showMapWrap {
+    width: 300px;
+    height: 160px;
+  }
+      
+  .showMapTitleBox .showMapTitle {
+    font-size: calc(var(--font-small) * 1.2);
+  }
+      
+  .showMapInfo .showMapCloseBox {
+    width: 14px;
+    height: 14px;
+  }
+      
+  .showMapDesc .showMapAddress {
+    font-size: var(--font-small);
+  }
+      
+  .showMapDesc .showMapPhone {
+    font-size: var(--font-small);
+  }
+      
+  .showMapInfo .showMapLink {
+    font-size: var(--font-small);
+  }
+      
+  /* error */
+  .errorTitleBox {
+    margin-bottom: 40px;
+  }
+
+  .errorDesc {
+    margin-bottom: 40px;
+    font-size: calc(var(--font-small) * 1.2);
+  }
+
+  .errorImgBox {
+    width: 40px;
+    height: 40px;
+  }
+
+  .errorBtn {
+    width: 180px;
+    height: 50px;
+  }
+}
+  
+@media screen and (max-width:899px) {
+  /* 모바일 가로, 타블렛 세로 */
+}
+  
+@media screen and (max-width:599px) {
+  /* 모바일 세로 */
+}
