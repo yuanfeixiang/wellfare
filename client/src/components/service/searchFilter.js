@@ -21,6 +21,16 @@ function SearchFilter() {
   const SidoRef = useRef();
   const GunguRef = useRef();
 
+  const [tabNum, setTabNum] = useState(0);
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const resizeListener = () => {
+      setInnerWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", resizeListener);
+  });
+
   useEffect(() => {
     document.addEventListener("mousedown", clickCustomSelectBoxOutside);
 
@@ -148,97 +158,255 @@ function SearchFilter() {
         </div>
       </div>
       <div className="filterBoxContainer">
-        <div className="filterBox">
-          <div className="arrayFilterBox">
-            <div className="arrayFilterTitleBox">
-              <span className="arrayFilterTitle">생애주기</span>
+        {innerWidth > 300 && innerWidth < 768 ? (
+          <div className="mobileFilterTabContainer">
+            <div className="mobileFilterTabTextBoxContainer">
+              <div
+                className={
+                  tabNum === 0
+                    ? "selectedMobileFilterTabTextBox"
+                    : "mobileFilterTabTextBox"
+                }
+                onClick={() => setTabNum(0)}
+              >
+                <span
+                  className={
+                    tabNum === 0
+                      ? "selectedMobileFilterTabText"
+                      : "mobileFilterTabText"
+                  }
+                >
+                  생애주기
+                </span>
+              </div>
+              <div
+                className={
+                  tabNum === 1
+                    ? "selectedMobileFilterTabTextBox"
+                    : "mobileFilterTabTextBox"
+                }
+                onClick={() => setTabNum(1)}
+              >
+                <span
+                  className={
+                    tabNum === 1
+                      ? "selectedMobileFilterTabText"
+                      : "mobileFilterTabText"
+                  }
+                >
+                  가구상황
+                </span>
+              </div>
+              <div
+                className={
+                  tabNum === 2
+                    ? "selectedMobileFilterTabTextBox"
+                    : "mobileFilterTabTextBox"
+                }
+                onClick={() => setTabNum(2)}
+              >
+                <span
+                  className={
+                    tabNum === 2
+                      ? "selectedMobileFilterTabText"
+                      : "mobileFilterTabText"
+                  }
+                >
+                  관심주제
+                </span>
+              </div>
             </div>
-            <div className="arrayFilterElementBox">
-              {lifeArrayList.map((data, index) => {
-                return (
-                  <div className="arrayFilterElement" key={index}>
-                    <input
-                      type="checkbox"
-                      name={"lifeArray_" + data.replace(/(\s*)/g, "")}
-                      checked={_filterLifeArray.includes(data)}
-                      className="filterCheckBox"
-                      onChange={(e) =>
-                        _filterLifeArray.includes(data)
-                          ? setFilterLifeArray(
-                            _filterLifeArray.filter(
-                              (element) => element !== data
-                            )
-                          )
-                          : setFilterLifeArray([..._filterLifeArray, data])
-                      }
-                    />
-                    <span className="filterElement">
-                      {data.replace(/(\s*)/g, "")}
-                    </span>
-                  </div>
-                );
-              })}
+            <div className="mobileFilterInfoContainer">
+              <div className="mobileFilterInfoBox">
+                {tabNum === 0 ? (
+                  <>
+                    <div className="arrayFilterElementBox">
+                      {lifeArrayList.map((data, index) => {
+                        return (
+                          <div className="arrayFilterElement" key={index}>
+                            <input
+                              type="checkbox"
+                              name={"lifeArray_" + data.replace(/(\s*)/g, "")}
+                              checked={_filterLifeArray.includes(data)}
+                              className="filterCheckBox"
+                              onChange={(e) =>
+                                _filterLifeArray.includes(data)
+                                  ? setFilterLifeArray(
+                                      _filterLifeArray.filter(
+                                        (element) => element !== data
+                                      )
+                                    )
+                                  : setFilterLifeArray([
+                                      ..._filterLifeArray,
+                                      data,
+                                    ])
+                              }
+                            />
+                            <span className="filterElement">
+                              {data.replace(/(\s*)/g, "")}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                ) : tabNum === 1 ? (
+                  <>
+                    <div className="arrayFilterElementBox">
+                      {gaguArrayList.map((data, index) => {
+                        return (
+                          <div className="arrayFilterElement" key={index}>
+                            <input
+                              type="checkbox"
+                              name={"gaguArray_" + data}
+                              checked={_filterGaguArray.includes(data)}
+                              className="filterCheckBox"
+                              onChange={(e) =>
+                                _filterGaguArray.includes(data)
+                                  ? setFilterGaguArray(
+                                      _filterGaguArray.filter(
+                                        (element) => element !== data
+                                      )
+                                    )
+                                  : setFilterGaguArray([
+                                      ..._filterGaguArray,
+                                      data,
+                                    ])
+                              }
+                            />
+                            <span className="filterElement">{data}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="intrsArrayFilterElementBox">
+                      {intrsArrayList.map((data, index) => {
+                        return (
+                          <div className="arrayFilterElement" key={index}>
+                            <input
+                              type="checkbox"
+                              name={"intrsArray_" + data}
+                              checked={_filterIntrsArray.includes(data)}
+                              className="filterCheckBox"
+                              onChange={(e) =>
+                                _filterIntrsArray.includes(data)
+                                  ? setFilterIntrsArray(
+                                      _filterIntrsArray.filter(
+                                        (element) => element !== data
+                                      )
+                                    )
+                                  : setFilterIntrsArray([
+                                      ..._filterIntrsArray,
+                                      data,
+                                    ])
+                              }
+                            />
+                            <span className="filterElement">{data}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           </div>
-          <div className="arrayFilterBox">
-            <div className="arrayFilterTitleBox">
-              <span className="arrayFilterTitle">가구상황</span>
+        ) : (
+          <div className="filterBox">
+            <div className="arrayFilterBox">
+              <div className="arrayFilterTitleBox">
+                <span className="arrayFilterTitle">생애주기</span>
+              </div>
+              <div className="arrayFilterElementBox">
+                {lifeArrayList.map((data, index) => {
+                  return (
+                    <div className="arrayFilterElement" key={index}>
+                      <input
+                        type="checkbox"
+                        name={"lifeArray_" + data.replace(/(\s*)/g, "")}
+                        checked={_filterLifeArray.includes(data)}
+                        className="filterCheckBox"
+                        onChange={(e) =>
+                          _filterLifeArray.includes(data)
+                            ? setFilterLifeArray(
+                                _filterLifeArray.filter(
+                                  (element) => element !== data
+                                )
+                              )
+                            : setFilterLifeArray([..._filterLifeArray, data])
+                        }
+                      />
+                      <span className="filterElement">
+                        {data.replace(/(\s*)/g, "")}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="arrayFilterElementBox">
-              {gaguArrayList.map((data, index) => {
-                return (
-                  <div className="arrayFilterElement" key={index}>
-                    <input
-                      type="checkbox"
-                      name={"gaguArray_" + data}
-                      checked={_filterGaguArray.includes(data)}
-                      className="filterCheckBox"
-                      onChange={(e) =>
-                        _filterGaguArray.includes(data)
-                          ? setFilterGaguArray(
-                            _filterGaguArray.filter(
-                              (element) => element !== data
-                            )
-                          )
-                          : setFilterGaguArray([..._filterGaguArray, data])
-                      }
-                    />
-                    <span className="filterElement">{data}</span>
-                  </div>
-                );
-              })}
+            <div className="arrayFilterBox">
+              <div className="arrayFilterTitleBox">
+                <span className="arrayFilterTitle">가구상황</span>
+              </div>
+              <div className="arrayFilterElementBox">
+                {gaguArrayList.map((data, index) => {
+                  return (
+                    <div className="arrayFilterElement" key={index}>
+                      <input
+                        type="checkbox"
+                        name={"gaguArray_" + data}
+                        checked={_filterGaguArray.includes(data)}
+                        className="filterCheckBox"
+                        onChange={(e) =>
+                          _filterGaguArray.includes(data)
+                            ? setFilterGaguArray(
+                                _filterGaguArray.filter(
+                                  (element) => element !== data
+                                )
+                              )
+                            : setFilterGaguArray([..._filterGaguArray, data])
+                        }
+                      />
+                      <span className="filterElement">{data}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="arrayFilterBox">
+              <div className="arrayFilterTitleBox">
+                <span className="arrayFilterTitle">관심주제</span>
+              </div>
+              <div className="intrsArrayFilterElementBox">
+                {intrsArrayList.map((data, index) => {
+                  return (
+                    <div className="arrayFilterElement" key={index}>
+                      <input
+                        type="checkbox"
+                        name={"intrsArray_" + data}
+                        checked={_filterIntrsArray.includes(data)}
+                        className="filterCheckBox"
+                        onChange={(e) =>
+                          _filterIntrsArray.includes(data)
+                            ? setFilterIntrsArray(
+                                _filterIntrsArray.filter(
+                                  (element) => element !== data
+                                )
+                              )
+                            : setFilterIntrsArray([..._filterIntrsArray, data])
+                        }
+                      />
+                      <span className="filterElement">{data}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-          <div className="arrayFilterBox">
-            <div className="arrayFilterTitleBox">
-              <span className="arrayFilterTitle">관심주제</span>
-            </div>
-            <div className="intrsArrayFilterElementBox">
-              {intrsArrayList.map((data, index) => {
-                return (
-                  <div className="arrayFilterElement" key={index}>
-                    <input
-                      type="checkbox"
-                      name={"intrsArray_" + data}
-                      checked={_filterIntrsArray.includes(data)}
-                      className="filterCheckBox"
-                      onChange={(e) =>
-                        _filterIntrsArray.includes(data)
-                          ? setFilterIntrsArray(
-                            _filterIntrsArray.filter(
-                              (element) => element !== data
-                            )
-                          )
-                          : setFilterIntrsArray([..._filterIntrsArray, data])
-                      }
-                    />
-                    <span className="filterElement">{data}</span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+        )}
         <div className="subFilterBoxContainer">
           <div className="subFilterBox">
             <div className="subFilterElementBox">
@@ -260,84 +428,86 @@ function SearchFilter() {
               <div className="subFilterAreaContainer">
                 <div className="subFilterAreaBox">
                   <span className="subFilterAreaTitle">지역</span>
-                  <div
-                    className="customSelectBox"
-                    ref={SidoRef}
-                    onClick={() => {
-                      setSidoShowOptions((prev) => !prev);
-                    }}
-                  >
-                    <span className="customSelectSpan">{_filterSido}</span>
-                    <ul
-                      className={
-                        sidoShowOptions
-                          ? "customSelectUlActive"
-                          : "customSelectUl"
-                      }
-                      show={sidoShowOptions}
+                  <div className="customSelectContainer">
+                    <div
+                      className="customSelectBox"
+                      ref={SidoRef}
+                      onClick={() => {
+                        setSidoShowOptions((prev) => !prev);
+                      }}
                     >
-                      {sidoArrayList.map((data, index) => (
-                        <li
-                          className={
-                            _filterSido === data
-                              ? "customSelectLiSelected"
-                              : "customSelectLi"
-                          }
-                          key={index}
-                          value={data}
-                          onClick={() => {
-                            setFilterSido(data);
-                            setFilterGungu("전체");
-                          }}
-                        >
-                          {data}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div
-                    className="customSelectBox"
-                    ref={GunguRef}
-                    onClick={() => {
-                      if (gunguArrayList.length > 1) {
-                        setGunguShowOptions((prev) => !prev);
-                      } else {
-                        Swal.fire({
-                          position: "center",
-                          icon: "warning",
-                          title: "시, 도를 먼저 선택해주세요",
-                          showConfirmButton: false,
-                          timer: 1500,
-                        });
-                      }
-                    }}
-                  >
-                    <span className="customSelectSpan">{_filterGungu}</span>
-                    <ul
-                      className={
-                        gunguShowOptions
-                          ? "customSelectUlActive"
-                          : "customSelectUl"
-                      }
-                      show={gunguShowOptions}
+                      <span className="customSelectSpan">{_filterSido}</span>
+                      <ul
+                        className={
+                          sidoShowOptions
+                            ? "customSelectUlActive"
+                            : "customSelectUl"
+                        }
+                        show={sidoShowOptions}
+                      >
+                        {sidoArrayList.map((data, index) => (
+                          <li
+                            className={
+                              _filterSido === data
+                                ? "customSelectLiSelected"
+                                : "customSelectLi"
+                            }
+                            key={index}
+                            value={data}
+                            onClick={() => {
+                              setFilterSido(data);
+                              setFilterGungu("전체");
+                            }}
+                          >
+                            {data}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div
+                      className="customSelectBox"
+                      ref={GunguRef}
+                      onClick={() => {
+                        if (gunguArrayList.length > 1) {
+                          setGunguShowOptions((prev) => !prev);
+                        } else {
+                          Swal.fire({
+                            position: "center",
+                            icon: "warning",
+                            title: "시, 도를 먼저 선택해주세요",
+                            showConfirmButton: false,
+                            timer: 1500,
+                          });
+                        }
+                      }}
                     >
-                      {gunguArrayList.map((data, index) => (
-                        <li
-                          className={
-                            _filterGungu === data
-                              ? "customSelectLiSelected"
-                              : "customSelectLi"
-                          }
-                          key={index}
-                          value={data}
-                          onClick={() => {
-                            setFilterGungu(data);
-                          }}
-                        >
-                          {data}
-                        </li>
-                      ))}
-                    </ul>
+                      <span className="customSelectSpan">{_filterGungu}</span>
+                      <ul
+                        className={
+                          gunguShowOptions
+                            ? "customSelectUlActive"
+                            : "customSelectUl"
+                        }
+                        show={gunguShowOptions}
+                      >
+                        {gunguArrayList.map((data, index) => (
+                          <li
+                            className={
+                              _filterGungu === data
+                                ? "customSelectLiSelected"
+                                : "customSelectLi"
+                            }
+                            key={index}
+                            value={data}
+                            onClick={() => {
+                              setFilterGungu(data);
+                            }}
+                          >
+                            {data}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>

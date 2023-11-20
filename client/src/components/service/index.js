@@ -19,6 +19,15 @@ import SearchFilter from "./searchFilter";
 function Service() {
   const dispatch = useDispatch();
 
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const resizeListener = () => {
+      setInnerWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", resizeListener);
+  });
+
   const {
     page,
     sunder,
@@ -130,30 +139,30 @@ function Service() {
                       <div className="servicePreviewStatusBox">
                         {a.lifeArray != null
                           ? a.lifeArray
-                            .split(",")
-                            .map((data, index) => (
-                              <div className="servicePreviewStatus">
-                                {data.replace(/(\s*)/g, "")}
-                              </div>
-                            ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data.replace(/(\s*)/g, "")}
+                                </div>
+                              ))
                           : ""}
                         {a.gaguArray
                           ? a.gaguArray
-                            .split(",")
-                            .map((data, index) => (
-                              <div className="servicePreviewStatus">
-                                {data}
-                              </div>
-                            ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                           : ""}
                         {a.intrsArray
                           ? a.intrsArray
-                            .split(",")
-                            .map((data, index) => (
-                              <div className="servicePreviewStatus">
-                                {data}
-                              </div>
-                            ))
+                              .split(",")
+                              .map((data, index) => (
+                                <div className="servicePreviewStatus">
+                                  {data}
+                                </div>
+                              ))
                           : ""}
                       </div>
                       <div className="servicePreviewFavoriteBox">
@@ -163,9 +172,9 @@ function Service() {
                               centralFavoriteArray.some(
                                 (element) => element.servId === a.servId
                               ) ||
-                                localFavoriteArray.some(
-                                  (element) => element.servId === a.servId
-                                )
+                              localFavoriteArray.some(
+                                (element) => element.servId === a.servId
+                              )
                                 ? star_yellow
                                 : star_white
                             }
@@ -223,6 +232,18 @@ function Service() {
         </div>
         {serviceArray.length === 0 ? (
           ""
+        ) : innerWidth > 300 && innerWidth < 768 ? (
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={9}
+            totalItemsCount={sunder === 0 ? centralEndNum : localEndNum}
+            pageRangeDisplayed={1}
+            firstPageText={"<<"}
+            lastPageText={">>"}
+            prevPageText={"<"}
+            nextPageText={">"}
+            onChange={handlePageChange}
+          />
         ) : (
           <Pagination
             activePage={page}

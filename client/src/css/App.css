@@ -59,6 +59,7 @@
   --big-padding: 40px;
   --bigger-padding: 48px;
 
+  /* z-index */
   --navi_li-zindex: 1;
   --homeBannerTextContainer-zindex: 2;
   --homeBannerCopyright-zindex: 3;
@@ -158,12 +159,12 @@ body {
 
 #blackL {
   color: var(--black-color);
-  font-size: calc(var(--font-large) * 1.3);
+  font-size: calc(var(--font-large) * 1.5);
 }
 
 #pistachioL {
   color: #609c60;
-  font-size: calc(var(--font-large) * 1.5);
+  font-size: calc(var(--font-large) * 1.7);
 }
 
 .darkGrayUnderBar {
@@ -219,7 +220,7 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 110px;
+  height: 150px;
   justify-content: center;
   position: absolute;
   width: 100%;
@@ -234,7 +235,7 @@ nav {
 .nav {
   display: flex;
   justify-content: space-between;
-  width: 60%;
+  width: 85%;
   height: 100%;
   align-items: center;
 }
@@ -271,7 +272,6 @@ nav {
 .link_logo_nav {
   display: flex;
   width: 500px;
-  height: 100%;
   align-items: center;
 }
 
@@ -373,7 +373,6 @@ nav ul li {
   flex-direction: column;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  animation: 1.5s ease-in-out 0s 1 normal forwards running Fadein;
   z-index: var(--homeBannerTextContainer-zindex);
 }
 
@@ -388,11 +387,13 @@ nav ul li {
   flex-direction: column;
   -webkit-box-pack: start;
   justify-content: flex-start;
+  width: 650px;
+  animation: 1.5s ease-in-out 0s 1 normal forwards running Fadein;
 }
 
 .homeBannerText {
   color: var(--black-color);
-  font-size: calc(var(--font-large) * 1.2);
+  font-size: calc(var(--font-large) * 1.3);
   line-height: 2.5;
   text-align: center;
   width: 100%;
@@ -420,6 +421,7 @@ nav ul li {
   right: 0;
   padding: 20px;
   z-index: var(--homeBannerCopyright-zindex);
+  font-size: var(--font-small);
 }
 
 /* homeIntro */
@@ -533,7 +535,7 @@ nav ul li {
 
 .servicePreviewContentContainer {
   display: flex !important;
-  height: 500px;
+  height: 525px;
   flex-direction: column;
   justify-content: space-between;
   border: var(--black-color) 1px solid;
@@ -749,10 +751,11 @@ nav ul li {
 .searchInput {
   margin-left: var(--smaller-padding);
   width: 100%;
-  height: var(--medium-padding);
+  height: 100%;
   font-size: var(--font-smaller);
   border: 0;
   background-color: white;
+  border-radius: 0px 30px 30px 0px;
 }
 
 /* filter */
@@ -895,13 +898,12 @@ nav ul li {
 .subFilterAgeInput {
   margin-right: var(--micro-padding);
   width: 100%;
-  height: var(--medium-padding);
-  font-size: var(--font-smaller);
+  height: 100%;
+  font-size: calc(var(--font-small) * 1.1);
   border: 0;
   background-color: white;
   color: var(--green-color);
   text-align: right;
-  font-size: var(--font-small);
 }
 
 .subFilterAreaContainer {
@@ -918,14 +920,6 @@ nav ul li {
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-}
-
-.subFilterAreaSelect {
-  width: 40%;
-  font-size: var(--font-smaller);
-  text-align: center;
-  height: 80%;
-  border-radius: 10px;
 }
 
 .subFilterBtnContainer {
@@ -959,13 +953,21 @@ nav ul li {
 }
 
 /* custom_selectBox */
+.customSelectContainer {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
 .customSelectBox {
   position: relative;
-  width: 40%;
+  width: 50%;
   padding: 8px;
   border-radius: 12px;
   background-color: white;
-  align-self: center;
+  align-items: center;
   border: var(--black-color) 1px solid;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -1158,6 +1160,7 @@ ul.pagination li a {
   grid-template-columns: repeat(auto-fill, minmax(120px, auto));
   width: 90%;
   height: 35px;
+  overflow: hidden;
 }
 
 .eachServiceMainStatus {
@@ -1168,7 +1171,7 @@ ul.pagination li a {
   justify-content: center;
   padding: 0 10px;
   font-size: var(--font-content);
-  height: 100%;
+  height: 35px;
 }
 
 .eachServiceMainFavoriteBox {
@@ -1245,13 +1248,6 @@ ul.pagination li a {
   flex-direction: column;
   align-items: center;
   width: 100%;
-}
-
-.eachServiceTabTitleBox {
-  width: 1600px;
-  font-size: var(--font-medium2);
-  margin-bottom: var(--small-padding);
-  margin-left: var(--micro-padding);
 }
 
 .eachServiceTabTextBoxContainer {
@@ -1493,6 +1489,7 @@ ul.pagination li a {
 }
 
 .dots_custom {
+  width: 100%;
   height: 50px;
   display: flex !important;
   align-content: center;
@@ -1505,7 +1502,7 @@ ul.pagination li a {
 }
 
 .dots_custom li {
-  width: 50px;
+  width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1550,11 +1547,11 @@ ul.pagination li a {
 
 .showMapWrap {
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 40px;
   width: 330px;
   height: 180px;
-  margin-left: -144px;
   text-align: left;
   overflow: hidden;
   font-size: 12px;
@@ -1630,19 +1627,19 @@ ul.pagination li a {
   position: relative;
 }
 
-.showMapDesc .showMapAddress {
+.showMapDesc .showMapAddress,
+.showMapDesc .showMapPhone,
+.showMapInfo .showMapLink {
   font-size: var(--font-micro);
+  word-wrap: break-word;
   text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.showMapDesc .showMapPhone {
-  font-size: var(--font-micro);
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .showMapInfo .showMapLink {
-  font-size: var(--font-micro);
-  color: #5085bb;
+  color: var(--deep-green-color);
 }
 
 .showMapLoadingContainer {
@@ -1683,14 +1680,14 @@ ul.pagination li a {
 }
 
 .errorImgBox {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
 .errorDesc {
   font-size: var(--font-small);
   margin-bottom: 60px;
-  line-height: 1.5;
+  line-height: 1.8;
   text-align: center;
 }
 
@@ -1742,7 +1739,7 @@ ul.pagination li a {
 
   /* header */
   .nav {
-    width: 75%;
+    width: 80%;
   }
 
   .logo {
@@ -1761,6 +1758,14 @@ ul.pagination li a {
   }
 
   /* homeBanner */
+  .homeBannerTextBox {
+    width: 450px;
+    top: 45%;
+    left: 15%;
+    -webkit-transform: translate(-15%, -45%);
+    transform: translate(-15%, -45%);
+  }
+
   .homeBannerText {
     font-size: var(--font-large);
   }
@@ -1820,7 +1825,7 @@ ul.pagination li a {
   /* service */
   .servicePreviewBox {
     width: 1300px;
-    grid-gap: calc(var(--basic-padding) * 2.5);
+    grid-gap: calc(var(--bigger-padding) * 2);
   }
 
   .noItemContainer {
@@ -1839,7 +1844,6 @@ ul.pagination li a {
 
   .servicePreviewContentContainer {
     height: 425px;
-    box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
   }
 
   .servicePreviewStatusContainter {
@@ -1848,6 +1852,7 @@ ul.pagination li a {
 
   .servicePreviewStatus {
     height: 30px;
+    font-size: calc(var(--font-micro) * 1.1);
   }
 
   .servicePreviewFavoriteBtnBox {
@@ -1915,18 +1920,15 @@ ul.pagination li a {
     padding: var(--smaller-padding);
   }
 
-  .subFilterAgeInput {
-    font-size: calc(var(--font-small) * 1.1);
-  }
-
   .subFilterBtnContainer {
-    width: 320px;
+    width: 310px;
     height: 45px;
   }
 
   .subFilterResetBtn,
   .subFilterSearchBtn {
     width: 125px;
+    font-size: calc(var(--font-small) * 1.1);
   }
 
   /* custom_selectBox */
@@ -1953,7 +1955,7 @@ ul.pagination li a {
   }
 
   .eachServiceMainStatusBox {
-    grid-template-columns: repeat(auto-fill, minmax(90px, auto));
+    grid-template-columns: repeat(auto-fill, minmax(100px, auto));
   }
 
   .eachServiceMainFavoriteBtnBox {
@@ -1965,12 +1967,12 @@ ul.pagination li a {
     font-size: calc(var(--font-medium2) * 1.2);
   }
 
-  .eachServiceMainTable {
-    height: 110px;
+  .eachServiceDgst {
+    font-size: var(--font-small);
   }
 
-  .eachServiceTabTitleBox {
-    width: 1300px;
+  .eachServiceMainTable {
+    height: 110px;
   }
 
   .eachServiceTabTextBoxContainer {
@@ -2013,7 +2015,7 @@ ul.pagination li a {
 
   /* favorite */
   .favoritePreviewContentContainer {
-    grid-gap: calc(var(--basic-padding) * 2.5);
+    grid-gap: calc(var(--bigger-padding) * 2);
   }
 
   .favoritePreviewBox {
@@ -2021,7 +2023,7 @@ ul.pagination li a {
   }
 
   .favoriteTitleBox {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .favoriteTitle {
@@ -2061,12 +2063,13 @@ ul.pagination li a {
   }
 
   /* slick-dots */
-  .slick-slide > div {
-    margin: 50px 25px !important;
+  .dots_custom li {
+    width: 50px;
   }
 
-  .slick-list {
-    margin: -50px -25px !important;
+  .dots_custom li button {
+    width: 10px;
+    height: 10px;
   }
 
   /* KMap */
@@ -2092,19 +2095,18 @@ ul.pagination li a {
     height: 16px;
   }
 
-  .showMapDesc .showMapAddress {
-    font-size: var(--font-smaller);
-  }
-
-  .showMapDesc .showMapPhone {
-    font-size: var(--font-smaller);
-  }
-
+  .showMapDesc .showMapAddress,
+  .showMapDesc .showMapPhone,
   .showMapInfo .showMapLink {
     font-size: var(--font-smaller);
   }
 
   /* error */
+  .errorImgBox {
+    width: 50px;
+    height: 50px;
+  }
+
   .errorBtn {
     font-size: var(--font-medium2);
   }
@@ -2134,25 +2136,37 @@ ul.pagination li a {
 
   /* etc */
   #greenM2 {
-    font-size: 24px;
+    font-size: 22px;
+  }
+
+  #blackL {
+    font-size: calc(var(--font-large) * 1.3);
+  }
+
+  #pistachioL {
+    font-size: calc(var(--font-large) * 1.5);
+  }
+
+  #deepGreenSmer {
+    font-size: var(--font-small);
   }
 
   .darkGrayUnderBar {
-    width: 950px;
+    width: 900px;
     margin-bottom: 40px;
   }
 
   /* header */
   .header {
-    height: 90px;
+    height: 110px;
   }
 
-  .nav {
-    width: 80%;
+  nav ul li {
+    font-size: calc(var(--font-small) * 1.2);
   }
 
   .link_logo_nav {
-    width: 400px;
+    width: 350px;
   }
 
   .logo {
@@ -2160,12 +2174,26 @@ ul.pagination li a {
     height: 50px;
   }
 
+  /* footer */
+  .footer {
+    margin-top: 100px;
+  }
+
   /* homeBanner */
   .homeBannerTextBox {
-    left: 13%;
-    top: 45%;
-    -webkit-transform: translate(-13%, -45%);
-    transform: translate(-13%, -45%);
+    width: 500px;
+    left: 50%;
+    top: 17%;
+    -webkit-transform: translate(-50%, -17%);
+    transform: translate(-50%, -17%);
+  }
+
+  .homeBannerImage {
+    object-fit: fill;
+  }
+
+  .homeBannerCopyright {
+    font-size: calc(var(--font-small) * 1.2);
   }
 
   /* homeIntro */
@@ -2226,18 +2254,19 @@ ul.pagination li a {
     } */
   /* service */
   .servicePreviewBox {
-    width: 950px;
+    width: 900px;
     grid-gap: calc(var(--basic-padding) * 2.5);
   }
 
   .noItemContainer {
-    width: 950px;
+    width: 900px;
     height: 600px;
   }
 
   .servicePreviewContentContainer {
-    height: 325px;
+    height: 300px;
     box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.2);
+    padding: var(--medium-padding);
   }
 
   .servicePreviewStatusContainter {
@@ -2265,11 +2294,11 @@ ul.pagination li a {
 
   /* serviceTab */
   .serviceTabTitleBox {
-    width: 950px;
+    width: 900px;
   }
 
   .serviceTabTextBoxContainer {
-    width: 950px;
+    width: 900px;
     margin-bottom: 40px;
   }
 
@@ -2304,14 +2333,23 @@ ul.pagination li a {
 
   /* filter */
   .filterBox {
-    width: 950px;
+    width: 900px;
     height: 300px;
+  }
+
+  .filterElement {
+    font-size: calc(var(--font-small) * 1.1);
   }
 
   /* subFilter */
   .subFilterBox {
-    width: 950px;
+    width: 900px;
     height: 170px;
+  }
+
+  .subFilterAgeInputBox {
+    padding: calc(var(--micro-padding) * 1.5);
+    margin-left: 15px;
   }
 
   .subFilterElementBox {
@@ -2327,13 +2365,14 @@ ul.pagination li a {
   }
 
   .subFilterBtnContainer {
-    width: 290px;
+    width: 265px;
     height: 40px;
   }
 
   .subFilterResetBtn,
   .subFilterSearchBtn {
     width: 110px;
+    font-size: calc(var(--font-small) * 1.2);
   }
 
   /* custom_selectBox */
@@ -2348,9 +2387,23 @@ ul.pagination li a {
     height: 40px;
   }
 
+  .customSelectBox {
+    margin-left: 15px;
+  }
+
   .customSelectBox::before {
     font-size: 20px;
     top: 6px;
+  }
+
+  /* pagination */
+  .pagination {
+    gap: 25px;
+  }
+
+  ul.pagination li {
+    width: 40px;
+    height: 40px;
   }
 
   /* eachService */
@@ -2359,7 +2412,7 @@ ul.pagination li a {
   }
 
   .eachServiceMainBackBox {
-    width: 950px;
+    width: 900px;
   }
 
   .eachServiceMainBackImgBox {
@@ -2372,27 +2425,25 @@ ul.pagination li a {
   }
 
   .eachServiceMainBox {
-    width: 950px;
+    width: 900px;
   }
 
   .eachServiceMainStatusBox {
     height: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(90px, auto));
   }
 
   .eachServiceMainStatus {
     font-size: var(--font-smaller);
+    height: 30px;
   }
 
   .eachServiceMainTable {
     height: 100px;
   }
 
-  .eachServiceTabTitleBox {
-    width: 950px;
-  }
-
   .eachServiceTabTextBoxContainer {
-    width: 950px;
+    width: 900px;
     height: 59px;
   }
 
@@ -2402,12 +2453,20 @@ ul.pagination li a {
   }
 
   .eachServiceInfoBox {
-    width: 950px;
+    width: 900px;
     min-height: 200px;
+  }
+
+  .eachServiceInfoTitle {
+    font-size: calc(var(--font-small) * 1.2);
   }
 
   .eachServiceInfoDescBox {
     padding: 20px 0 0 23px;
+  }
+
+  .eachServiceInfoDesc {
+    font-size: var(--font-small);
   }
 
   /* favorite */
@@ -2420,11 +2479,11 @@ ul.pagination li a {
   }
 
   .favoritePreviewContentContainer {
-    grid-gap: calc(var(--basic-padding) * 2.5);
+    grid-gap: calc(var(--medium-padding) * 2.25);
   }
 
   .favoritePreviewBox {
-    width: 950px;
+    width: 900px;
   }
 
   .favoriteTitleOrangeM {
@@ -2432,7 +2491,7 @@ ul.pagination li a {
   }
 
   .noFavoriteItemContainer {
-    width: 950px;
+    width: 900px;
     margin-top: 120px;
   }
 
@@ -2448,16 +2507,24 @@ ul.pagination li a {
 
   /* slick-dots */
   .slick-slide > div {
-    margin: 50px 20px !important;
+    margin: 50px 22.5px !important;
   }
 
   .slick-list {
-    margin: -50px -20px !important;
+    margin: -50px -22.5px !important;
+  }
+
+  .dots_custom {
+    bottom: -15px;
+  }
+
+  .dots_custom li {
+    width: 40px;
   }
 
   .dots_custom li button {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
 
   /* KMap */
@@ -2467,7 +2534,7 @@ ul.pagination li a {
   }
 
   .showMapContainer {
-    width: 950px;
+    width: 900px;
     height: 500px;
   }
 
@@ -2477,7 +2544,7 @@ ul.pagination li a {
   }
 
   .showMapTitleBox .showMapTitle {
-    font-size: calc(var(--font-small) * 1.2);
+    font-size: calc(var(--font-small) * 1.3);
   }
 
   .showMapInfo .showMapCloseBox {
@@ -2485,14 +2552,8 @@ ul.pagination li a {
     height: 14px;
   }
 
-  .showMapDesc .showMapAddress {
-    font-size: var(--font-small);
-  }
-
-  .showMapDesc .showMapPhone {
-    font-size: var(--font-small);
-  }
-
+  .showMapDesc .showMapAddress,
+  .showMapDesc .showMapPhone,
   .showMapInfo .showMapLink {
     font-size: var(--font-small);
   }
@@ -2520,8 +2581,1064 @@ ul.pagination li a {
 
 @media screen and (max-width: 899px) {
   /* 모바일 가로, 타블렛 세로 */
+  :root {
+    /* Font Size */
+    --font-large: 26px;
+    --font-medium: 20px;
+    --font-medium2: 14px;
+    --font-small: 12px;
+    --font-smaller: 10px;
+    --font-content: 9px;
+    --font-micro: 8px;
+
+    /* Padding */
+    --micro-padding: 6px;
+    --smaller-padding: 8px;
+    --small-padding: 10px;
+    --basic-padding: 12px;
+    --medium-padding: 14px;
+    --big-padding: 20px;
+    --bigger-padding: 26px;
+  }
+
+  /* etc */
+  #blackL {
+    font-size: calc(var(--font-large) * 1.6);
+  }
+
+  #pistachioL {
+    font-size: calc(var(--font-large) * 1.8);
+  }
+
+  #greenM2 {
+    font-size: 18px;
+  }
+
+  .darkGrayUnderBar {
+    width: 650px;
+    margin-bottom: 40px;
+  }
+
+  /* header */
+  nav ul li {
+    font-size: calc(var(--font-medium2) * 1.2);
+  }
+
+  .logo {
+    width: 150px;
+    height: 50px;
+  }
+
+  /* footer */
+  .serviceArrange {
+    font-size: calc(var(--font-small) * 1.2);
+    margin-right: var(--bigger-padding);
+  }
+
+  .footerLogoIcon {
+    height: 20px;
+    width: 20px;
+  }
+
+  .copyright {
+    font-size: var(--font-small);
+  }
+
+  /* homeBanner */
+  .homeBannerTextBox {
+    width: 500px;
+    left: 50%;
+    top: 17%;
+    -webkit-transform: translate(-50%, -17%);
+    transform: translate(-50%, -17%);
+  }
+
+  .homeBannerText {
+    font-size: calc(var(--font-large) * 1.3);
+  }
+
+  /* homeIntro */
+  .homeIntroContainer {
+    height: 300px;
+  }
+
+  /* homeServiceIntro */
+  /* .homeServiceIntroContainer {
+        padding: 200px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+          
+      .homeServiceIntroBox {
+        width: 1000px;
+        height: 1200px;
+        position: relative;
+      }
+        
+      .homeServiceIntroTitleBox {
+        width: 100%;
+        position: relative;
+      }
+          
+      .homeServiceIntroTitle {
+        font-size: var(--font-medium2);
+        color: var(--deep-green-color);
+      }
+          
+      .homeServiceIntroLeftPhoneBox {
+        position: absolute;
+        width: 350px;
+        height: 600px;
+        bottom: 0px;
+        left: 0px;
+      }
+          
+      .homeServiceIntroRightPhoneBox {
+        position: absolute;
+        width: 350px;
+        height: 600px;
+        top: 0;
+        right: 0;
+      }
+          
+      .homeServiceIntroLeftPhone {
+        width: 100%;
+        height: 100%;
+      }
+          
+      .homeServiceIntroRightPhone {
+        width: 100%;
+        height: 100%;
+      } */
+
+  /* service */
+  .servicePreviewBox {
+    width: 650px;
+    grid-gap: calc(var(--bigger-padding) * 2.5);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .servicePreviewServNm {
+    font-size: calc(var(--font-small) * 1.4);
+  }
+
+  .noItemContainer {
+    width: 650px;
+    height: 400px;
+  }
+
+  .servicePreviewContentContainer {
+    height: 325px;
+  }
+
+  .servicePreviewTrgContent {
+    height: 34%;
+    -webkit-line-clamp: 3;
+    font-size: var(--font-small);
+  }
+
+  .servicePreviewDeptNm {
+    font-size: var(--font-small);
+  }
+
+  .servicePreviewContentBtn {
+    height: 40px;
+    font-size: var(--font-medium2);
+  }
+
+  /* serviceTab */
+  .serviceTabTitleBox {
+    width: 650px;
+  }
+
+  .serviceTabTextBoxContainer {
+    width: 650px;
+  }
+
+  .serviceTabTextBox,
+  .selectedServiceTabTextBox {
+    width: 160px;
+    padding: var(--medium-padding) var(--small-padding);
+  }
+
+  /* search */
+  .searchFilterBoxContainer {
+    height: 675px;
+    padding-bottom: 50px;
+  }
+
+  .searchBoxContainer {
+    height: 40px;
+  }
+
+  .searchIconBox {
+    width: calc(var(--medium-padding) * 1.1);
+    height: calc(var(--medium-padding) * 1.1);
+  }
+
+  .searchInput {
+    font-size: var(--font-small);
+  }
+
+  .searchBox {
+    width: 450px;
+  }
+
+  /* filter */
+  .filterBox {
+    width: 650px;
+    height: 250px;
+  }
+
+  .filterCheckBox {
+    width: 35px;
+  }
+
+  .filterElement {
+    font-size: var(--font-small);
+  }
+
+  .arrayFilterTitle {
+    font-size: calc(var(--font-medium2) * 1.2);
+  }
+
+  /* subFilter */
+  .subFilterBox {
+    width: 650px;
+    height: 140px;
+  }
+
+  .subFilterElementBox {
+    padding: 0 25px;
+  }
+
+  .subFilterAgeTitle,
+  .subFilterAreaTitle {
+    width: 35px;
+  }
+
+  .subFilterAgeInputBox {
+    margin-left: 10px;
+    padding: calc(var(--micro-padding) * 1.3);
+    border-radius: 8px;
+  }
+
+  .subFilterBtnContainer {
+    width: 230px;
+    height: 35px;
+  }
+
+  .subFilterResetBtn,
+  .subFilterSearchBtn {
+    width: 100px;
+    font-size: calc(var(--font-small) * 1.2);
+  }
+
+  /* custom_selectBox */
+  .customSelectUl,
+  .customSelectUlActive {
+    height: 145px;
+    top: 40px;
+  }
+
+  .customSelectLi,
+  .customSelectLiSelected {
+    height: 35px;
+    font-size: var(--font-small);
+  }
+
+  .customSelectBox {
+    margin-left: 10px;
+    border-radius: 8px;
+  }
+
+  .customSelectBox::before {
+    font-size: 16px;
+    top: 4px;
+  }
+
+  .customSelectSpan {
+    font-size: var(--font-small);
+  }
+
+  /* eachService */
+  .eachServiceMainBackContainer {
+    padding: 150px 0 30px;
+  }
+
+  .eachServiceMainBackBox {
+    width: 650px;
+  }
+
+  .eachServiceMainBackImgBox {
+    width: 15px;
+    height: 15px;
+  }
+
+  .eachServiceMainContainer {
+    height: 350px;
+    padding: 0 0 75px 0px;
+  }
+
+  .eachServiceMainBox {
+    width: 650px;
+  }
+
+  .eachServiceMainStatusBox {
+    height: 25px;
+  }
+
+  .eachServiceMainStatus {
+    height: 25px;
+    font-size: var(--font-small);
+  }
+
+  .eachServiceMainTable {
+    height: 70px;
+  }
+
+  .eachServiceTitle {
+    font-size: calc(var(--font-medium2) * 1.4);
+  }
+
+  .eachServiceTabTextBoxContainer {
+    width: 650px;
+    height: 53px;
+  }
+
+  .eachServiceTabTextBox,
+  .selectedEachServiceTabTextBox {
+    width: 125px;
+    padding: var(--medium-padding) var(--small-padding);
+  }
+
+  .eachServiceInfoBox {
+    width: 650px;
+  }
+
+  /* favorite */
+  .favoritePreviewContentContainer {
+    grid-gap: calc(var(--big-padding) * 2.25);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .favoritePreviewBox {
+    width: 650px;
+  }
+
+  .favoriteTitle {
+    font-size: var(--font-medium);
+  }
+
+  .favoriteTitleOrangeM {
+    width: 100px;
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  .noFavoriteItemContainer {
+    width: 650px;
+    margin-top: 100px;
+  }
+
+  .noFavoriteItemIconBox {
+    height: 65px;
+    width: 65px;
+  }
+
+  .noFavoriteItemTitle {
+    font-size: var(--font-medium);
+  }
+
+  .noFavoriteItemBtn {
+    font-size: calc(var(--font-medium2) * 1.3);
+  }
+
+  /* slick-dots */
+  .dots_custom li {
+    width: 30px;
+  }
+
+  /* KMap */
+  .searchMapContainer {
+    height: 650px;
+  }
+
+  .showMapContainer {
+    width: 650px;
+    height: 400px;
+  }
+
+  .showMapWrap {
+    width: 250px;
+    height: 140px;
+  }
+
+  .showMapInfo .showMapCloseBox {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* error */
+  .errorTitle {
+    font-size: calc(var(--font-large) * 1.4);
+  }
+
+  .errorDesc {
+    font-size: calc(var(--font-medium2) * 1.3);
+  }
+
+  .errorImgBox {
+    width: 45px;
+    height: 45px;
+  }
+
+  .errorBtn {
+    font-size: var(--font-medium);
+  }
 }
 
 @media screen and (max-width: 599px) {
   /* 모바일 세로 */
+  :root {
+    /* Font Size */
+    --font-large: 20px;
+    --font-medium: 14px;
+    --font-medium2: 10px;
+    --font-small: 8px;
+    --font-smaller: 7px;
+    --font-content: 6px;
+    --font-micro: 5px;
+
+    /* Padding */
+    --micro-padding: 5px;
+    --smaller-padding: 6px;
+    --small-padding: 7px;
+    --basic-padding: 8px;
+    --medium-padding: 10px;
+    --big-padding: 14px;
+    --bigger-padding: 20px;
+
+    /* z-index */
+    --customSelect-zindex: 1;
+  }
+
+  /* etc */
+  #blackL {
+    font-size: calc(var(--font-large) * 1.5);
+  }
+
+  #pistachioL {
+    font-size: calc(var(--font-large) * 1.7);
+  }
+
+  #greenM {
+    font-size: calc(var(--font-large) * 1.3);
+  }
+
+  #greenM2 {
+    font-size: 22px;
+  }
+
+  .darkGrayUnderBar {
+    width: 350px;
+    margin-bottom: 40px;
+  }
+
+  /* header */
+  .header {
+    height: auto;
+  }
+
+  .logoBox {
+    margin: 25px 0 40px 0;
+  }
+
+  .nav {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  nav ul li {
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  .logo {
+    width: 160px;
+    height: 55px;
+  }
+
+  /* footer */
+  .footer {
+    margin-top: 80px;
+  }
+
+  .serviceArrangeBox {
+    width: 75%;
+    padding: 30px 0 0 0;
+  }
+
+  .serviceArrange {
+    font-size: var(--font-medium);
+    margin-right: var(--bigger-padding);
+  }
+
+  .copyright {
+    padding: 30px 0;
+  }
+
+  .footerLogoIcon {
+    height: 20px;
+    width: 20px;
+  }
+
+  .copyright {
+    font-size: calc(var(--font-medium2) * 1.2);
+    width: 75%;
+  }
+
+  /* homeBanner */
+  .homeBannerTextBox {
+    top: 33%;
+    width: 300px;
+    left: 50%;
+    -webkit-transform: translate(-50%, -33%);
+    transform: translate(-50%, -33%);
+  }
+
+  .homeBannerText {
+    font-size: calc(var(--font-large) * 1.3);
+  }
+
+  .homeBannerCopyright {
+    font-size: var(--font-medium);
+  }
+
+  /* homeIntro */
+  .homeIntroContainer {
+    height: 200px;
+  }
+
+  /* homeServiceIntro */
+  /* .homeServiceIntroContainer {
+        padding: 200px 0 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+          
+      .homeServiceIntroBox {
+        width: 1000px;
+        height: 1200px;
+        position: relative;
+      }
+        
+      .homeServiceIntroTitleBox {
+        width: 100%;
+        position: relative;
+      }
+          
+      .homeServiceIntroTitle {
+        font-size: var(--font-medium2);
+        color: var(--deep-green-color);
+      }
+          
+      .homeServiceIntroLeftPhoneBox {
+        position: absolute;
+        width: 350px;
+        height: 600px;
+        bottom: 0px;
+        left: 0px;
+      }
+          
+      .homeServiceIntroRightPhoneBox {
+        position: absolute;
+        width: 350px;
+        height: 600px;
+        top: 0;
+        right: 0;
+      }
+          
+      .homeServiceIntroLeftPhone {
+        width: 100%;
+        height: 100%;
+      }
+          
+      .homeServiceIntroRightPhone {
+        width: 100%;
+        height: 100%;
+      } */
+
+  /* service */
+  .servicePreviewBox {
+    width: 350px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .servicePreviewContentContainer {
+    height: 375px;
+    padding: var(--bigger-padding);
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .servicePreviewStatusContainter {
+    height: 30px;
+  }
+
+  .servicePreviewStatus {
+    font-size: calc(var(--font-medium2) * 1.2);
+    height: 30px;
+  }
+
+  .servicePreviewServNm {
+    font-size: calc(var(--font-medium) * 1.4);
+  }
+
+  .servicePreviewTrgContent {
+    height: 29%;
+    font-size: var(--font-medium);
+  }
+
+  .servicePreviewDeptNm {
+    font-size: var(--font-medium);
+  }
+
+  .servicePreviewContentBtn {
+    height: 50px;
+    font-size: calc(var(--font-medium) * 1.3);
+  }
+
+  .noItemContainer {
+    width: 350px;
+    height: 300px;
+  }
+
+  .noItemIconBox {
+    height: 70px;
+    width: 70px;
+    margin-bottom: calc(var(--bigger-padding) * 1.2);
+  }
+
+  .noItemTitle {
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  /* serviceTab */
+  .serviceTabTitleBox {
+    width: 350px;
+    font-size: calc(var(--font-medium) * 1.4);
+    margin-bottom: var(--big-padding);
+  }
+
+  .serviceTabTextBoxContainer {
+    width: 350px;
+    justify-content: space-between;
+  }
+
+  .serviceTabTextBox,
+  .selectedServiceTabTextBox {
+    width: 100%;
+    padding: var(--big-padding) var(--small-padding);
+  }
+
+  .serviceTabText {
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  /* search */
+  .searchFilterBoxContainer {
+    height: 950px;
+    padding-bottom: 50px;
+    padding-top: 175px;
+  }
+
+  .searchIconBox {
+    width: calc(var(--big-padding) * 1.1);
+    height: calc(var(--big-padding) * 1.1);
+  }
+
+  .searchInput {
+    font-size: var(--font-medium);
+  }
+
+  .searchBox {
+    width: 350px;
+  }
+
+  /* filter */
+  .filterBox {
+    width: 350px;
+    height: 250px;
+  }
+
+  .filterCheckBox {
+    width: 35px;
+    height: 15px;
+  }
+
+  .filterElement {
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  .arrayFilterElementBox,
+  .intrsArrayFilterElementBox {
+    width: 100%;
+    height: 100%;
+    padding: var(--big-padding);
+  }
+
+  /* mobileFilter */
+  .mobileFilterTabContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .mobileFilterTabTextBoxContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: var(--black-color) 3px solid;
+  }
+
+  .mobileFilterTabTextBox,
+  .selectedMobileFilterTabTextBox {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: calc(var(--big-padding) * 1.2) var(--smaller-padding);
+    background-color: white;
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  .mobileFilterTabTextBox {
+    border-top: var(--black-color) 1px solid;
+    border-right: var(--black-color) 1px solid;
+  }
+
+  .mobileFilterTabTextBox:nth-child(1) {
+    border-left: var(--black-color) 1px solid;
+  }
+
+  .selectedMobileFilterTabTextBox {
+    border-top: var(--black-color) 3px solid;
+    border-right: var(--black-color) 3px solid;
+    border-left: var(--black-color) 3px solid;
+  }
+
+  .selectedMobileFilterTabText {
+    color: var(--deep-green-color);
+  }
+
+  .mobileFilterInfoContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobileFilterInfoBox {
+    width: 350px;
+    height: 300px;
+    border-left: var(--black-color) 2px solid;
+    border-right: var(--black-color) 2px solid;
+    border-bottom: var(--black-color) 2px solid;
+  }
+
+  /* subFilter */
+  .subFilterBox {
+    width: 350px;
+    height: 300px;
+  }
+
+  .subFilterElementBox {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 0px 25px;
+  }
+
+  .subFilterAgeContainer,
+  .subFilterAreaContainer {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .subFilterAgeContainer {
+    margin-bottom: 20px;
+  }
+
+  .subFilterAreaBox {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .subFilterAgeTitle,
+  .subFilterAreaTitle {
+    width: 100%;
+    font-size: calc(var(--font-medium) * 1.2);
+    text-align: start;
+    margin-bottom: 10px;
+    margin-left: 1px;
+  }
+
+  .subFilterAgeInputBox {
+    width: 50%;
+    padding: calc(var(--micro-padding) * 1.3);
+    margin-left: 0px;
+  }
+
+  .subFilterAgeInputText {
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  .subFilterAgeInput {
+    font-size: calc(var(--font-medium) * 1.3);
+  }
+
+  .subFilterResetBtn,
+  .subFilterSearchBtn {
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  /* custom_selectBox */
+  .customSelectUl,
+  .customSelectUlActive {
+    height: 145px;
+    top: 40px;
+    z-index: var(--customSelect-zindex);
+  }
+
+  .customSelectLi,
+  .customSelectLiSelected {
+    height: 35px;
+    font-size: var(--font-medium);
+  }
+
+  .customSelectContainer {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .customSelectBox {
+    margin-left: 0;
+    padding: 9px;
+    width: 100%;
+  }
+
+  .customSelectBox:last-child {
+    margin-top: 10px;
+  }
+
+  .customSelectBox::before {
+    font-size: 18px;
+  }
+
+  .customSelectSpan {
+    font-size: var(--font-medium);
+  }
+
+  /* eachService */
+  .eachServiceMainBackContainer {
+    padding: 150px 0 30px;
+  }
+
+  .eachServiceMainBackBox {
+    width: 305px;
+  }
+
+  .eachServiceMainBackImgBox {
+    width: 15px;
+    height: 15px;
+  }
+
+  .eachServiceMainContainer {
+    height: 350px;
+    padding: 0 0 75px 0px;
+  }
+
+  .eachServiceMainBox {
+    width: 350px;
+  }
+
+  .eachServiceMainStatusBox {
+    height: 25px;
+  }
+
+  .eachServiceMainStatus {
+    height: 25px;
+    font-size: var(--font-small);
+  }
+
+  .eachServiceMainTable {
+    height: 70px;
+  }
+
+  .eachServiceTitle {
+    font-size: calc(var(--font-medium2) * 1.4);
+  }
+
+  .eachServiceTabTextBoxContainer {
+    width: 350px;
+    height: 53px;
+  }
+
+  .eachServiceTabTextBox,
+  .selectedEachServiceTabTextBox {
+    width: 125px;
+    padding: var(--medium-padding) var(--small-padding);
+  }
+
+  .eachServiceInfoBox {
+    width: 350px;
+  }
+
+  /* pagination */
+  .pagination {
+    font-size: var(--font-medium);
+    margin: calc(var(--bigger-padding) * 4) auto 0 auto;
+  }
+
+  /* favorite */
+  .favoritePreviewContainer {
+    padding-top: 175px;
+  }
+
+  .favoritePreviewContainer2 {
+    padding-top: 75px;
+  }
+
+  .favoritePreviewContentContainer {
+    grid-gap: 0;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .favoritePreviewContentContainer2 {
+    display: -webkit-box;
+    overflow-x: scroll;
+    padding-bottom: 20px;
+  }
+
+  .favoritePreviewContentContainer2 .servicePreviewContentContainer {
+    margin: 0 10px;
+  }
+
+  .favoritePreviewContentContainer2::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .favoritePreviewContentContainer2::-webkit-scrollbar-track {
+    background: #d6d5d5;
+    border-radius: 45px;
+    margin: 0 10px;
+  }
+
+  .favoritePreviewContentContainer2::-webkit-scrollbar-thumb {
+    background: black;
+    border-radius: 45px;
+  }
+
+  .favoritePreviewBox {
+    width: 350px;
+  }
+
+  .favoriteTitle {
+    font-size: var(--font-large);
+  }
+
+  .favoriteTitleOrangeM {
+    width: 100px;
+    font-size: calc(var(--font-large) * 1.2);
+  }
+
+  .noFavoriteItemContainer {
+    width: 350px;
+    margin-top: 60px;
+  }
+
+  .noFavoriteItemTitle {
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  .noFavoriteItemBtnBox {
+    height: 40px;
+    width: 130px;
+  }
+
+  .noFavoriteItemBtn {
+    border-radius: 10px;
+    font-size: calc(var(--font-medium) * 1.1);
+  }
+
+  /* KMap */
+  .searchMapContainer {
+    height: 700px;
+    padding-top: 175px;
+  }
+
+  .showMapContainer {
+    width: 350px;
+    height: 450px;
+  }
+
+  .showMapWrap {
+    width: 250px;
+    height: 140px;
+  }
+
+  .showMapInfo .showMapTitleBox {
+    padding: var(--medium-padding) var(--medium-padding);
+  }
+
+  .showMapTitleBox .showMapTitle {
+    font-size: var(--font-medium);
+  }
+
+  .showMapInfo .showMapCloseBox {
+    width: 12px;
+    height: 12px;
+  }
+
+  .showMapInfo .showMapBody {
+    padding: var(--medium-padding);
+  }
+
+  .showMapDesc .showMapAddress,
+  .showMapDesc .showMapPhone,
+  .showMapInfo .showMapLink {
+    font-size: calc(var(--font-medium2) * 1.2);
+  }
+
+  /* error */
+  .errorTitleBox {
+    margin-right: 10px;
+  }
+
+  .errorTitle {
+    font-size: calc(var(--font-large) * 1.4);
+  }
+
+  .errorDesc {
+    font-size: calc(var(--font-medium) * 1.1);
+  }
+
+  .errorImgBox {
+    width: 35px;
+    height: 35px;
+  }
+
+  .errorBtn {
+    font-size: var(--font-large);
+  }
 }

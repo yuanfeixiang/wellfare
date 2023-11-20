@@ -27,7 +27,7 @@ function Home() {
           Wellfare와 함께하세요.
         </span>
       </div>
-      <div className="homeServiceIntroContainer">
+      {/* <div className="homeServiceIntroContainer">
         <div className="homeServiceIntroBox">
           <div className="homeServiceIntroTitleBox">
             <span className="homeServiceIntroTitle">복지서비스 검색</span>
@@ -47,7 +47,7 @@ function Home() {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
