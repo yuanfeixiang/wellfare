@@ -3074,11 +3074,15 @@ ul.pagination li a {
 
   .homeServiceIntroBox {
     width: 350px;
-    height: 750px;
+    height: 800px;
   }
 
   .homeServiceIntroTitle {
     font-size: var(--font-large);
+  }
+
+  .homeSeriveIntroDescBox {
+    margin-bottom: 50px;
   }
 
   .homeServiceIntroDesc {
@@ -3090,19 +3094,19 @@ ul.pagination li a {
     display: flex;
     width: -webkit-max-content;
     width: max-content;
-    width: 350px;
-    height: 100%;
+    width: 275px;
+    height: auto;
+    margin: 0 30px 50px 30px;
     overflow-x: visible;
     overflow-y: hidden;
   }
 
   .homeServiceIntroLeftPhoneBox,
   .homeServiceIntroRightPhoneBox {
-    height: 550px;
-    position: static;
+    height: auto;
+    position: relative;
     flex-shrink: 0;
     width: 100%;
-    margin: 50px 0;
   }
 
   .homeServiceIntroRightPhoneBox {
