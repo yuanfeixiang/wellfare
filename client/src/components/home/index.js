@@ -1,19 +1,45 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Helmet } from "react-helmet";
-import classnames from "classnames";
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import classnames from 'classnames';
 
 // image
-import phone from "../../image/util/phone.png";
-import searchFilter from "../../image/util/searchFilter.png";
-import searchResult from "../../image/util/searchResult.png";
+import phone from '../../image/util/phone.png';
+import searchFilter from '../../image/util/searchFilter.png';
+import searchResult from '../../image/util/searchResult.png';
 
 // store
 
 // splited page
-import HomeBanner from "./home_banner";
+import HomeBanner from './home_banner';
 
 function Home() {
+  const homeServiceIntroPhoneContainer = useRef(null);
+
+  const handleScroll = () => {
+    if (window.innerHeight - homeServiceIntroPhoneContainer.current.getBoundingClientRect().bottom <= 0 || homeServiceIntroPhoneContainer.current.getBoundingClientRect().top <= 0) {
+      if (window.innerHeight - homeServiceIntroPhoneContainer.current.getBoundingClientRect().bottom <= 0) {
+        homeServiceIntroPhoneContainer.current.style.transform = `translate3d(calc(((${homeServiceIntroPhoneContainer.current.getBoundingClientRect().width}px - 100vw) * 1) - (${homeServiceIntroPhoneContainer.current.getBoundingClientRect().width}px - 100vw)), 0px, 0px)`;
+
+      } else {
+        homeServiceIntroPhoneContainer.current.style.transform = `translate3d(calc(((${homeServiceIntroPhoneContainer.current.getBoundingClientRect().width}px - 100vw) * 0) - (${homeServiceIntroPhoneContainer.current.getBoundingClientRect().width}px - 100vw)), 0px, 0px)`;
+      }
+      return;
+    }
+
+    homeServiceIntroPhoneContainer.current.style.transform = `translate3d(calc(((${homeServiceIntroPhoneContainer.current.getBoundingClientRect().width}px - 100vw) * ${(window.innerHeight - (window.innerHeight - homeServiceIntroPhoneContainer.current.getBoundingClientRect().top)) / (homeServiceIntroPhoneContainer.current.getBoundingClientRect().bottom)}) - (${homeServiceIntroPhoneContainer.current.getBoundingClientRect().width}px - 100vw)), 0px, 0px)`;
+  };
+
+  useEffect(() => {
+    if (homeServiceIntroPhoneContainer.current) {
+      window.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [homeServiceIntroPhoneContainer]);
+
   return (
     <>
       <Helmet>
@@ -39,7 +65,10 @@ function Home() {
               무관심했던 복지서비스, <br /> 빠짐없이 조회하고 <br /> 관리하세요.
             </span>
           </div>
-          <div className="homeServiceIntroPhoneContainer">
+          <div
+            className="homeServiceIntroPhoneContainer"
+            ref={homeServiceIntroPhoneContainer}
+          >
             <div className="homeServiceIntroLeftPhoneBox">
               <img
                 className="homeServiceIntroLeftPhoneImg"

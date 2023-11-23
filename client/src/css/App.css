@@ -3070,6 +3070,7 @@ ul.pagination li a {
   /* homeServiceIntro */
   .homeServiceIntroContainer {
     padding: 150px 0 150px 0;
+    overflow-x: hidden;
   }
 
   .homeServiceIntroBox {
@@ -3090,25 +3091,28 @@ ul.pagination li a {
   }
 
   .homeServiceIntroPhoneContainer {
-    position: relative;
     display: flex;
+    height: auto;
+    margin-bottom: 50px;
+    overflow-x: visible;
+    position: relative;
     width: -webkit-max-content;
     width: max-content;
-    width: 275px;
-    height: auto;
-    margin: 0 30px 50px 30px;
-    overflow-x: visible;
-    overflow-y: hidden;
   }
 
   .homeServiceIntroLeftPhoneBox,
   .homeServiceIntroRightPhoneBox {
-    height: auto;
     position: relative;
     flex-shrink: 0;
+    height: auto;
     width: 100%;
+    max-width: 300px;
   }
 
+  .homeServiceIntroLeftPhoneBox {
+    margin-left: 30px;
+  }
+  
   .homeServiceIntroRightPhoneBox {
     margin-left: 50px;
   }
