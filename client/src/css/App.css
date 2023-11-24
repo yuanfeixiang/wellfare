@@ -1170,7 +1170,8 @@ ul.pagination li a {
   font-size: var(--font-small);
 }
 
-.eachServiceMainContainer {
+.eachServiceMainContainer,
+.eachServiceMainContainer2 {
   width: 100%;
   height: 550px;
   padding: 0 0 100px 0;
@@ -1178,6 +1179,14 @@ ul.pagination li a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.eachServiceMainContainer {
+  height: 525px;
+}
+
+.eachServiceMainContainer2 {
+  height: 550px;
 }
 
 .eachServiceMainBox {
@@ -1200,12 +1209,18 @@ ul.pagination li a {
 }
 
 .eachServiceMainStatusBox {
-  grid-gap: 0 10px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, auto));
   width: 90%;
-  height: 35px;
-  overflow: hidden;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  overflow: scroll;
+  grid-gap: 0 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.eachServiceMainStatusBox::-webkit-scrollbar {
+  display: none;
 }
 
 .eachServiceMainStatus {
@@ -1214,9 +1229,10 @@ ul.pagination li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 10px;
+  padding: 0 20px;
   font-size: var(--font-content);
-  height: 35px;
+  height: 100%;
+  flex-shrink: 0;
 }
 
 .eachServiceMainFavoriteBox {
@@ -1241,10 +1257,10 @@ ul.pagination li a {
   font-size: calc(var(--font-medium2) * 1.1);
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 10px;
 }
 
 .eachServiceDgst {
+  margin-top: 10px;
   font-size: var(--font-content);
 }
 
@@ -1940,6 +1956,10 @@ ul.pagination li a {
   }
 
   .eachServiceMainContainer {
+    height: 475px;
+  }
+
+  .eachServiceMainContainer2 {
     height: 500px;
   }
 
@@ -1948,7 +1968,11 @@ ul.pagination li a {
   }
 
   .eachServiceMainStatusBox {
-    grid-template-columns: repeat(auto-fill, minmax(100px, auto));
+    height: 35px;
+  }
+
+  .eachServiceMainStatus {
+    font-size: var(--font-smaller);
   }
 
   .eachServiceMainFavoriteBtnBox {
@@ -1964,7 +1988,8 @@ ul.pagination li a {
     font-size: var(--font-small);
   }
 
-  .eachServiceMainTable {
+  .eachServiceMainTable,
+  .eachServiceMainTable2 {
     height: 110px;
   }
 
@@ -1977,6 +2002,14 @@ ul.pagination li a {
   .selectedEachServiceTabTextBox {
     width: 220px;
     padding: var(--basic-padding) var(--small-padding);
+  }
+
+  .eachServiceMainTableTheadTd {
+    font-size: calc(var(--font-small) * 1.2);
+  }
+
+  .eachServiceMainTableTbodyTd {
+    font-size: var(--font-small);
   }
 
   .eachServiceInfoBox {
@@ -2382,7 +2415,7 @@ ul.pagination li a {
 
   /* eachService */
   .eachServiceMainBackContainer {
-    padding: 170px 0 30px;
+    padding: 170px 0 20px;
   }
 
   .eachServiceMainBackBox {
@@ -2395,6 +2428,10 @@ ul.pagination li a {
   }
 
   .eachServiceMainContainer {
+    height: 425px;
+  }
+
+  .eachServiceMainContainer2 {
     height: 450px;
   }
 
@@ -2404,15 +2441,15 @@ ul.pagination li a {
 
   .eachServiceMainStatusBox {
     height: 30px;
-    grid-template-columns: repeat(auto-fill, minmax(90px, auto));
   }
 
   .eachServiceMainStatus {
     font-size: var(--font-smaller);
-    height: 30px;
+    padding: 0 15px;
   }
 
-  .eachServiceMainTable {
+  .eachServiceMainTable,
+  .eachServiceMainTable2 {
     height: 100px;
   }
 
@@ -2424,6 +2461,14 @@ ul.pagination li a {
   .eachServiceTabTextBox,
   .selectedEachServiceTabTextBox {
     width: 170px;
+  }
+
+  .eachServiceMainTableTheadTd {
+    font-size: calc(var(--font-small) * 1.3);
+  }
+
+  .eachServiceMainTableTbodyTd {
+    font-size: calc(var(--font-small) * 1.2);
   }
 
   .eachServiceInfoBox {
@@ -2807,7 +2852,7 @@ ul.pagination li a {
 
   /* eachService */
   .eachServiceMainBackContainer {
-    padding: 150px 0 30px;
+    padding: 150px 0 20px;
   }
 
   .eachServiceMainBackBox {
@@ -2820,6 +2865,11 @@ ul.pagination li a {
   }
 
   .eachServiceMainContainer {
+    height: 325px;
+    padding: 0 0 75px;
+  }
+
+  .eachServiceMainContainer2 {
     height: 350px;
     padding: 0 0 75px 0px;
   }
@@ -2833,11 +2883,11 @@ ul.pagination li a {
   }
 
   .eachServiceMainStatus {
-    height: 25px;
     font-size: var(--font-small);
   }
 
-  .eachServiceMainTable {
+  .eachServiceMainTable,
+  .eachServiceMainTable2 {
     height: 70px;
   }
 
@@ -2856,8 +2906,21 @@ ul.pagination li a {
     padding: var(--medium-padding) var(--small-padding);
   }
 
+  .eachServiceMainTableTheadTd {
+    font-size: calc(var(--font-small) * 1.2);
+  }
+
+  .eachServiceMainTableTbodyTd {
+    font-size: var(--font-small);
+  }
+
   .eachServiceInfoBox {
     width: 650px;
+  }
+
+  .eachServiceInfoTitleImg {
+    height: 11px;
+    width: 11px;
   }
 
   /* favorite */
@@ -2988,6 +3051,10 @@ ul.pagination li a {
     margin-bottom: 40px;
   }
 
+  #deepGreenSmer {
+    font-size: var(--font-medium);
+  }
+
   /* header */
   .header {
     height: auto;
@@ -3063,7 +3130,7 @@ ul.pagination li a {
   }
 
   .homeIntro {
-    font-size: var(--font-large);
+    font-size: calc(var(--font-large) * 1.1);
     line-height: 1.5;
   }
 
@@ -3090,7 +3157,7 @@ ul.pagination li a {
     font-size: calc(var(--font-large) * 1.4);
   }
 
-  .homeServiceIntroPhoneContainer {
+  .homeServiceIntroPhoneContainer2 {
     display: flex;
     height: auto;
     margin-bottom: 50px;
@@ -3110,9 +3177,9 @@ ul.pagination li a {
   }
 
   .homeServiceIntroLeftPhoneBox {
-    margin-left: 30px;
+    margin-left: 25px;
   }
-  
+
   .homeServiceIntroRightPhoneBox {
     margin-left: 50px;
   }
@@ -3409,21 +3476,29 @@ ul.pagination li a {
 
   /* eachService */
   .eachServiceMainBackContainer {
-    padding: 150px 0 30px;
+    padding: 175px 0 15px;
   }
 
   .eachServiceMainBackBox {
-    width: 305px;
+    width: 350px;
   }
 
   .eachServiceMainBackImgBox {
-    width: 15px;
-    height: 15px;
+    margin-right: 5px;
+  }
+
+  .eachServiceMainBackText {
+    font-size: var(--font-medium);
   }
 
   .eachServiceMainContainer {
-    height: 350px;
-    padding: 0 0 75px 0px;
+    padding: 0 0 50px 0px;
+    height: 300px;
+  }
+
+  .eachServiceMainContainer2 {
+    padding: 0 0 50px 0px;
+    height: 575px;
   }
 
   .eachServiceMainBox {
@@ -3431,35 +3506,110 @@ ul.pagination li a {
   }
 
   .eachServiceMainStatusBox {
-    height: 25px;
+    width: 85%;
+    height: 23px;
   }
 
   .eachServiceMainStatus {
-    height: 25px;
-    font-size: var(--font-small);
-  }
-
-  .eachServiceMainTable {
-    height: 70px;
+    font-size: calc(var(--font-medium2) * 1.2);
+    padding: 0 10px;
   }
 
   .eachServiceTitle {
-    font-size: calc(var(--font-medium2) * 1.4);
+    font-size: calc(var(--font-medium) * 1.3);
+  }
+
+  .eachServiceDgst {
+    font-size: calc(var(--font-medium2) * 1.2);
+  }
+
+  .eachServiceMobileTableContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .eachServiceMobileTableBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .eachServiceMobileTableBox:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
+
+  .eachServiceMobileTableTitleBox {
+    display: flex;
+    align-items: center;
+  }
+
+  .eachServiceMobileTableImgBox {
+    width: 6px;
+    height: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+  }
+
+  .eachServiceMobileTableTitle {
+    font-size: calc(var(--font-medium) * 1.2);
+  }
+
+  .eachServiceMobileTableContent {
+    font-size: var(--font-medium);
+    color: var(--deep-green-color);
+    margin: 2px 0px 0 11px;
+  }
+
+  .eachServiceMainFavoriteBtnBox {
+    height: 15px;
+    width: 15px;
+  }
+
+  .eachServiceTabContainer {
+    justify-content: space-between;
   }
 
   .eachServiceTabTextBoxContainer {
     width: 350px;
-    height: 53px;
+    height: 44px;
   }
 
   .eachServiceTabTextBox,
   .selectedEachServiceTabTextBox {
-    width: 125px;
+    width: 100%;
     padding: var(--medium-padding) var(--small-padding);
+  }
+
+  .eachServiceTabText,
+  .selectedEachServiceTabText {
+    font-size: calc(var(--font-medium2) * 1.5);
+    padding-bottom: 3px;
   }
 
   .eachServiceInfoBox {
     width: 350px;
+  }
+
+  .eachServiceInfoTitleImg {
+    height: 8px;
+    width: 8px;
+  }
+
+  .eachServiceInfoTitle {
+    font-size: calc(var(--font-medium) * 1.1);
+  }
+
+  .eachServiceInfoDescBox {
+    padding: 10px 0 0 17px;
+  }
+
+  .eachServiceInfoDesc {
+    font-size: var(--font-medium);
   }
 
   /* pagination */

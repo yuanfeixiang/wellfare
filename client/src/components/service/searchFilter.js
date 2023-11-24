@@ -158,7 +158,7 @@ function SearchFilter() {
         </div>
       </div>
       <div className="filterBoxContainer">
-        {innerWidth > 300 && innerWidth < 768 ? (
+        {innerWidth > 300 && innerWidth < 600 ? (
           <div className="mobileFilterTabContainer">
             <div className="mobileFilterTabTextBoxContainer">
               <div

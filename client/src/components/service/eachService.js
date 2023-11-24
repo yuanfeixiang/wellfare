@@ -16,6 +16,14 @@ import square from "../../image/util/square.png";
 function EachService() {
   const dispatch = useDispatch();
   const { servId } = useParams();
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const resizeListener = () => {
+      setInnerWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", resizeListener);
+  });
 
   const { selectedServiceArray, detailArrayList } = useSelector(
     (state) => state.service
@@ -69,7 +77,13 @@ function EachService() {
           </Link>
         </div>
       </div>
-      <div className="eachServiceMainContainer">
+      <div
+        className={
+          selectedServiceArray.sunder === 0
+            ? "eachServiceMainContainer"
+            : "eachServiceMainContainer2"
+        }
+      >
         <div className="eachServiceMainBox">
           <div className="eachServiceMainStatusContainer">
             <div className="eachServiceMainStatusBox">
@@ -80,26 +94,26 @@ function EachService() {
               )}
               {selectedServiceArray.lifeArray != null
                 ? selectedServiceArray.lifeArray
-                  .split(",")
-                  .map((data, index) => (
-                    <div className="eachServiceMainStatus">
-                      {data.replace(/(\s*)/g, "")}
-                    </div>
-                  ))
+                    .split(",")
+                    .map((data, index) => (
+                      <div className="eachServiceMainStatus">
+                        {data.replace(/(\s*)/g, "")}
+                      </div>
+                    ))
                 : ""}
               {selectedServiceArray.gaguArray
                 ? selectedServiceArray.gaguArray
-                  .split(",")
-                  .map((data, index) => (
-                    <div className="eachServiceMainStatus">{data}</div>
-                  ))
+                    .split(",")
+                    .map((data, index) => (
+                      <div className="eachServiceMainStatus">{data}</div>
+                    ))
                 : ""}
               {selectedServiceArray.intrsArray
                 ? selectedServiceArray.intrsArray
-                  .split(",")
-                  .map((data, index) => (
-                    <div className="eachServiceMainStatus">{data}</div>
-                  ))
+                    .split(",")
+                    .map((data, index) => (
+                      <div className="eachServiceMainStatus">{data}</div>
+                    ))
                 : ""}
             </div>
             <div className="eachServiceMainFavoriteBox">
@@ -109,9 +123,9 @@ function EachService() {
                     centralFavoriteArray.some(
                       (element) => element.servId === servId
                     ) ||
-                      localFavoriteArray.some(
-                        (element) => element.servId === servId
-                      )
+                    localFavoriteArray.some(
+                      (element) => element.servId === servId
+                    )
                       ? star_yellow
                       : star_white
                   }
@@ -134,7 +148,115 @@ function EachService() {
               ""
             )}
           </div>
-          {selectedServiceArray.sunder === 0 ? (
+          {innerWidth > 300 && innerWidth < 600 ? (
+            selectedServiceArray.sunder === 0 ? (
+              <div className="eachServiceMobileTableContainer">
+                <div className="eachServiceMobileTableBox">
+                  <div className="eachServiceMobileTableTitleBox">
+                    <div className="eachServiceMobileTableImgBox">
+                      <img src={square} className="image100" alt="사각형" />
+                    </div>
+                    <span className="eachServiceMobileTableTitle">
+                      기준연도
+                    </span>
+                  </div>
+                  <span className="eachServiceMobileTableContent">{year}</span>
+                </div>
+                <div className="eachServiceMobileTableBox">
+                  <div className="eachServiceMobileTableTitleBox">
+                    <div className="eachServiceMobileTableImgBox">
+                      <img src={square} className="image100" alt="사각형" />
+                    </div>
+                    <span className="eachServiceMobileTableTitle">
+                      담당부서
+                    </span>
+                  </div>
+                  <span className="eachServiceMobileTableContent">
+                    {selectedServiceArray.deptNm}
+                  </span>
+                </div>
+              </div>
+            ) : (
+              <div className="eachServiceMobileTableContainer">
+                <div className="eachServiceMobileTableBox">
+                  <div className="eachServiceMobileTableTitleBox">
+                    <div className="eachServiceMobileTableImgBox">
+                      <img src={square} className="image100" alt="사각형" />
+                    </div>
+                    <span className="eachServiceMobileTableTitle">
+                      담당부서
+                    </span>
+                  </div>
+                  <span className="eachServiceMobileTableContent">
+                    {selectedServiceArray.deptNm ?? "-"}
+                  </span>
+                </div>
+                <div className="eachServiceMobileTableBox">
+                  <div className="eachServiceMobileTableTitleBox">
+                    <div className="eachServiceMobileTableImgBox">
+                      <img src={square} className="image100" alt="사각형" />
+                    </div>
+                    <span className="eachServiceMobileTableTitle">시/도</span>
+                  </div>
+                  <span className="eachServiceMobileTableContent">
+                    {selectedServiceArray.sido ?? "-"}
+                  </span>
+                </div>
+                <div className="eachServiceMobileTableBox">
+                  <div className="eachServiceMobileTableTitleBox">
+                    <div className="eachServiceMobileTableImgBox">
+                      <img src={square} className="image100" alt="사각형" />
+                    </div>
+                    <span className="eachServiceMobileTableTitle">
+                      구/군/시
+                    </span>
+                  </div>
+                  <span className="eachServiceMobileTableContent">
+                    {selectedServiceArray.gungu ?? "-"}
+                  </span>
+                </div>
+                <div className="eachServiceMobileTableBox">
+                  <div className="eachServiceMobileTableTitleBox">
+                    <div className="eachServiceMobileTableImgBox">
+                      <img src={square} className="image100" alt="사각형" />
+                    </div>
+                    <span className="eachServiceMobileTableTitle">
+                      지원주기
+                    </span>
+                  </div>
+                  <span className="eachServiceMobileTableContent">
+                    {selectedServiceArray.aplPrd ?? "-"}
+                  </span>
+                </div>
+                <div className="eachServiceMobileTableBox">
+                  <div className="eachServiceMobileTableTitleBox">
+                    <div className="eachServiceMobileTableImgBox">
+                      <img src={square} className="image100" alt="사각형" />
+                    </div>
+                    <span className="eachServiceMobileTableTitle">
+                      제공유형
+                    </span>
+                  </div>
+                  <span className="eachServiceMobileTableContent">
+                    {selectedServiceArray.proTyp ?? "-"}
+                  </span>
+                </div>
+                <div className="eachServiceMobileTableBox">
+                  <div className="eachServiceMobileTableTitleBox">
+                    <div className="eachServiceMobileTableImgBox">
+                      <img src={square} className="image100" alt="사각형" />
+                    </div>
+                    <span className="eachServiceMobileTableTitle">
+                      신청방법
+                    </span>
+                  </div>
+                  <span className="eachServiceMobileTableContent">
+                    {selectedServiceArray.aplWayNm ?? "-"}
+                  </span>
+                </div>
+              </div>
+            )
+          ) : selectedServiceArray.sunder === 0 ? (
             <table className="eachServiceMainTable">
               <thead className="eachServiceMainTableThead">
                 <tr className="eachServiceMainTableTr">
