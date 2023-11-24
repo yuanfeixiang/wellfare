@@ -11,10 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 
 // 서버시작하면 자동으로 eventListener 시작
-// const centralServiceScheduler = require("./routes/scheduler/centralServiceScheduler");
-// const localServiceScheduler = require("./routes/scheduler/localServiceScheduler.js");
-// centralServiceScheduler;
-// localServiceScheduler;
+const centralServiceScheduler = require("./routes/scheduler/centralServiceScheduler");
+const localServiceScheduler = require("./routes/scheduler/localServiceScheduler.js");
+centralServiceScheduler;
+localServiceScheduler;
 
 // api 처리는 routes/index.js 에서 함
 app.use("/api", api);

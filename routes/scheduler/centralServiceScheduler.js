@@ -87,7 +87,7 @@ const processData = async (jsonElements) => {
   }
 };
 
-const job1 = schedule.scheduleJob("00 04 * * * *", async () => {
+const job2 = schedule.scheduleJob("0 0 0 1 1 *", async () => {
   try {
     const apiUrl = `https://www.bokjiro.go.kr/ssis-tbu/NationalWelfareInformations/NationalWelfarelist.do?serviceKey=${apiConf.key}&callTp=D&pageNo=1&numOfRows=500&srchKeyCode=003&SG_APIM=2ug8Dm9qNBfD32JLZGPN64f3EoTlkpD8kSOHWfXpyrY`;
     const response = await axios.get(apiUrl);
@@ -100,6 +100,16 @@ const job1 = schedule.scheduleJob("00 04 * * * *", async () => {
   }
 });
 
-const centralServiceScheduler = { job1: job1 };
+const job1 = schedule.scheduleJob("30 59 23 31 12 *", async () => {
+  try {
+    await connection.query(`truncate table services`);
+    await connection.query(`truncate table inquiries`);
+    console.log("Truncate Success");
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+const centralServiceScheduler = { job1: job1, job2: job2 };
 
 module.exports = centralServiceScheduler;

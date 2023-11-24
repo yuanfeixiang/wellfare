@@ -126,7 +126,7 @@ const processData = async (jsonElements) => {
   }
 };
 
-const job1 = schedule.scheduleJob("00 05 * * * *", async () => {
+const job1 = schedule.scheduleJob("0 0 0 1 1 *", async () => {
   try {
     const apiUrl = `https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfarelist?serviceKey=${apiConf.key}&pageNo=1&numOfRows=4500`;
     const response = await axios.get(apiUrl);
