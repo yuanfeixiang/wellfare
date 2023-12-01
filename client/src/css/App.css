@@ -3111,10 +3111,10 @@ ul.pagination li a {
 
   /* homeBanner */
   .homeBannerTextBox {
-    top: 33%;
+    top: 40%;
     left: 50%;
-    -webkit-transform: translate(-50%, -33%);
-    transform: translate(-50%, -33%);
+    -webkit-transform: translate(-50%, -40%);
+    transform: translate(-50%, -40%);
   }
 
   .homeBannerText {
